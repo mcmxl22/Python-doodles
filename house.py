@@ -1,12 +1,14 @@
+import subprocess
+
 def front_porch():
-    print '\nYou\'re on the porch. Choose a door.'
+    print '\nYou\'re on the porch. Choose a door.\n'
 	
     dic = {'front', 'exit'}
     for d in dic:
-        print '\n%s' % num
- 
-    choice = raw_input('\n> ')
+        print '%s' % d
 		
+    choice = raw_input('\n> ')
+	
     if choice == 'exit':
         quit()
 			
@@ -18,8 +20,8 @@ def stairs():
 	
     doors = [range(1, 8)]
 	
-    for num in doors:
-        print '\n%s' % num
+    for d in doors:
+        print '\n%s' % d
       
     choice = raw_input('\n> ')
     
@@ -35,32 +37,47 @@ def stairs():
         living_room()
 		
 def living_room():
-    print '\nChoose a room.'
+    print '\nYou\'re in the livingroom. Choose a room or activity.\n'
 	
-    dic = {'kitchen', 'stairs', 'porch', 'basement'}
+    list = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
 	
-    for d in dic:
-        print '\n%s' % d
+    for l in list:
+        print '%s' % l
 		
     choice = raw_input('\n> ')
 	
-    if choice == 'stairs':
+    if choice == list[1]:
         stairs()
 		
-    elif choice == 'porch':
+    elif choice == list[2]:
         front_porch()
 		
-    elif choice == 'kitchen':
+    elif choice == list[0]:
         print 'The kitchen is being remodeled. Come back later.'
         living_room()
 		
-    elif choice == 'basement':
+    elif choice == list[3]:
         print 'Do you want to do laundry?'
 		
-        dic = {'yes', 'no'}
+        list = ('yes', 'no')
 		
-        for d in dic:
-            print '\n%s' % d
-        raw_input('\n> ')
+        for l in list:
+            print '\n%s' % l
+        choice = raw_input('\n> ')
+        if choice == list[0]:
+            print '\nYou\'ll have to wait.'
+            living_room()
+        elif choice == list[1]:
+            living_room()
 		
-front_porch()
+    elif choice == list[4]:
+        subprocess.call('web.py', shell=True)
+        living_room()
+	
+    elif choice == list[5]:
+        print list[5]+'ing'
+        subprocess.call('countd.py', shell=True)
+        living_room()
+		
+if __name__ == "__main__":
+    front_porch()
