@@ -45,7 +45,7 @@ def stairs():
 def living_room():
 
     web = [sys.executable, 'web.py']
-	count = [sys.executable, 'countd.py']
+    count = [sys.executable, 'countd.py']
 
     print ('\nYou\'re in the livingroom. Choose a room or activity.\n')
 
