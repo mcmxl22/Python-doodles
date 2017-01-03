@@ -1,3 +1,5 @@
+# By Micah M. 2017
+
 import time
 
 def count():
