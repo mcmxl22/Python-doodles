@@ -8,17 +8,18 @@ def front_porch():
     print ('\nYou\'re on the porch. Choose a door.\n')
 
     portal = ('front', 'exit')
-    
+
     for i in portal:
         print ('%s' % i)
-		
-    choice = raw_input('\n> ') 
-	
+
+    choice = raw_input('\n> ')
+
     if choice == portal[0]:
         living_room()
-		
+
     else:
         quit()
+
 
 def stairs():
     print ('\nYou\'re in the upstairs hall. There are 6 doors. Choose one.')
@@ -41,6 +42,12 @@ def stairs():
     else:
         living_room()
 
+
+def kitchen():
+    print ('The kitchen is being remodeled. Come back later.')
+    living_room()
+
+
 def basement():
     print ('Do you want to do laundry?')
 
@@ -58,12 +65,11 @@ def basement():
     else:
         living_room()
 
+
 def living_room():
-
-    web = [sys.executable, 'web.py']
-    count = [sys.executable, 'countd.py']
-
     print ('\nYou\'re in the livingroom. Choose a room or activity.\n')
+
+    web, count = [sys.executable, 'web.py'], [sys.executable, 'countd.py']
 
     room = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
 
@@ -79,8 +85,7 @@ def living_room():
         front_porch()
 
     elif choice == room[0]:
-        print ('The kitchen is being remodeled. Come back later.')
-        living_room()
+        kitchen()
 
     elif choice == room[3]:
         basement()
