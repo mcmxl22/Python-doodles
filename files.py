@@ -7,17 +7,23 @@ import os.path
 class Files(object):
     #Create a file and confirm it.
     def create(self):
+        fi = Files()
         #create file.
         filename = raw_input('Enter file name. ')
+        if os.path.exists(filename) == True:
+            print ('File already exists!')
+            fi.create()
         f = open(filename, 'w+')
         print ('Creating file!')
         #confirm file.
         if os.path.exists(filename) == True:
             print ('Done!')
         f.close()
-
+        main()
+		
 	#Edit a file.
     def edit(self):
+        fi = Files()
         FileOpen = raw_input('Enter file name. ')
         f = open(FileOpen, 'w')
         FileEdit = raw_input('> ')
@@ -25,7 +31,8 @@ class Files(object):
         #...
         f.close()
         print ('Done!')
-
+        main()
+        
 class questions(object):
 
     def start(self):
@@ -48,8 +55,8 @@ class questions(object):
 
         else:
             print ('Invalid entry!')
-            start()
-		
+            main()
+
 class main(object):
     def __init__(self):
         q = questions()
