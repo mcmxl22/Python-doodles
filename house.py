@@ -1,15 +1,17 @@
 #! /usr/bin/env python
-# By Micah M. 2018
-# House 1.0
+# By Micah M. 2017
+# House version 1.0
 # Python 2.7.13
+
 
 import subprocess
 import sys
+from time import sleep
 
 
 def front_porch():
-    
-    print ('\nYou\'re on the porch. Choose a door.\n')
+
+    print ('\nChoose a door.\n')
     portal = ('front', 'exit')
     for i in portal:
         print ('%s' % i)
@@ -19,19 +21,20 @@ def front_porch():
         living_room()
 
     else:
+        print ('Come back soon!')
         quit()
 
 
 def stairs():
-    
+
     print ('\nYou\'re in the upstairs hall. There are 6 doors. Choose one.')
-    doors = [range(1, 8)]
+    doors = [range(1, 7)]
     for i in doors:
         print ('\n%s' % i)
 
     choice = raw_input('\n> ')
     if choice in {'1', '2', '3', '5'}:
-        print ('This room is occupied. The door is locked.')
+        print ('This door is locked.')
         stairs()
 
     elif choice in {'4', '6'}:
@@ -43,13 +46,13 @@ def stairs():
 
 
 def kitchen():
-    
+
     print ('The kitchen is being remodeled. Come back later.')
     living_room()
 
 
 def basement():
-    
+
     print ('Do you want to do laundry?')
     answer = ('yes', 'no')
     for i in answer:
@@ -57,18 +60,32 @@ def basement():
 
     choice = raw_input('\n> ')
     if choice == answer[0]:
-        print ('\nYou\'ll have to wait.')
-        living_room()
+        quarters = raw_input('How many quarters do you have? ')
+        if quarters < 8:
+            print ('You need more money.')
+
+        elif quarters > 8:
+            time = [sys.executable, 'countd.py']
+            print ('washing')
+            sleep(5)
+            print ('drying')
+            sleep(10)
+            print ('done')
+            basement()
+
+        else:   			
+            basement()
 
     else:
         living_room()
 
 
 def living_room():
-    
+
     print ('\nYou\'re in the livingroom. Choose a room or activity.\n')
     web, count = [sys.executable, 'web.py'], [sys.executable, 'countd.py']
     room = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
+
     for i in room:
         print ('%s' % i)
 
@@ -90,8 +107,9 @@ def living_room():
         living_room()
 
     else:
-        subprocess.call(count)
+        print ('That is not a valid answer.')
         living_room()
+
 
 if __name__ == "__main__":
     front_porch()
