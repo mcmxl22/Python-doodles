@@ -1,6 +1,6 @@
 #! /usr/bin/env python
-# By Micah M. 2017
-# House version 1.0
+# By Micah M. 2018
+# House version 1.0.1
 # Python 2.7.13
 
 
@@ -20,9 +20,12 @@ def front_porch():
     if choice == portal[0]:
         living_room()
 
+    elif choice == portal[1]:
+        quit()	
+
     else:
-        print ('Come back soon!')
-        quit()
+        print ('That is not a valid answer.')
+        front_porch()
 
 
 def stairs():
