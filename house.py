@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # By Micah M. 2018
-# House version 1.0.1
-# Python 2.7.13
+# House version 1.01
+# Python 3.6.4
 
 
 import subprocess
@@ -16,7 +16,7 @@ def front_porch():
     for i in portal:
         print ('%s' % i)
 
-    choice = raw_input('\n> ')
+    choice = input('\n> ')
     if choice == portal[0]:
         living_room()
 
@@ -35,7 +35,7 @@ def stairs():
     for i in doors:
         print ('\n%s' % i)
 
-    choice = raw_input('\n> ')
+    choice = input('\n> ')
     if choice in {'1', '2', '3', '5'}:
         print ('This door is locked.')
         stairs()
@@ -61,13 +61,14 @@ def basement():
     for i in answer:
         print ('\n%s' % i)
 
-    choice = raw_input('\n> ')
+    choice = input('\n> ')
     if choice == answer[0]:
-        quarters = raw_input('How many quarters do you have? ')
+        quarters = int(input('How many quarters do you have? '))
         if quarters < 8:
             print ('You need more money.')
+            basement()
 
-        elif quarters > 8:
+        elif quarters >= 8:
             time = [sys.executable, 'countd.py']
             print ('washing')
             sleep(5)
@@ -92,7 +93,7 @@ def living_room():
     for i in room:
         print ('%s' % i)
 
-    choice = raw_input('\n> ')
+    choice = input('\n> ')
     if choice == room[1]:
         stairs()
 
