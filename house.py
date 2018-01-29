@@ -11,37 +11,37 @@ from time import sleep
 
 def front_porch():
 
-    print ('\nChoose a door.\n')
+    print('\nChoose a door.\n')
     portal = ('front', 'exit')
     for i in portal:
-        print ('%s' % i)
+        print('%s' % i)
 
     choice = input('\n> ')
     if choice == portal[0]:
         living_room()
 
     elif choice == portal[1]:
-        quit()	
+        quit()
 
     else:
-        print ('That is not a valid answer.')
+        print('That is not a valid answer.')
         front_porch()
 
 
 def stairs():
 
-    print ('\nYou\'re in the upstairs hall. There are 6 doors. Choose one.')
+    print('\nYou\'re in the upstairs hall. There are 6 doors. Choose one.')
     doors = [range(1, 7)]
     for i in doors:
-        print ('\n%s' % i)
+        print('\n%s' % i)
 
     choice = input('\n> ')
     if choice in {'1', '2', '3', '5'}:
-        print ('This door is locked.')
+        print('This door is locked.')
         stairs()
 
     elif choice in {'4', '6'}:
-        print ('This room is empty.')
+        print('This room is empty.')
         stairs()
 
     else:
@@ -50,34 +50,34 @@ def stairs():
 
 def kitchen():
 
-    print ('The kitchen is being remodeled. Come back later.')
+    print('The kitchen is being remodeled. Come back later.')
     living_room()
 
 
 def basement():
 
-    print ('Do you want to do laundry?')
+    print('Do you want to do laundry?')
     answer = ('yes', 'no')
     for i in answer:
-        print ('\n%s' % i)
+        print('\n%s' % i)
 
     choice = input('\n> ')
     if choice == answer[0]:
         quarters = int(input('How many quarters do you have? '))
         if quarters < 8:
-            print ('You need more money.')
+            print('You need more money.')
             basement()
 
         elif quarters >= 8:
             time = [sys.executable, 'countd.py']
-            print ('washing')
+            print('washing')
             sleep(5)
-            print ('drying')
+            print('drying')
             sleep(10)
-            print ('done')
-            basement()
+            print('done')
+            living_room()
 
-        else:   			
+        else:
             basement()
 
     else:
@@ -86,12 +86,12 @@ def basement():
 
 def living_room():
 
-    print ('\nYou\'re in the livingroom. Choose a room or activity.\n')
+    print('\nYou\'re in the livingroom. Choose a room or activity.\n')
     web, count = [sys.executable, 'web.py'], [sys.executable, 'countd.py']
     room = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
 
     for i in room:
-        print ('%s' % i)
+        print('%s' % i)
 
     choice = input('\n> ')
     if choice == room[1]:
@@ -111,7 +111,7 @@ def living_room():
         living_room()
 
     else:
-        print ('That is not a valid answer.')
+        print('That is not a valid answer.')
         living_room()
 
 
