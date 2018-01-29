@@ -69,7 +69,6 @@ def basement():
             basement()
 
         elif quarters >= 8:
-            time = [sys.executable, 'countd.py']
             print('washing')
             sleep(5)
             print('drying')
@@ -87,7 +86,7 @@ def basement():
 def livingRoom():
 
     print('\nYou\'re in the livingroom. Choose a room or activity.\n')
-    web, count = [sys.executable, 'web.py'], [sys.executable, 'countd.py']
+    web, count = [sys.executable, 'web.py'], [sys.executable, 'countDown.py']
     room = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
 
     for i in room:
@@ -108,6 +107,10 @@ def livingRoom():
 
     elif choice == room[4]:
         subprocess.call(web)
+        livingRoom()
+
+    elif choice == room[5]:
+        subprocess.call(count)
         livingRoom()
 
     else:
