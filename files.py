@@ -22,11 +22,13 @@ class Files(object):
         if os.path.exists(filename) == True:
             print ('Done!')
         f.close()
-		
+
+
 class main(object):
     def __init__(self):
         files = Files()
-        Files.create()		
-		
+        Files.create()
+
+
 if __name__ == "__main__":
     main()
