@@ -9,7 +9,7 @@ import sys
 from time import sleep
 
 
-def front_porch():
+def frontPorch():
 
     print('\nChoose a door.\n')
     portal = ('front', 'exit')
@@ -18,14 +18,14 @@ def front_porch():
 
     choice = input('\n> ')
     if choice == portal[0]:
-        living_room()
+        livingRoom()
 
     elif choice == portal[1]:
         quit()
 
     else:
         print('That is not a valid answer.')
-        front_porch()
+        frontPorch()
 
 
 def stairs():
@@ -45,13 +45,13 @@ def stairs():
         stairs()
 
     else:
-        living_room()
+        livingRoom()
 
 
 def kitchen():
 
     print('The kitchen is being remodeled. Come back later.')
-    living_room()
+    livingRoom()
 
 
 def basement():
@@ -75,16 +75,16 @@ def basement():
             print('drying')
             sleep(10)
             print('done')
-            living_room()
+            livingRoom()
 
         else:
             basement()
 
     else:
-        living_room()
+        livingRoom()
 
 
-def living_room():
+def livingRoom():
 
     print('\nYou\'re in the livingroom. Choose a room or activity.\n')
     web, count = [sys.executable, 'web.py'], [sys.executable, 'countd.py']
@@ -98,7 +98,7 @@ def living_room():
         stairs()
 
     elif choice == room[2]:
-        front_porch()
+        frontPorch()
 
     elif choice == room[0]:
         kitchen()
@@ -108,12 +108,12 @@ def living_room():
 
     elif choice == room[4]:
         subprocess.call(web)
-        living_room()
+        livingRoom()
 
     else:
         print('That is not a valid answer.')
-        living_room()
+        livingRoom()
 
 
 if __name__ == "__main__":
-    front_porch()
+    frontPorch()
