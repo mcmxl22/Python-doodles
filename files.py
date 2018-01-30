@@ -8,19 +8,19 @@ import os.path
 
 
 class Files(object):
-    #Create a file and confirm it.
+    # Create a file and confirm it.
     def create():
-        fi = Files()
-        #create file.
-        filename = input('Enter file name. ')
-        if os.path.exists(filename) == True:
-            print ('File already exists!')
-            fi.create()
-        f = open(filename, 'w+')
-        print ('Creating file!')
-        #confirm file.
-        if os.path.exists(filename) == True:
-            print ('Done!')
+        files = Files()
+        # create file.
+        fileName = input('Enter file name. ')
+        if os.path.exists(fileName) is True:
+            print('File already exists!')
+            files.create()
+        f = open(fileName, 'w+')
+        print('Creating file!')
+        # confirm file.
+        if os.path.exists(fileName) is True:
+            print('Done!')
         f.close()
 
 
