@@ -11,8 +11,7 @@ def count():
     seconds = int(input('How long? '))
     for i in reversed(range(seconds)):
         time.sleep(1)
-        print('%s' % i)
-
+        print(i, end='\r')
 
 if __name__ == "__main__":
     count()
