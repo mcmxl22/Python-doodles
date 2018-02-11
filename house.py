@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # By Micah M. 2018
-# House version 1.01.01
+# House version 1.01
 # Python 3.6.4
 
 
@@ -30,21 +30,20 @@ def frontPorch():
 
 def stairs():
 
-    print('\nYou\'re in the upstairs hall. There are 6 doors. Choose one.')
-    for i in range(1, 7):
-        print('%s' % i)
+    while True:
+        print('\nYou\'re in the upstairs hall. There are 6 doors. Choose one.')
+        for i in range(1, 7):
+            print('%s' % i)
 
-    choice = input('\n> ')
-    if choice in {'1', '2', '3', '5'}:
-        print('This door is locked.')
-        stairs()
+        choice = input('\n> ')
+        if choice in {'1', '2', '3', '5'}:
+            print('This door is locked.')
 
-    elif choice in {'4', '6'}:
-        print('This room is empty.')
-        stairs()
+        elif choice in {'4', '6'}:
+            print('This room is empty.')
 
-    else:
-        livingRoom()
+        else:
+            livingRoom()
 
 
 def kitchen():
@@ -55,31 +54,28 @@ def kitchen():
 
 def basement():
 
-    print('Do you want to do laundry?')
-    answer = ('yes', 'no')
-    for i in answer:
-        print('%s' % i)
+    while True:
+        print('Do you want to do laundry?')
+        answer = ('yes', 'no')
+        for i in answer:
+            print('%s' % i)
 
-    choice = input('\n> ')
-    if choice == answer[0]:
-        quarters = int(input('How many quarters do you have? '))
-        if quarters < 8:
-            print('You need more money.')
-            basement()
+        choice = input('\n> ')
+        if choice == answer[0]:
+            quarters = int(input('How many quarters do you have? '))
+            if quarters < 8:
+                print('You need more money.')
 
-        elif quarters >= 8:
-            print('washing')
-            sleep(5)
-            print('drying')
-            sleep(10)
-            print('done')
-            livingRoom()
+            elif quarters >= 8:
+                print('washing')
+                sleep(5)
+                print('drying')
+                sleep(10)
+                print('done')
+                livingRoom()
 
         else:
-            basement()
-
-    else:
-        livingRoom()
+            livingRoom()
 
 
 def livingRoom():
