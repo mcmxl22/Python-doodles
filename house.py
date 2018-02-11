@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # By Micah M. 2018
-# House version 1.01
+# House version 1.01.01
 # Python 3.6.4
 
 
@@ -31,9 +31,8 @@ def frontPorch():
 def stairs():
 
     print('\nYou\'re in the upstairs hall. There are 6 doors. Choose one.')
-    doors = [range(1, 7)]
-    for i in doors:
-        print('\n%s' % i)
+    for i in range(1, 7):
+        print('%s' % i)
 
     choice = input('\n> ')
     if choice in {'1', '2', '3', '5'}:
@@ -59,7 +58,7 @@ def basement():
     print('Do you want to do laundry?')
     answer = ('yes', 'no')
     for i in answer:
-        print('\n%s' % i)
+        print('%s' % i)
 
     choice = input('\n> ')
     if choice == answer[0]:
@@ -84,38 +83,35 @@ def basement():
 
 
 def livingRoom():
+    while True:
+        print('\nYou\'re in the livingroom. Choose a room or activity.\n')
+        web, count = [sys.executable, 'web.py'], [sys.executable, 'countDown.py']
+        room = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
 
-    print('\nYou\'re in the livingroom. Choose a room or activity.\n')
-    web, count = [sys.executable, 'web.py'], [sys.executable, 'countDown.py']
-    room = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
+        for i in room:
+            print('%s' % i)
 
-    for i in room:
-        print('%s' % i)
+        choice = input('\n> ')
+        if choice == room[1]:
+            stairs()
 
-    choice = input('\n> ')
-    if choice == room[1]:
-        stairs()
+        elif choice == room[2]:
+            frontPorch()
 
-    elif choice == room[2]:
-        frontPorch()
+        elif choice == room[0]:
+            kitchen()
 
-    elif choice == room[0]:
-        kitchen()
+        elif choice == room[3]:
+            basement()
 
-    elif choice == room[3]:
-        basement()
+        elif choice == room[4]:
+            subprocess.call(web)
 
-    elif choice == room[4]:
-        subprocess.call(web)
-        livingRoom()
+        elif choice == room[5]:
+            subprocess.call(count)
 
-    elif choice == room[5]:
-        subprocess.call(count)
-        livingRoom()
-
-    else:
-        print('That is not a valid answer.')
-        livingRoom()
+        else:
+            print('That is not a valid answer.')
 
 
 if __name__ == "__main__":
