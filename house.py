@@ -11,21 +11,21 @@ from time import sleep
 
 def frontPorch():
 
-    print('\nChoose a door.\n')
-    portal = ('front', 'exit')
-    for i in portal:
-        print('%s' % i)
+    while True:
+        print('\nChoose a door.\n')
+        portal = ('front', 'exit')
+        for i in portal:
+            print('%s' % i)
 
-    choice = input('\n> ')
-    if choice == portal[0]:
-        livingRoom()
+        choice = input('\n> ')
+        if choice == portal[0]:
+            livingRoom()
 
-    elif choice == portal[1]:
-        quit()
+        elif choice == portal[1]:
+            quit()
 
-    else:
-        print('That is not a valid answer.')
-        frontPorch()
+        else:
+            print('That is not a valid answer.')
 
 
 def stairs():
