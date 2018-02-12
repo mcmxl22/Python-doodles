@@ -20,7 +20,7 @@ def frontPorch():
         if choice == portal[0]:
             livingRoom()
         elif choice == portal[1]:
-            sys.exit()
+            raise SystemExit
         else:
             print('That is not a valid answer.')
 
