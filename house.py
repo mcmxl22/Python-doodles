@@ -9,7 +9,7 @@ import sys
 from time import sleep
 
 
-def frontPorch():
+def Porch():
 
     while True:
         choice = input('\nChoose a door. \n1 front \n2 exit \n>')
@@ -64,8 +64,8 @@ def basement():
 def livingRoom():
 
     while True:
-        room = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
-        for i in room:
+        rooms = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
+        for i in rooms:
             print('%s' % i)
         choice = input('''\nYou\'re in the living room. 
                        \rChoose a room or activity. > ''')
@@ -76,7 +76,7 @@ def livingRoom():
         elif choice == room[1]:
             stairs()
         elif choice == room[2]:
-            frontPorch()
+            Porch()
         elif choice == room[3]:
             basement()
         elif choice == room[4]:
@@ -88,4 +88,4 @@ def livingRoom():
 
 
 if __name__ == "__main__":
-    frontPorch()
+    Porch()
