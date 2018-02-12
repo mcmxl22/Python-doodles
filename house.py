@@ -27,7 +27,7 @@ def stairs():
         for i in range(1, 7):
             print('%s' % i)
         choice = input(''''\nYou\'re in the upstairs hall.
-There are 6 doors. Choose one. > ''')
+                       \rThere are 6 doors. Choose one. > ''')
         if choice in {'1', '2', '3', '5'}:
             print('This door is locked.')
         elif choice in {'4', '6'}:
@@ -45,8 +45,8 @@ def kitchen():
 def basement():
 
     while True:
-        choice = input('Do you want to do laundry? y, n > ')
-        if choice == 'y':
+        choice = input('Do you want to do laundry? \n1 yes, \n2 no \n> ')
+        if choice == '1':
             quarters = int(input('How many quarters do you have? '))
             if quarters < 8:
                 print('You need more money.')
@@ -68,7 +68,7 @@ def livingRoom():
         for i in room:
             print('%s' % i)
         choice = input('''\nYou\'re in the living room. 
-Choose a room or activity. > ''')
+                       \rChoose a room or activity. > ''')
         web = [sys.executable, 'web.py']
         count = [sys.executable, 'countDown.py']
         if choice == room[0]:
