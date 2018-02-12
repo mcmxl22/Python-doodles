@@ -12,14 +12,10 @@ from time import sleep
 def frontPorch():
 
     while True:
-        print('\nChoose a door.')
-        portal = ('front', 'exit')
-        for i in portal:
-            print('%s' % i)
-        choice = input('> ')
-        if choice == portal[0]:
+        choice = input('\nChoose a door. \n1 front \n2 exit \n>')
+        if choice == '1':
             livingRoom()
-        elif choice == portal[1]:
+        elif choice == '2':
             raise SystemExit
         else:
             print('That is not a valid answer.')
@@ -66,6 +62,7 @@ def basement():
 
 
 def livingRoom():
+
     while True:
         room = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
         for i in room:
