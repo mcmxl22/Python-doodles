@@ -12,11 +12,11 @@ from time import sleep
 def frontPorch():
 
     while True:
-        print('\nChoose a door.\n')
+        print('\nChoose a door.')
         portal = ('front', 'exit')
         for i in portal:
             print('%s' % i)
-        choice = input('\n> ')
+        choice = input('> ')
         if choice == portal[0]:
             livingRoom()
         elif choice == portal[1]:
@@ -28,10 +28,10 @@ def frontPorch():
 def stairs():
 
     while True:
-        print('\nYou\'re in the upstairs hall. There are 6 doors. Choose one.')
         for i in range(1, 7):
             print('%s' % i)
-        choice = input('\n> ')
+        choice = input(''''\nYou\'re in the upstairs hall.
+There are 6 doors. Choose one. > ''')
         if choice in {'1', '2', '3', '5'}:
             print('This door is locked.')
         elif choice in {'4', '6'}:
@@ -49,12 +49,8 @@ def kitchen():
 def basement():
 
     while True:
-        print('Do you want to do laundry?')
-        answer = ('yes', 'no')
-        for i in answer:
-            print('%s' % i)
-        choice = input('\n> ')
-        if choice == answer[0]:
+        choice = input('Do you want to do laundry? y, n > ')
+        if choice == 'y':
             quarters = int(input('How many quarters do you have? '))
             if quarters < 8:
                 print('You need more money.')
@@ -71,19 +67,19 @@ def basement():
 
 def livingRoom():
     while True:
-        print('\nYou\'re in the livingroom. Choose a room or activity.\n')
-        web = [sys.executable, 'web.py']
-        count = [sys.executable, 'countDown.py']
         room = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
         for i in room:
             print('%s' % i)
-        choice = input('\n> ')
-        if choice == room[1]:
+        choice = input('''\nYou\'re in the living room. 
+Choose a room or activity. > ''')
+        web = [sys.executable, 'web.py']
+        count = [sys.executable, 'countDown.py']
+        if choice == room[0]:
+            kitchen()
+        elif choice == room[1]:
             stairs()
         elif choice == room[2]:
             frontPorch()
-        elif choice == room[0]:
-            kitchen()
         elif choice == room[3]:
             basement()
         elif choice == room[4]:
