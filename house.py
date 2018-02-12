@@ -71,17 +71,17 @@ def livingRoom():
                        \rChoose a room or activity. > ''')
         web = [sys.executable, 'web.py']
         count = [sys.executable, 'countDown.py']
-        if choice == room[0]:
+        if choice == rooms[0]:
             kitchen()
-        elif choice == room[1]:
+        elif choice == rooms[1]:
             stairs()
-        elif choice == room[2]:
+        elif choice == rooms[2]:
             Porch()
-        elif choice == room[3]:
+        elif choice == rooms[3]:
             basement()
-        elif choice == room[4]:
+        elif choice == rooms[4]:
             subprocess.call(web)
-        elif choice == room[5]:
+        elif choice == rooms[5]:
             subprocess.call(count)
         else:
             print('That is not a valid answer.')
