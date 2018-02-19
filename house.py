@@ -26,7 +26,7 @@ def stairs():
     while True:
         for i in range(1, 7):
             print('%s' % i)
-        choice = input(''''\nYou\'re in the upstairs hall.
+        choice = input('''\nYou\'re in the upstairs hall.
                        \rThere are 6 doors. Choose one. > ''')
         if choice in {'1', '2', '3', '5'}:
             print('This door is locked.')
@@ -45,8 +45,8 @@ def kitchen():
 def basement():
 
     while True:
-        choice = input('Do you want to do laundry? \n1 yes, \n2 no \n> ')
-        if choice == '1':
+        laundry = input('Do you want to do laundry? \n1 yes, \n2 no \n> ')
+        if laundry == '1':
             quarters = int(input('How many quarters do you have? '))
             if quarters < 8:
                 print('You need more money.')
@@ -64,27 +64,28 @@ def basement():
 def livingRoom():
 
     while True:
-        rooms = ('kitchen', 'stairs', 'porch', 'basement', 'browse', 'rest')
-        for i in rooms:
+        room = input('''\nYou\'re in the living room.
+                     \rChoose a room or activity. > ''')
+        roomSelect = ('1 Kitchen', '2 Stairs', '3 Porch', '4 Basement',
+                 '5 Browse', '6 Rest')
+        for i in roomSelect:
             print('%s' % i)
-        choice = input('''\nYou\'re in the living room. 
-                       \rChoose a room or activity. > ''')
         web = [sys.executable, 'web.py']
         count = [sys.executable, 'countDown.py']
-        if choice == rooms[0]:
+        if room == '1':
             kitchen()
-        elif choice == rooms[1]:
+        elif room == '2':
             stairs()
-        elif choice == rooms[2]:
+        elif room == '3':
             Porch()
-        elif choice == rooms[3]:
+        elif room == '4':
             basement()
-        elif choice == rooms[4]:
+        elif room == '5':
             subprocess.call(web)
-        elif choice == rooms[5]:
+        elif room == '6':
             subprocess.call(count)
         else:
-            print('That is not a valid answer.')
+            print('Invalid answer.')
 
 
 if __name__ == "__main__":
