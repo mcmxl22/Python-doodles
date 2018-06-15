@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # By Micah M. 2018
-# House version 1.01.01
+# House version 1.01.03
 # Python 3.6.4
 
 
@@ -12,13 +12,13 @@ from time import sleep
 def Porch():
 
     while True:
-        choice = input('\nChoose a door. \n1 front \n2 exit \n>')
+        choice = input('\nChoose a door. \n1 Front \n2 Exit \n> ')
         if choice == '1':
             livingRoom()
         elif choice == '2':
             raise SystemExit
         else:
-            print('That is not a valid answer.')
+            print('Invalid Answer.')
 
 
 def stairs():
@@ -45,18 +45,19 @@ def kitchen():
 def basement():
 
     while True:
-        laundry = input('Do you want to do laundry? \n1 yes, \n2 no \n> ')
+        laundry = input('Do you want to do laundry? \n1 Yes \n2 No \n> ')
         if laundry == '1':
             quarters = int(input('How many quarters do you have? '))
             if quarters < 8:
                 print('You need more money.')
             elif quarters >= 8:
-                print('washing')
-                sleep(5)
-                print('drying')
-                sleep(10)
-                print('done')
-                livingRoom()
+                while True:
+                    print('Washing')
+                    sleep(5)
+                    print('Drying')
+                    sleep(10)
+                    print('Done')
+                    livingRoom()
         else:
             livingRoom()
 
@@ -64,12 +65,12 @@ def basement():
 def livingRoom():
 
     while True:
-        room = input('''\nYou\'re in the living room.
-                     \rChoose a room or activity. > ''')
         roomSelect = ('1 Kitchen', '2 Stairs', '3 Porch', '4 Basement',
-                 '5 Browse', '6 Rest')
-        for i in roomSelect:
-            print('%s' % i)
+        '5 Browse', '6 Rest')
+        for room in roomSelect:
+            print('%s' % room)
+        room = input('''\nYou\'re in the living room.
+                     \rChoose a room or activity. \n> ''')
         web = [sys.executable, 'web.py']
         count = [sys.executable, 'countDown.py']
         if room == '1':
@@ -85,7 +86,7 @@ def livingRoom():
         elif room == '6':
             subprocess.call(count)
         else:
-            print('Invalid answer.')
+            print('Invalid Answer.')
 
 
 if __name__ == "__main__":
