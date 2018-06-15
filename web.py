@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # By Micah M. 2018
-# web version 1.01
+# Web version 1.01
 # Python 3.6.4
 
 
