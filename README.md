@@ -1,2 +1,1 @@
-# Python-doodles
-Just doodling with Python.
+# Practicing Python
