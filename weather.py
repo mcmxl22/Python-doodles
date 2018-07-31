@@ -1,11 +1,8 @@
 #! /usr/bin/env python
 # By Micah M. 2018
-# weather version 1.3
+# Weather version 1.3
 # Python 3.7
 
-
-import json
-    
 
 def forecast():
     '''Produces a forecast based on barometric pressure trends
@@ -13,15 +10,21 @@ def forecast():
     options = ['1 Rising', '2 Falling', '3 Steady']
     print('\n'.join(options))
     trend = input('\nChoose a trend for the barometric pressure.\n> ')
-    logEntry = f'forecast{trend}'
-    with open('useLog.jsn', 'a') as outfile:
-        json.dump(logEntry.split(" "), outfile)
+    logEntry = f'{trend}'
+    f = open('forecastLog.txt', 'a')
+    f.write(f'{logEntry}')
+    look = open('forecastLog.txt').read()
+    most_common = max(look, key = look.count)
+    print(f'\n{most_common}')
     if trend == '1':
         print('\nFairer weather on the way.\n')
     elif trend == '2':
         print('\nPoorer weather on the way.\n')
     elif trend == '3':
         print('\nNo significant change.\n')
+    else:
+        print('Invalid Entry!\n')
+        forecast()
 
 
 def dewPoint():
@@ -56,8 +59,6 @@ def prompt():
         print('\n'.join(options))
         unitChoice = input('\nWhat would you like to do?\n> ')
         logEntry = f'prompt{unitChoice}'
-        with open('useLog.jsn', 'a') as outfile:
-            json.dump(logEntry.split(" "), outfile)
         if unitChoice == '1':
             fahrenheit()
         elif unitChoice == '2':
