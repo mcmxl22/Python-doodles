@@ -1,6 +1,6 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 # By Micah M. 2018
-# House version 1.02
+# House version 1.2
 # Python 3.7
 
 
