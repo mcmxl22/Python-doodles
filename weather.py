@@ -6,7 +6,7 @@
 
 def forecast():
     '''Gives a forecast based on barometric pressure trends
-       and logs which trend is choosen.'''
+       and logs which trend is chosen.'''
     options = ['1 Rising', '2 Falling', '3 Steady']
     print('\n'.join(options))
     trend = input('\nChoose a barometric pressure trend.\n> ')
@@ -14,9 +14,9 @@ def forecast():
     file = open('forecastLog.txt', 'a')
     file.write(logEntry)  # Writes log to file.
     rLog = open('forecastLog.txt').read()  # Reads log from file.
-    most_common = max(rLog, key=rLog.count)  # Finds most common log entry.
+    mostCommon = max(rLog, key=rLog.count)  # Finds most common log entry.
     file.close()
-    print(f'\nYour most common choice is {most_common}.')
+    print(f'\nYour most common choice is {mostCommon}.')
     if trend == '1':
         print('\nFairer weather on the way.\n')
     elif trend == '2':
@@ -40,8 +40,8 @@ def dewPoint():
 def cloudBase():
     '''Uses a formula to calculate the height of the clouds.'''
     temp = input('Enter current temperature in celsius.\n> ')
-    dp = input('Enter current dew point in celsius.\n> ')  # dp = dew point.
-    spread = int(temp) - int(dp)  # Spread = difference of temp and dew point.
+    dewPoint = input('Enter current dew point in celsius.\n> ') 
+    spread = int(temp) - int(dewPoint)  # Spread = difference of temp and dew point.
     cloudCeiling = int(spread) / 2.5 * 1000  # Formula to find cloud ceiling.
     print(f'The cloud ceiling is {int(cloudCeiling)} feet above ground level.')
     
@@ -62,7 +62,7 @@ def fahrenheit():
 
 def prompt():
     '''Prompts user to choose from a list of options and logs which option
-       is choosen.'''
+       is chosen.'''
     while True:
         options = ['1 Convert from Fahrenheit', '2 Convert from Celsius',
                    '3 Find Dew Point', '4 Weather Forcast', '5 Cloud Ceiling',
