@@ -1,6 +1,6 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 # By Micah M. 2018
-# sysinfo version 1.0
+# sysinfo version 1
 # Python 3.7
 
 import platform
