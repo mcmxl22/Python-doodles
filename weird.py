@@ -5,12 +5,11 @@
 
 
 def weird():
-
+    '''weird'''
     while True:
         N = int(input('Pick a number: '))
         if N % 2 == 0:
             print('Not Weird!')
-
         else:
             print('Weird!')
 
