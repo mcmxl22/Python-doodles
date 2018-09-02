@@ -1,7 +1,7 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 # By Micah M. 2018
-# countDown version 1.01
-# Python 3.6.4
+# countDown version 1.1
+# Python 3.7
 
 
 import time
