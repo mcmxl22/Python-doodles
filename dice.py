@@ -1,7 +1,7 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 # By Micah M. 2018
-# dice version 1.0.01
-# Python 3.6.4
+# dice version 1.1
+# Python 3.7
 
 
 import random
@@ -14,6 +14,6 @@ def dice():
         elif roll_dice == 'n':
             raise SystemExit
         else:
-            print('invalid entry')
+            print('invalid Entry')
  
 dice()
