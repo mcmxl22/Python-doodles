@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 # By Micah M. 2018
 # Weather version 1.3
 # Python 3.7
@@ -85,10 +85,5 @@ def prompt():
             print('\nInvalid Entry\n')
 
 
-class main(object):
-    def __init__(self):
-        prompt()
-
-
 if __name__ == "__main__":
-    main()
+    prompt()
