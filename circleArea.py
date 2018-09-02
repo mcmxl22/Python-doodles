@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # By Micah M. 2018
 # circleArea version 1.1
 # Python 3.7
