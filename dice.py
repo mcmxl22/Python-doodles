@@ -14,6 +14,6 @@ def dice():
         elif roll_dice == 'n':
             raise SystemExit
         else:
-            print('invalid Entry')
+            print('Invalid Entry')
  
 dice()
