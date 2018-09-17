@@ -57,7 +57,6 @@ def basement():
                 print('Drying!')
                 sleep(10)
                 print('Done!')
-                living_room()
         else:
             living_room()
 
