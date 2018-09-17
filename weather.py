@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# By Micah M. 2018
-# Weather version 1.3
-# Python 3.7
+'''By Micah M. 2018
+   Weather version 1.3
+   Python 3.7'''
 
 
 def forecast():
@@ -9,14 +9,14 @@ def forecast():
        and logs which trend is chosen.'''
     options = ['1 Rising', '2 Falling', '3 Steady']
     print('\n'.join(options))
-    trend = input('\nChoose a barometric pressure trend.\n> ')
+    trend = input('\nChoose a trend.\n> ')
     logEntry = trend  # Logs chosen option.
     file = open('forecastLog.txt', 'a')
     file.write(logEntry)  # Writes log to file.
     rLog = open('forecastLog.txt').read()  # Reads log from file.
     mostCommon = max(rLog, key=rLog.count)  # Finds most common log entry.
     file.close()
-    print(f'\nYour most common choice is {mostCommon}.')
+    print(f'\nYour most common choice: {mostCommon}.')
     if trend == '1':
         print('\nFairer weather on the way.\n')
     elif trend == '2':
@@ -39,8 +39,8 @@ def dewPoint():
 
 def cloudBase():
     '''Uses a formula to calculate the height of the clouds.'''
-    temp = input('Enter current temperature in celsius.\n> ')
-    dewPoint = input('Enter current dew point in celsius.\n> ') 
+    temp = input('Enter temperature in celsius.\n> ')
+    dewPoint = input('Enter dew point in celsius.\n> ') 
     spread = int(temp) - int(dewPoint)  # Spread = difference of temp and dew point.
     cloudCeiling = int(spread) / 2.5 * 1000  # Formula to find cloud ceiling.
     print(f'The cloud ceiling is {int(cloudCeiling)} feet above ground level.')
@@ -48,16 +48,16 @@ def cloudBase():
     
 def celsius():
     '''Uses a formula to convert fahrenheit to celsius.'''
-    convert = input('\nEnter the temperature in Celsius.\n> ')
+    convert = input('\nEnter temperature in Celsius.\n> ')
     formula = int(convert) * 1.8 + 32  # Formula for celsius to fahrenheit.
-    print(f'{convert} degrees Celsius is {int(formula)} degrees Fahrenheit.\n')
+    print(f'{convert} degrees Celsius: {int(formula)} degrees Fahrenheit.\n')
 
 
 def fahrenheit():
     '''uses a formula to convert celsius to fahrenheit.'''
     convert = input('\nEnter the temperature in Fahrenheit.\n> ')
     formula = (int(convert) - 32) / 1.8  # Formula for fahrenheit to celsius
-    print(f'{convert} degrees Fahrenheit is {int(formula)} degrees Celsius.\n')
+    print(f'{convert} degrees Fahrenheit: {int(formula)} degrees Celsius.\n')
 
 
 def prompt():
