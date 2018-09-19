@@ -7,13 +7,13 @@
 def forecast():
     '''Gives a forecast based on barometric pressure trends
        and logs which trend is chosen.'''
-    options = ['1 Rising', '2 Falling', '3 Steady']
-    print('\n'.join(options))
+    trendOptions = ['1 Rising', '2 Falling', '3 Steady']
+    print('\n'.join(trendOptions))
     trend = input('\nChoose a trend.\n> ')
     logEntry = trend  # Logs chosen option.
-    file = open('forecastLog.txt', 'a')
+    file = open('trendLog.txt', 'a')
     file.write(logEntry)  # Writes log to file.
-    rLog = open('forecastLog.txt').read()  # Reads log from file.
+    rLog = open('trendLog.txt').read()  # Reads log from file.
     mostCommon = max(rLog, key=rLog.count)  # Finds most common log entry.
     file.close()
     print(f'\nYour most common choice: {mostCommon}.')
@@ -29,45 +29,45 @@ def forecast():
 
 
 def dewPoint():
-    '''Uses a formula to calculate the dew point.
-       t = temperature, rh = relative humidity'''
-    t = input('\nEnter the temperature in Celsius.\n> ')
-    rh = input('\nEnter the relative humidity\n> ')
-    formula = (int(t) - ((100 - int(rh)) / 5))  # Formula to find dew point.
+    '''Uses a formula to calculate the dew point.'''
+    temp = input('\nEnter temperature in Celsius.\n> ')
+    relativeHumidity = input('\nEnter relative humidity\n> ')
+    formula = (int(temp) - ((100 - int(relativeHumidity)) / 5))
     print(f'\nThe dew point is {int(formula)} degrees Celsius.\n')
 
 
 def cloudBase():
     '''Uses a formula to calculate the height of the clouds.'''
     temp = input('Enter temperature in celsius.\n> ')
-    dewPoint = input('Enter dew point in celsius.\n> ') 
-    spread = int(temp) - int(dewPoint)  # Spread = difference of temp and dew point.
+    dewPoint = input('Enter dew point in celsius.\n> ')
+    spread = int(temp) - int(dewPoint)  # Spread = difference temp/dew point.
     cloudCeiling = int(spread) / 2.5 * 1000  # Formula to find cloud ceiling.
-    print(f'The cloud ceiling is {int(cloudCeiling)} feet above ground level.')
-    
-    
+    print(f'The cloud ceiling is {int(cloudCeiling)} feet above the ground.')
+
+
 def celsius():
     '''Uses a formula to convert fahrenheit to celsius.'''
     convert = input('\nEnter temperature in Celsius.\n> ')
     formula = int(convert) * 1.8 + 32  # Formula for celsius to fahrenheit.
-    print(f'{convert} degrees Celsius: {int(formula)} degrees Fahrenheit.\n')
+    print(f'{convert} degrees Celsius is {int(formula)} degrees Fahrenheit.\n')
 
 
 def fahrenheit():
     '''uses a formula to convert celsius to fahrenheit.'''
     convert = input('\nEnter the temperature in Fahrenheit.\n> ')
     formula = (int(convert) - 32) / 1.8  # Formula for fahrenheit to celsius
-    print(f'{convert} degrees Fahrenheit: {int(formula)} degrees Celsius.\n')
+    print(f'{convert} degrees Fahrenheit is {int(formula)} degrees Celsius.\n')
 
 
 def prompt():
-    '''Prompts user to choose from a list of options and logs which option
+    '''Prompts user to choose from a list of options and will log which option
        is chosen.'''
     while True:
-        options = ['1 Convert from Fahrenheit', '2 Convert from Celsius',
-                   '3 Find Dew Point', '4 Weather Forcast', '5 Cloud Ceiling',
-                   '6 Exit']
-        print('\n'.join(options))
+        promptOptions = [
+            '1 Convert from Fahrenheit', '2 Convert from Celsius',
+            '3 Find Dew Point', '4 Weather Forcast', '5 Cloud Ceiling',
+            '6 Exit']
+        print('\n'.join(promptOptions))
         unitChoice = input('\nWhat would you like to do?\n> ')
         if unitChoice == '1':
             fahrenheit()
