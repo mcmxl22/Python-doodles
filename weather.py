@@ -3,6 +3,7 @@
    Weather version 1.4
    Python 3.7'''
 
+import os
 
 def forecast():
     '''Forecasts based on barometric pressure trends
@@ -64,6 +65,22 @@ def windSpeed():
     formula = ((int(convert) * 6067) / 5280)
     print(f'{convert} knots is {round(formula, 3)} MPH.\n')
 
+def cloudTypes():
+    '''under development'''
+    clouds = ['1 Cumulus', '2 Stratus', '3 Cumulonimbus', '4 cirus']
+    cloudOptions = ['1 Cloud description', '2 Cloud image']
+    print('\n'.join(cloudOptions))
+    input('Choose an option. \n')
+    if cloudOptions == '1':
+        print('\n'.join(clouds))
+        input('Choose an option. \n')
+        prompt()
+    elif cloudOptions == '2':
+        print('\n'.join(clouds))
+        input('Choose an option. \n')
+        prompt()
+    #os.startfile('bigBen.jpg')
+
 def prompt():
     '''Prompts user to choose from a list of options and will log which option
        is chosen.'''
@@ -71,7 +88,7 @@ def prompt():
         promptOptions = [
             '1 Convert from Fahrenheit', '2 Convert from Celsius',
             '3 Find Dew Point', '4 Weather Forcast', '5 Cloud Ceiling',
-            '6 Convert knots to MPH', '7 Exit']
+            '6 Convert knots to MPH', '7 Cloud Types', '8 Exit']
         print('\n'.join(promptOptions))
         unitChoice = input('\nWhat would you like to do?\n> ')
         if unitChoice == '1':
@@ -87,6 +104,8 @@ def prompt():
         elif unitChoice == '6':
             windSpeed()
         elif unitChoice == '7':
+            cloudTypes()
+        elif unitChoice == '8':
             raise SystemExit
         else:
             print('\nInvalid Entry\n')
