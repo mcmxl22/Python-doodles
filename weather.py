@@ -79,7 +79,7 @@ def cloudTypes():
         print('\n'.join(clouds))
         input('Choose an option. \n')
         prompt()
-    #os.startfile('bigBen.jpg')
+    #os.startfile('')
 
 def prompt():
     '''Prompts user to choose from a list of options and will log which option
