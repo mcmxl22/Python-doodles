@@ -62,7 +62,7 @@ def windSpeed():
     '''Formula to convert knots to MPH'''
     convert = input('Enter wind speed in knots.\n ')
     formula = ((int(convert) * 6067) / 5280)
-    print(f'{convert} knots is {formula} MPH.\n')
+    print(f'{convert} knots is {round(formula, 3)} MPH.\n')
 
 def prompt():
     '''Prompts user to choose from a list of options and will log which option
