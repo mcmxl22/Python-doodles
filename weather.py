@@ -60,7 +60,7 @@ def fahrenheit():
 
 def windSpeed():
     '''Formula to convert knots to MPH'''
-    convert = input('Enter wind speed on knots.\n ')
+    convert = input('Enter wind speed in knots.\n ')
     formula = ((int(convert) * 6067) / 5280)
     print(f'{convert} knots is {formula} MPH.\n')
 
