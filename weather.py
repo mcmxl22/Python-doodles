@@ -42,7 +42,7 @@ def cloudBase():
     dewPoint = input('Enter dew point in celsius.\n> ')
     spread = int(temp) - int(dewPoint)  # Spread = difference temp/dew point.
     cloudCeiling = int(spread) / 2.5 * 1000  # Formula to find cloud ceiling.
-    print(f'The cloud ceiling is {int(cloudCeiling)} feet above the ground.')
+    print(f'The cloud ceiling is {int(cloudCeiling)} feet above the ground.\n')
 
 
 def celsius():
