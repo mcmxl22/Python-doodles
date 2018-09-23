@@ -15,7 +15,7 @@ def forecast():
     rLog = open('trendLog.txt').read()  # Reads log from file.
     mostCommon = max(rLog, key=rLog.count) # Finds most common log entry.
     file.close()
-    print(f'\nYour most common choice: {mostCommon}.')
+    print(f'\nYour most common choice is {mostCommon}.')
     if trend == '1':
         print('\nFairer weather on the way.\n')
     elif trend == '2':
