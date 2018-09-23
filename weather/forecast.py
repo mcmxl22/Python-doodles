@@ -6,16 +6,18 @@
 def forecast():
     '''Forecasts based on barometric pressure trends
        and logs which trend is chosen.'''
-    trendOptions = ['1 Rising', '2 Falling', '3 Steady']
-    print('\n'.join(trendOptions))
+    trend_options = ['1 Rising', '2 Falling', '3 Steady']
+    print('\n'.join(trend_options))
+
     trend = input('\nChoose a trend.\n> ')
-    logEntry = trend  # Logs chosen option.
+    log_entry = trend  # Logs chosen option.
     file = open('trendLog.txt', 'a')
-    file.write(logEntry)  # Writes log to file.
-    rLog = open('trendLog.txt').read()  # Reads log from file.
-    mostCommon = max(rLog, key=rLog.count) # Finds most common log entry.
+    file.write(log_entry)  # Writes log to file.
+    read_log = open('trendLog.txt').read()  # Reads log from file.
+    most_common = max(read_log, key=read_log.count) # Finds most common log entry.
     file.close()
-    print(f'\nYour most common choice is {mostCommon}.')
+    print(f'\nYour most common choice is {most_common}.')
+
     if trend == '1':
         print('\nFairer weather on the way.\n')
     elif trend == '2':
