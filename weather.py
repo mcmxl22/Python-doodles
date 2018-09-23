@@ -1,33 +1,12 @@
 #!/usr/bin/env python3
 '''By Micah M. 2018
-   Weather version 1.4
-   Python 3.7'''
+   Weather version 1.6
+   Python 3.7
+   Requires forecast.py and cloudTypes.py'''
 
-import os
-
-def forecast():
-    '''Forecasts based on barometric pressure trends
-       and logs which trend is chosen.'''
-    trendOptions = ['1 Rising', '2 Falling', '3 Steady']
-    print('\n'.join(trendOptions))
-    trend = input('\nChoose a trend.\n> ')
-    logEntry = trend  # Logs chosen option.
-    file = open('trendLog.txt', 'a')
-    file.write(logEntry)  # Writes log to file.
-    rLog = open('trendLog.txt').read()  # Reads log from file.
-    mostCommon = max(rLog, key=rLog.count) # Finds most common log entry.
-    file.close()
-    print(f'\nYour most common choice: {mostCommon}.')
-    if trend == '1':
-        print('\nFairer weather on the way.\n')
-    elif trend == '2':
-        print('\nPoorer weather on the way.\n')
-    elif trend == '3':
-        print('\nNo significant change.\n')
-    else:
-        print('Invalid Entry!\n')
-        forecast()
-
+import subprocess
+import webbrowser
+import sys
 
 def dewPoint():
     '''Formula to calculate the dew point.'''
@@ -59,27 +38,14 @@ def fahrenheit():
     formula = (int(convert) - 32) / 1.8  # Formula for fahrenheit to celsius
     print(f'{convert} degrees Fahrenheit is {int(formula)} degrees Celsius.\n')
 
+
 def windSpeed():
     '''Formula to convert knots to MPH'''
     convert = input('Enter wind speed in knots.\n ')
     formula = ((int(convert) * 6067) / 5280)
     print(f'{convert} knots is {round(formula, 3)} MPH.\n')
 
-def cloudTypes():
-    '''under development'''
-    clouds = ['1 Cumulus', '2 Stratus', '3 Cumulonimbus', '4 cirus']
-    cloudOptions = ['1 Cloud description', '2 Cloud image']
-    print('\n'.join(cloudOptions))
-    input('Choose an option. \n')
-    if cloudOptions == '1':
-        print('\n'.join(clouds))
-        input('Choose an option. \n')
-        prompt()
-    elif cloudOptions == '2':
-        print('\n'.join(clouds))
-        input('Choose an option. \n')
-        prompt()
-    #os.startfile('')
+
 
 def prompt():
     '''Prompts user to choose from a list of options and will log which option
@@ -98,17 +64,20 @@ def prompt():
         elif unitChoice == '3':
             dewPoint()
         elif unitChoice == '4':
-            forecast()
+            forecast = [sys.executable, 'forecast.py']
+            subprocess.call(forecast)
         elif unitChoice == '5':
             cloudBase()
         elif unitChoice == '6':
             windSpeed()
         elif unitChoice == '7':
-            cloudTypes()
+            cloudTypes = [sys.executable, 'cloudTypes.py']
+            subprocess.call(cloudTypes)
         elif unitChoice == '8':
             raise SystemExit
         else:
             print('\nInvalid Entry\n')
+
 
 
 if __name__ == "__main__":
