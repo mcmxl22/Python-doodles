@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''By Micah M. 2018
-   cloudTypes version 1
+   cloudTypes version 1.1
    Python 3.7'''
 
 import webbrowser
