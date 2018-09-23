@@ -38,13 +38,13 @@ def cloudTypes():
         print('\n'.join(clouds))
         img = input('Choose an option. \n')
 
-        if picture == '1':
+        if img == '1':
             url = 'https://en.wikipedia.org/wiki/Cumulus_mediocris_cloud#/media/File:Mt_Eden,_Auckland2.jpg'
             webbrowser.open(url)
-        elif picture == '2':
+        elif img == '2':
             url = 'https://en.wikipedia.org/wiki/Stratus_cloud#/media/File:Stratus-Opacus-Uniformis.jpg'
             webbrowser.open(url)
-        elif picture == '3':
+        elif img == '3':
             url = 'https://en.wikipedia.org/wiki/Cumulonimbus_cloud#/media/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg'
             webbrowser.open(url)
         if img == '4':
