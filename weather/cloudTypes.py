@@ -6,7 +6,7 @@
 import webbrowser
 
 def cloudTypes():
-    '''under development'''
+    '''cloudTypes'''
     clouds = ['1 Cumulus', '2 Stratus', '3 Cumulonimbus', '4 Cirus']
     cloudOptions = ['1 Cloud description', '2 Cloud image']
 
