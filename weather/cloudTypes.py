@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 '''By Micah M. 2018
-   cloudTypes version 1.1
+   cloud_types version 1.1
    Python 3.7'''
 
 import webbrowser
 
-def cloudTypes():
-    '''cloudTypes'''
+def cloud_types():
+    '''cloud_types'''
     clouds = ['1 Cumulus', '2 Stratus', '3 Cumulonimbus', '4 Cirus']
-    cloudOptions = ['1 Cloud description', '2 Cloud image']
+    cloud_options = ['1 Cloud description', '2 Cloud image']
 
-    print('\n'.join(cloudOptions))
+    print('\n'.join(cloud_options))
     options = input('Choose an option. \n')
 
     if options == '1':
@@ -58,4 +58,4 @@ def cloudTypes():
         print('Invalid Answer.')
 
 if __name__ == "__main__":
-    cloudTypes()
+    cloud_types()
