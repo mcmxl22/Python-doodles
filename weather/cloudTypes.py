@@ -3,16 +3,21 @@
    cloudTypes version 1
    Python 3.7'''
 
+import webbrowser
 
 def cloudTypes():
     '''under development'''
-    clouds = ['1 Cumulus', '2 Stratus', '3 Cumulonimbus', '4 Cirus', '5 Back']
+    clouds = ['1 Cumulus', '2 Stratus', '3 Cumulonimbus', '4 Cirus']
     cloudOptions = ['1 Cloud description', '2 Cloud image']
+
     print('\n'.join(cloudOptions))
-    input('Choose an option. \n')
-    if cloudOptions == '1':
+    options = input('Choose an option. \n')
+
+    if options == '1':
+
         print('\n'.join(clouds))
         description = input('Choose an option. \n')
+
         if desription == '1':
             print('Cumulus clouds are...')
         elif desription == '2':
@@ -21,22 +26,32 @@ def cloudTypes():
             print('Cumulonimbus clouds are...')
         elif desription == '4':
             print('Cirus clouds are...')
-        prompt()
-    elif cloudOptions == '2':
+        else:
+            print('Invalid Answer.')
+
+    elif options == '2':
+
         print('\n'.join(clouds))
-        picture = input('Choose an option. \n')
+        img = input('Choose an option. \n')
+
         if picture == '1':
-            #webbrowser.open('')
-            pass
+            url = 'https://en.wikipedia.org/wiki/Cumulus_mediocris_cloud#/media/File:Mt_Eden,_Auckland2.jpg'
+            webbrowser.open(url)
         elif picture == '2':
-            #webbrowser.open('')
-            pass
+            url = 'https://en.wikipedia.org/wiki/Stratus_cloud#/media/File:Stratus-Opacus-Uniformis.jpg'
+            webbrowser.open(url)
         elif picture == '3':
-            #webbrowser.open('')
-            pass
-        elif picture == '4':
-            #webbrowser.open('')
-            pass
+            url = 'https://en.wikipedia.org/wiki/Cumulonimbus_cloud#/media/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg'
+            webbrowser.open(url)
+        if img == '4':
+            url = 'https://en.wikipedia.org/wiki/Cirrus_cloud#/media/File:CirrusField-color.jpg'
+            webbrowser.open(url)
+
+        else:
+            print('Invalid Answer.')
+
+    else:
+        print('Invalid Answer.')
 
 if __name__ == "__main__":
     cloudTypes()
