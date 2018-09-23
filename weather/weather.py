@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 '''By Micah M. 2018
    Weather version 1.6
-   Python 3.7'''
+   Python 3.7
+   Requires forecast.py and cloudTypes.py'''
 
 import subprocess
 import sys
