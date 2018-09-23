@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 '''By Micah M. 2018
    Weather version 1.6
-   Python 3.7
-   Requires forecast.py and cloudTypes.py'''
+   Python 3.7'''
 
 import subprocess
 import sys
@@ -19,7 +18,7 @@ def cloudBase():
     '''Formula to calculate the height of the clouds.'''
     temp = input('Enter temperature in celsius.\n> ')
     dewPoint = input('Enter dew point in celsius.\n> ')
-    spread = int(temp) - int(dewPoint)  # Spread = difference temp/dew point.
+    spread = int(temp) - int(dewPoint)  # Spread = difference temp and dew point.
     cloudCeiling = int(spread) / 2.5 * 1000  # Formula to find cloud ceiling.
     print(f'The cloud ceiling is {int(cloudCeiling)} feet above the ground.\n')
 
@@ -47,15 +46,25 @@ def windSpeed():
 
 
 def prompt():
-    '''Prompts user to choose from a list of options and will log which option
+    '''Prompts user to choose from a list of options and logs which option
        is chosen.'''
     while True:
         promptOptions = [
             '1 Convert from Fahrenheit', '2 Convert from Celsius',
             '3 Find Dew Point', '4 Weather Forcast', '5 Cloud Ceiling',
             '6 Convert knots to MPH', '7 Cloud Types', '8 Exit']
+
         print('\n'.join(promptOptions))
         unitChoice = input('\nWhat would you like to do?\n> ')
+        logEntry = unitChoice  # Logs chosen option.
+        file = open('promptLog.txt', 'a')
+        file.write(logEntry)  # Writes log to file.
+        rLog = open('promptLog.txt').read()  # Reads log from file.
+        mostCommon = max(rLog, key=rLog.count) # Finds most common log entry.
+        file.close()
+        print(f'\nYour most common choice is {mostCommon}.')
+
+
         if unitChoice == '1':
             fahrenheit()
         elif unitChoice == '2':
