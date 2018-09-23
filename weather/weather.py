@@ -5,7 +5,6 @@
    Requires forecast.py and cloudTypes.py'''
 
 import subprocess
-import webbrowser
 import sys
 
 def dewPoint():
