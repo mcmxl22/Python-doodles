@@ -19,13 +19,17 @@ def cloudTypes():
         description = input('Choose an option. \n')
 
         if desription == '1':
-            print('Cumulus clouds are...')
+            url = 'https://en.wikipedia.org/wiki/Cumulus_cloud'
+            webbrowser.open(url)
         elif desription == '2':
-            print('Stratus clouds are...')
+            url = 'https://en.wikipedia.org/wiki/Stratus_cloud'
+            webbrowser.open(url)
         elif desription == '3':
-            print('Cumulonimbus clouds are...')
+            url = 'https://en.wikipedia.org/wiki/Cumulonimbus_cloud'
+            webbrowser.open(url)
         elif desription == '4':
-            print('Cirus clouds are...')
+            url = 'https://en.wikipedia.org/wiki/Cirrus_cloud'
+            webbrowser.open(url)
         else:
             print('Invalid Answer.')
 
