@@ -7,21 +7,21 @@
 import subprocess
 import sys
 
-def dewPoint():
+def dew_point():
     '''Formula to calculate the dew point.'''
     temp = input('\nEnter temperature in Celsius.\n> ')
-    relativeHumidity = input('\nEnter relative humidity\n> ')
-    formula = (int(temp) - ((100 - int(relativeHumidity)) / 5))
+    relative_humidity = input('\nEnter relative humidity\n> ')
+    formula = (int(temp) - ((100 - int(relative_humidity)) / 5))
     print(f'\nThe dew point is {int(formula)} degrees Celsius.\n')
 
 
-def cloudBase():
+def cloud_base():
     '''Formula to calculate the height of the clouds.'''
     temp = input('Enter temperature in celsius.\n> ')
-    dewPoint = input('Enter dew point in celsius.\n> ')
-    spread = int(temp) - int(dewPoint)  # Spread = difference temp and dew point.
-    cloudCeiling = int(spread) / 2.5 * 1000  # Formula to find cloud ceiling.
-    print(f'The cloud ceiling is {int(cloudCeiling)} feet above the ground.\n')
+    dew = input('Enter dew point in celsius.\n> ')
+    spread = int(temp) - int(dew)  # Spread = difference temp and dew point.
+    cloud_ceiling = int(spread) / 2.5 * 1000  # Formula to find cloud ceiling.
+    print(f'The cloud ceiling is {int(cloud_ceiling)} feet above the ground.\n')
 
 
 def celsius():
@@ -38,7 +38,7 @@ def fahrenheit():
     print(f'{convert} degrees Fahrenheit is {int(formula)} degrees Celsius.\n')
 
 
-def windSpeed():
+def wind_speed():
     '''Formula to convert knots to MPH'''
     convert = input('Enter wind speed in knots.\n ')
     formula = ((int(convert) * 6067) / 5280)
@@ -50,39 +50,39 @@ def prompt():
     '''Prompts user to choose from a list of options and logs which option
        is chosen.'''
     while True:
-        promptOptions = [
+        prompt_options = [
             '1 Convert from Fahrenheit', '2 Convert from Celsius',
             '3 Find Dew Point', '4 Weather Forcast', '5 Cloud Ceiling',
             '6 Convert knots to MPH', '7 Cloud Types', '8 Exit']
 
-        print('\n'.join(promptOptions))
-        unitChoice = input('\nWhat would you like to do?\n> ')
-        logEntry = unitChoice  # Logs chosen option.
+        print('\n'.join(prompt_options))
+        unit_choice = input('\nWhat would you like to do?\n> ')
+        log_entry = unit_choice  # Logs chosen option.
         file = open('promptLog.txt', 'a')
-        file.write(logEntry)  # Writes log to file.
-        rLog = open('promptLog.txt').read()  # Reads log from file.
-        mostCommon = max(rLog, key=rLog.count) # Finds most common log entry.
+        file.write(log_entry)  # Writes log to file.
+        read_log = open('promptLog.txt').read()  # Reads log from file.
+        most_common = max(read_log, key=read_log.count) # Finds most common log entry.
         file.close()
-        print(f'\nYour most common choice is {mostCommon}.')
+        print(f'\nYour most common choice is {most_Common}.')
 
 
-        if unitChoice == '1':
+        if unit_choice == '1':
             fahrenheit()
-        elif unitChoice == '2':
+        elif unit_choice == '2':
             celsius()
-        elif unitChoice == '3':
-            dewPoint()
-        elif unitChoice == '4':
+        elif unit_choice == '3':
+            dew_point()
+        elif unit_choice == '4':
             forecast = [sys.executable, 'forecast.py']
             subprocess.call(forecast)
-        elif unitChoice == '5':
-            cloudBase()
-        elif unitChoice == '6':
-            windSpeed()
-        elif unitChoice == '7':
-            cloudTypes = [sys.executable, 'cloudTypes.py']
-            subprocess.call(cloudTypes)
-        elif unitChoice == '8':
+        elif unit_choice == '5':
+            cloud_base()
+        elif unit_choice == '6':
+            wind_speed()
+        elif unit_choice == '7':
+            cloud_types = [sys.executable, 'cloudTypes.py']
+            subprocess.call(cloud_types)
+        elif unit_choice == '8':
             raise SystemExit
         else:
             print('\nInvalid Entry\n')
