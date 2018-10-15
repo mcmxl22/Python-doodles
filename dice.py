@@ -5,7 +5,7 @@
 
 
 import random
- 
+
 def dice():
     while True:
         roll_dice = input('Roll? ')
