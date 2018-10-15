@@ -15,5 +15,5 @@ def dice():
             raise SystemExit
         else:
             print('Invalid Entry')
- 
+
 dice()
