@@ -5,7 +5,7 @@
 
 import time
 
-list = ['rest']
+lst = ['rest']
 
 t0 = time.time_ns()
 print(list[0] + 'ing')
