@@ -1,20 +1,19 @@
-#!/usr/bin/env python3
-# By Micah M. 2018
-# Files Version 1.2
-# Python 3.7
+#! /usr/bin/env python3
+'''By Micah M. 2018
+   Files Version 1.2
+   Python 3.7'''
 
 
 import os.path
 
 
-class Files(object):
-    ''' Creates a file and confirms it.'''
+class Files():
+    '''Create a file and/or confirm it.'''
     def create():
-        files = Files()
-        fileName = input('Enter file name. ')
+        fileName = input('Enter file name.\n> ')
         if os.path.exists(fileName) is True:
-            print('File already exists!')
-            files.create()
+            print(f'File {fileName} already exists!')
+            Files.create()
         f = open(fileName, 'w+')
         print('Creating file!')
         if os.path.exists(fileName) is True:
@@ -23,5 +22,4 @@ class Files(object):
 
 
 if __name__ == "__main__":
-        files = Files()
-        Files.create()
+    Files.create()
