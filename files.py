@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python3
 '''By Micah M. 2018
    Files Version 1.2
    Python 3.7'''
@@ -9,7 +9,7 @@ import os.path
 
 class Files():
     '''Create a file and/or confirm it.'''
-    def create():
+    def create(self):
         fileName = input('Enter file name.\n> ')
         if os.path.exists(fileName) is True:
             print(f'File {fileName} already exists!')
