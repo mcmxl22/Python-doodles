@@ -5,7 +5,7 @@
 
 
 def pythag():
-    '''finds the length of side C 
+    '''finds the length of side C
        when A and B are known.'''
     while True:
         a = input('Enter length a: ')
