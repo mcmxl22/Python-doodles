@@ -10,7 +10,7 @@ import webbrowser
 def web_site():
     '''website'''
     site_name = input('Type site name: ')
-    make_url = f'http://www.{site}.com'
+    make_url = f'http://www.{site_name}.com'
     webbrowser.open(make_url)
 
 
