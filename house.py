@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 '''By Micah M. 2018
    House version 1.2
    Python 3.7
-   This program requires web.py and countDown.py'''
+   Requires web.py and count_down.py'''
 
 
 import subprocess
@@ -80,9 +80,9 @@ def living_room():
         elif room == '4':
             basement()
         elif room == '5':
-            subprocess.call(web)
+            subprocess.run(web)
         elif room == '6':
-            subprocess.call(count)
+            subprocess.run(count)
         else:
             print('Invalid Answer.')
 
