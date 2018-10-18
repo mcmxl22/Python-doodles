@@ -8,7 +8,7 @@ import math
 
 
 def circle_area():
-   '''Find the area of a user defind circle.'''
+    '''Find the area of a user defind circle.'''
     while True:
         radius = input('Enter the radius of the circle.\n> ')
         result = math.pi * int(radius)**2
