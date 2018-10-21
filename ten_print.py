@@ -6,9 +6,14 @@
 import random
 import time
 
-start = time.time()
-elapsed = 0
-while elapsed < 2:
-    sticks = (random.choice(['\\', '/', '|']))
-    print(' '.join(sticks), end='')
-    elapsed = time.time() - start
+def ten_print():
+
+    start = time.time()
+    elapsed = 0
+
+    while elapsed < 2:
+        sticks = (random.choice(['\\', '/', '|']))
+        print(' '.join(sticks), end='')
+        elapsed = time.time() - start
+
+ten_print()
