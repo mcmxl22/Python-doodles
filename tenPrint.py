@@ -1,4 +1,14 @@
-import random
+#!/usr/bin/env python
+'''By Micah M. 2018
+   ten_print version 1.1
+   Python 3.7'''
 
-while True:
-    print(random.choice(['\\', '/', '|', '-'])),
+import random
+import time
+
+start = time.time()
+elapsed = 0
+while elapsed < 2:
+    sticks = (random.choice(['\\', '/', '|']))
+    print(' '.join(sticks), end='')
+    elapsed = time.time() - start
