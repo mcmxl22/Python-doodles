@@ -84,9 +84,9 @@ def living_room():
         elif room in '4':
             basement()
         elif room in '5':
-            subprocess.call(web)
+            subprocess.run(web)
         elif room in '6':
-            subprocess.call(count)
+            subprocess.run(count)
         else:
             print('Invalid Answer.')
 
