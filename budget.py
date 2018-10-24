@@ -9,11 +9,11 @@ balance = 0.00
 
 def budget():
     '''budget'''
-    menu = ['1 Set Ballance', '2 Add Transaction', '3 Check Balance']
-    print('\n'.join(menu))
-    options = input('What do you want to do? ')
+    menu_options = ['1 Set Ballance', '2 Add Transaction', '3 Check Balance']
+    print('\n'.join(menu_options))
+    menu_choice = input('What do you want to do? ')
 
-    if options in '1':
+    if menu_choice in '1':
         amount = float(input('Enter amount:  '))
         global balance
         balance = amount
@@ -23,9 +23,9 @@ def budget():
         f.close
         budget()
 
-    if options in '2':
-        formula = ['1 Add', '2 Subtract']
-        print('\n'.join(formula))
+    if menu_choice in '2':
+        transaction_options = ['1 Add', '2 Subtract']
+        print('\n'.join(transaction_options))
         transaction_choice = input('Add or subtract amount?')
         if transaction_choice in '1':
             amount = float(input('Enter amount: '))
@@ -35,7 +35,7 @@ def budget():
             amount = float(input('Enter amount: '))
             print(f'Your new ballance is:{balance - amount}\n')
 
-    if options in '3':
+    if menu_choice in '3':
         file = open('budget.txt', 'r')
         print(file.read())
         file.close
