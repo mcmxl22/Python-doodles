@@ -9,7 +9,7 @@ balance = 0.00
 
 def budget():
     '''budget'''
-    menu = ('1 Set Ballance', '2 Add Transaction', '3 Check Balance')
+    menu = ['1 Set Ballance', '2 Add Transaction', '3 Check Balance']
     print('\n'.join(menu))
     options = input('What do you want to do? ')
 
@@ -24,14 +24,15 @@ def budget():
         budget()
 
     if options in '2':
-        print('Add or subtract amount?')
-        formula = input('1 Add\n2 Subtract\n> ')
-        if formula == '1':
-            amount = float(input('Enter amount:\n> '))
+        formula = ['1 Add', '2 Subtract']
+        print('\n'.join(formula))
+        transaction_choice = input('Add or subtract amount?')
+        if transaction_choice in '1':
+            amount = float(input('Enter amount: '))
             print(f'Your new balance is:{balance + amount}\n')
 
-        elif formula in '2':
-            amount = float(input('Enter amount:\n> '))
+        elif transaction_choice in '2':
+            amount = float(input('Enter amount: '))
             print(f'Your new ballance is:{balance - amount}\n')
 
     if options in '3':
@@ -40,4 +41,5 @@ def budget():
         file.close
         budget()
 
-budget()
+if __name__ == "__main__":
+    budget()
