@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 '''By Micah M. 2018
-   Web version 1.2
+   Web version 1.3
    Python 3.7'''
 
 
 import webbrowser
 
 
-def web_site():
+def web_site(site):
     '''website'''
-    site_name = input('Type site name: ')
-    make_url = f'http://www.{site_name}.com'
-    webbrowser.open(make_url)
+    site = input('Type site name: ')
+    url = f'http://www.{site}.com'
+    webbrowser.open(url)
 
 
 if __name__ == "__main__":
