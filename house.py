@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 '''By Micah M. 2018
-   house version 1.3
+   House version 1.2
    Python 3.7.1
    Requires web.py and count_down.py'''
 
 
 import count_down
-import sys
 from time import sleep
 import web
 
@@ -16,7 +15,7 @@ def porch():
     while True:
         porch_options = ['1 front', '2 exit ']
         print(' \n'.join(porch_options))
-        porch_choice = input('Choose a option. ') 
+        porch_choice = input('Choose a option. ')
         if porch_choice in '1':
             living_room()
         elif porch_choice in '2':
