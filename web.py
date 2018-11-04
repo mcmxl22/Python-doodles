@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 '''By Micah M. 2018
    Web version 1.3
-   Python 3.7'''
+   Python 3.7.1'''
 
 
 import webbrowser
@@ -15,4 +15,4 @@ def web_site(site):
 
 
 if __name__ == "__main__":
-    web_site()
+    web_site('site')
