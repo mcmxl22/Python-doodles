@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 '''By Micah M. 2018
-   countDown version 1.1
+   count_down version 1.1
    Python 3.7.1'''
 
 
