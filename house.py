@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 '''By Micah M. 2018
-   House version 1.2
+   House version 1.3
    Python 3.7.1
-   This program requires web.py and countDown.py'''
+   This program requires web.py and count_down.py'''
 
 
-import subprocess
+import count_down
 import sys
 from time import sleep
+import web
 
 
 def porch():
@@ -71,22 +72,20 @@ def living_room():
         room_select = ['1 Kitchen', '2 Stairs', '3 Porch', '4 Basement',
                        '5 Browse', '6 Rest']
         print(' \n'.join(room_select))
-        room = input('''\nYou\'re in the living room.
+        room_choice = input('''\nYou\'re in the living room.
                         \rChoose a room or activity. ''')
-        web = [sys.executable, 'web.py']
-        count = [sys.executable, 'countDown.py']
-        if room in '1':
+        if room_choice in '1':
             kitchen()
-        elif room in '2':
+        elif room_choice in '2':
             stairs()
-        elif room in '3':
+        elif room_choice in '3':
             porch()
-        elif room in '4':
+        elif room_choice in '4':
             basement()
-        elif room in '5':
-            subprocess.run(web)
-        elif room in '6':
-            subprocess.run(count)
+        elif room_choice in '5':
+            web.web_site(room_choice)
+        elif room_choice in '6':
+            count_down.count(room_choice)
         else:
             print('Invalid Answer.')
 
