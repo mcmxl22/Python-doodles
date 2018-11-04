@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 '''By Micah M. 2018
-   House version 1.3
+   house version 1.3
    Python 3.7.1
-   This program requires web.py and count_down.py'''
+   Requires web.py and count_down.py'''
 
 
 import count_down
