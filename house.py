@@ -1,8 +1,7 @@
 #!/usr/bin/env python
-'''By Micah M. 2018
+"""By Micah M. 2018
    House version 1.2
-   Python 3.7.1
-   Requires web.py and count_down.py'''
+   Python 3.7.1"""
 
 
 import count_down
@@ -11,7 +10,7 @@ import web
 
 
 def porch():
-    '''porch'''
+    """porch"""
     while True:
         porch_options = ['1 front', '2 exit ']
         print(' \n'.join(porch_options))
@@ -25,7 +24,7 @@ def porch():
 
 
 def stairs():
-    '''stairs'''
+    """stairs"""
     while True:
         for i in range(1, 7):
             print(i)
@@ -40,13 +39,13 @@ def stairs():
 
 
 def kitchen():
-    '''kitchen'''
+    """kitchen"""
     print('The kitchen is being remodeled. Come back later.')
     living_room()
 
 
 def basement():
-    '''basement'''
+    """basement"""
     while True:
         laundry_option = ['yes', 'No']
         print(' \n'.join(laundry_option))
@@ -66,7 +65,7 @@ def basement():
 
 
 def living_room():
-    '''living_room'''
+    """living_room"""
     while True:
         room_select = ['1 Kitchen', '2 Stairs', '3 Porch', '4 Basement',
                        '5 Browse', '6 Rest']
