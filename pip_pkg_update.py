@@ -14,23 +14,27 @@ def pkg_update():
         print(option)
     choice = input('> ')
     if choice == '1':
+        print('Checking for updates.')
         results = os.system('pip list --outdated')
         if results == 0:
-            print('All packages are up to date.')
+            print('All packages are up to date.\n')
             pkg_update()
         else:
             print(results)
-            update_choice = input('Enter name of package to update. ')
-            if update_choice in results:
-                while True:
-                    update_pkg = os.system(f'''pip install --upgrade
-				              {update_choice}''')
-                    print('Done')
-            else:
-                pkg_update()
+            while True:
+                update_list = list(results)
+                current = update_list.pop(0)
+                print(f'Updating {current}.')
+                os.system(f'''pip install --upgrade
+		             {current}''')
+                print('Done')
+            pkg_update()
 
     elif choice == '2':
         raise SystemExit
+
+    else:
+        pkg_update()
 
 
 if __name__ == "__main__":
