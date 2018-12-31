@@ -22,9 +22,12 @@ def pkg_update():
             print(results)
             update_choice = input('Enter name of package to update. ')
             if update_choice in results:
-                update_pkg = os.system(f'''pip install --upgrade
-				          {update_choice}''')
-                print('Done')
+                while True:
+                    update_pkg = os.system(f'''pip install --upgrade
+				              {update_choice}''')
+                    print('Done')
+            else:
+                pkg_update()
 
     elif choice == '2':
         raise SystemExit
