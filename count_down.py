@@ -1,14 +1,14 @@
 #!/usr/bin/env python
-'''By Micah M. 2018
+"""By Micah M. 2019
    count_down version 1.1
-   Python 3.7.1'''
+   Python 3.7.1"""
 
 
 import time
 
 
 def count(seconds):
-    '''Count down in seconds.'''
+    """Counts down in seconds."""
     seconds = int(input('How long? '))
     for i in reversed(range(seconds)):
         time.sleep(1)
