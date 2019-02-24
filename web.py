@@ -1,14 +1,14 @@
 #!/usr/bin/env python
-'''By Micah M. 2018
+"""By Micah M. 2019
    Web version 1.3
-   Python 3.7.1'''
+   Python 3.7.1"""
 
 
 import webbrowser
 
 
 def web_site(site):
-    '''website'''
+    """website"""
     site = input('Type site name: ')
     url = f'http://www.{site}.com'
     webbrowser.open(url)
