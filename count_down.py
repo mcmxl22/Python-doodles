@@ -8,7 +8,7 @@ import time
 
 
 def count(seconds):
-    """Counts down in seconds."""
+    """Counts down seconds."""
     seconds = int(input('How long? '))
     for i in reversed(range(seconds)):
         time.sleep(1)
