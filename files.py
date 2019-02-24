@@ -1,13 +1,13 @@
 #!/usr/bin/env python
-'''By Micah M. 2018
+"""By Micah M. 2018
    files Version 1.4
-   Python 3.7.1'''
+   Python 3.7.1"""
 
 import os.path
 
 
 def create_files(file_name):
-    '''Create a file and/or confirm it.'''
+    """Create a file and/or confirm it."""
     file_name = input('Enter file name. ')
     if os.path.exists(file_name):
         print(f'{file_name} already exists!')
@@ -19,7 +19,7 @@ def create_files(file_name):
 
 
 def delete_file(file_name):
-    '''Delete files.'''
+    """Delete files."""
     file_name = input('Enter file to be deleted. ')
     confirm_file = input(f'Are you sure you want to delete {file_name}? ')
     if confirm_file is 'y':
@@ -28,7 +28,7 @@ def delete_file(file_name):
 
 
 def file_options(file_name):
-    '''Choose what to do with a file.'''
+    """Choose what to do with a file."""
     while True:
         file_options = ['1 Create file', '2 Delete file', '3 Exit']
         print('\n'.join(file_options))
