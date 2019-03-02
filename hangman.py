@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-"""By Micah M. 2019
-   Hangman version 1
+"""Hangman version 1
    Python 3.7.1"""
 
 
