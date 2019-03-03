@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-"""By Micah M. 2019
-   files Version 1.4
+"""files Version 1.4
    Python 3.7.1"""
 
 import os.path
