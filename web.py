@@ -1,6 +1,6 @@
 #!/bin/python3
 """Web version 1.3
-   Python 3.7.1"""
+   Python 3.7.2"""
 
 
 import webbrowser
