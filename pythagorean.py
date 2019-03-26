@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
-"""By Micah M. 2019
-   pythagorean version 1.1
-   Python 3.7"""
+#!/bin/python3
+"""pythagorean version 1.1
+   Python 3.7.2"""
 
 
 def pythag():
