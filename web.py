@@ -1,6 +1,5 @@
-#!/usr/bin/env python
-"""By Micah M. 2019
-   Web version 1.3
+#!/bin/python3
+"""Web version 1.3
    Python 3.7.1"""
 
 
