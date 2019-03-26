@@ -1,7 +1,6 @@
-#!/usr/bin/env python
-"""By Micah M. 2019
-   ten_print version 1.1
-   Python 3.7"""
+#!/bin/python3
+"""ten_print version 1.1
+   Python 3.7.2"""
 
 import random
 import time
