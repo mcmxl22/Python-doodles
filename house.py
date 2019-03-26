@@ -1,7 +1,6 @@
-#!/usr/bin/env python
-"""By Micah M. 2019
-   House version 1.2
-   Python 3.7.1"""
+#!/bin/env python3
+"""House version 1.2
+   Python 3.7.2"""
 
 
 import count_down
