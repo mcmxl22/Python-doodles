@@ -1,7 +1,6 @@
-#!/usr/bin/env python
-'''By Micah M. 2018
-   weird version 1
-   Python 3.7'''
+#!/bin/python3
+"""weird version 1
+   Python 3.7.2"""
 
 
 def weird():
