@@ -1,6 +1,6 @@
-#!/usr/bin/env python
-"""files Version 1.4
-   Python 3.7.1"""
+#!/bin/env python3
+"""files Version 1.5
+   Python 3.7.2"""
 
 import os.path
 
@@ -11,10 +11,9 @@ def create_files(file_name):
     if os.path.exists(file_name):
         print(f'{file_name} already exists!')
     else:
-        f = open(file_name, 'w+')
-        if os.path.exists(file_name):
-            print(f'{file_name} created!')
-        f.close()
+        with open(file_name, 'w+') as f:
+            if os.path.exists(file_name):
+                print(f'{file_name} created!')
 
 
 def delete_file(file_name):
