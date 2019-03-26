@@ -1,7 +1,6 @@
-#!/usr/bin/env python
-"""By Micah M. 2019
-   count_down version 1.1
-   Python 3.7.1"""
+#!/bin/python3
+"""count_down version 1.1
+   Python 3.7.2"""
 
 
 import time
