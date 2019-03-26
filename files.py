@@ -11,7 +11,7 @@ def create_files(file_name):
     if os.path.exists(file_name):
         print(f'{file_name} already exists!')
     else:
-        with open(file_name, 'w+') as f:
+        with open(file_name, 'w+'):
             if os.path.exists(file_name):
                 print(f'{file_name} created!')
 
