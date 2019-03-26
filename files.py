@@ -1,5 +1,5 @@
 #!/bin/env python3
-"""files Version 1.5
+"""files Version 1.6
    Python 3.7.2"""
 
 import os.path
@@ -28,8 +28,9 @@ def delete_file(file_name):
 def file_options(file_name):
     """Choose what to do with a file."""
     while True:
-        file_options = ['1 Create file', '2 Delete file', '3 Exit']
-        print('\n'.join(file_options))
+        file_options = ['Create file', 'Delete file', 'Exit']
+        for index, file in enumerate(file_options, start=1):
+            print(index, file)
         file_choice = input('Choose an option. ')
         if file_choice in '1':
             create_files(file_name)
