@@ -1,12 +1,12 @@
-#!/usr/bin/env python3
-# By Micah M. 2018
-# dice version 1.1
-# Python 3.7
+#!/bin/python3
+"""dice version 1.1
+   Python 3.7.2"""
 
 
 import random
 
 def dice():
+   """Roll the dice"""
     while True:
         roll_dice = input('Roll? ')
         if roll_dice in ['y', '']:
@@ -16,4 +16,5 @@ def dice():
         else:
             print('Invalid Entry')
 
-dice()
+if __name__ == "__main__":            
+    dice()
