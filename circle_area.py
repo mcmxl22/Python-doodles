@@ -1,14 +1,13 @@
-#!/usr/bin/env python
-"""By Micah M. 2019
-   circle_area version 1.2
-   Python 3.7.1"""
+#!/usr/bin/env python3
+"""circle_area version 1.2
+   Python 3.7.2"""
 
 
 import math
 
 
 def find_area(radius):
-    """Find the area of a user defind circle."""
+    """Find the area of a user defined circle."""
     while True:
         radius = input('Enter the radius of the circle. ')
         result = math.pi * int(radius)**2
