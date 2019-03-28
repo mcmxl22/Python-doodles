@@ -1,10 +1,10 @@
 #!/bin/python3
-"""pythagorean version 1.1
+"""pythagorean version 1.2
    Python 3.7.2"""
 
 
 def pythag():
-    """finds the length of side C
+    """find the length of side C
        when A and B are known."""
     while True:
         a = input('Enter length a: ')
@@ -12,4 +12,5 @@ def pythag():
         c = int(a)**2 + int(b)**2
         print(f'Length c is {c}.')
 
-pythag()
+if __name__ == "__main__":
+    pythag()
