@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/python3
 """circle_area version 1.2
    Python 3.7.2"""
 
@@ -14,7 +14,7 @@ def find_area(radius):
         if radius == int():
             print(f'The area is {round(result, 2)}.')
         elif radius == str:
-            print('Entry must be an intiger!')
+            print('Entry must be an integer!')
 
 
 if __name__ == "__main__":
