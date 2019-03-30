@@ -11,9 +11,8 @@ def find_area():
     while True:
         radius = input('Enter the radius of the circle. ')
         result = math.pi * int(radius)**2
-        
         try:
-           number = int(radius) 
+           number = int(radius)
         except ValueError as e:
             print(f'Please enter a number.')
         else:
