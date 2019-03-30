@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 """Palindrome version 1.2
    Python 3.7.2"""
 
