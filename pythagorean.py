@@ -14,4 +14,4 @@ def pythag():
 
 if __name__ == "__main__":
     pythag = pythag()
-    print(f'Length c is {pythag}.'
+    print(f'Length c is {pythag}.)'
