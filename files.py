@@ -1,4 +1,4 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 """files Version 1.6
    Python 3.7.2"""
 
