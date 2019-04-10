@@ -1,5 +1,5 @@
-#!/bin/env python3
-"""House version 1.2
+#!/usr/bin/env python3
+"""House version 1.3
    Python 3.7.2"""
 
 
@@ -11,15 +11,15 @@ import web
 def porch():
     """porch"""
     while True:
-        porch_options = ['1 front', '2 exit ']
+        porch_options = ['1 Front', '2 Exit']
         print(' \n'.join(porch_options))
-        porch_choice = input('Choose a option. ')
+        porch_choice = input('Choose an option. ')
         if porch_choice in '1':
             living_room()
         elif porch_choice in '2':
             raise SystemExit
         else:
-            print('Invalid answer.')
+            print('Invalid answer!')
 
 
 def stairs():
@@ -27,8 +27,8 @@ def stairs():
     while True:
         for i in range(1, 7):
             print(i)
-        hall_choice = input('''\nYou\'re in the upstairs hall.
-                               \rChoose a door. ''')
+        hall_choice = input("""\nYou're in the upstairs hall.
+                               \rChoose a door. """)
         if hall_choice in ['1', '2', '3', '5']:
             print('This door is locked.')
         elif hall_choice in ['4', '6']:
@@ -46,7 +46,7 @@ def kitchen():
 def basement():
     """basement"""
     while True:
-        laundry_option = ['yes', 'No']
+        laundry_option = ['1 Yes', '2 No']
         print(' \n'.join(laundry_option))
         laundry = input('Do you want to do laundry? ')
         if laundry in '1':
@@ -55,9 +55,9 @@ def basement():
                 print(f'{quarters} is not enough money.')
             elif quarters >= 8:
                 print('Washing!')
-                sleep(5)
+                sleep(3)
                 print('Drying!')
-                sleep(10)
+                sleep(6)
                 print('Done!')
         else:
             living_room()
@@ -69,8 +69,8 @@ def living_room():
         room_select = ['1 Kitchen', '2 Stairs', '3 Porch', '4 Basement',
                        '5 Browse', '6 Rest']
         print(' \n'.join(room_select))
-        room_choice = input('''\nYou\'re in the living room.
-                        \rChoose a room or activity. ''')
+        room_choice = input("""\nYou're in the living room.
+                               \rChoose a room or activity. """)
         if room_choice in '1':
             kitchen()
         elif room_choice in '2':
