@@ -14,7 +14,7 @@ def letter_switch():
     # Find the space.
     space = word_list.index(' ')
 
-    # First letter of first word.
+    # Find first letter of first word.
     first = word_list[0]
 
     # Remove first letter of each word.
