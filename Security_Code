@@ -1,55 +1,76 @@
 #!/usr/bin/env python3
 """
-Security_Code version 1
+Security_Code Version 1
 Python 3.7.3
 """
 
 import datetime
-import fileinput
+import os.path
 import random
 import string
 
 
+def check_file():
+    """Check if file exists."""
+    if os.path.exists('transfer.txt'):
+        return
+
+    else:
+        with open('transfer.txt', 'w+') as file:
+            return
+
+
 def expiration():
     """
-    Set an expiration date with a two letter
-    security code that changes to indicate expiration.
+    Set next day expiration date and generate a random, 2 letter
+    security code that changes daily to indicate expiration.
     """
-    date = datetime.datetime.now()
-    expires = (f'{date.year}-0{date.month}-0{date.day + 1}')
+    # Sets letters to uppercase.
     letters = string.ascii_uppercase
+
+    # Gets date and time.
+    date = datetime.datetime.now()
+
+    # Extracts time of day and adds 3 hours.
+    future_time = date + datetime.timedelta(0, 10800)
+    new_time = list(str(future_time))
+    del new_time[0:11]
+    del new_time[4:14]
+    new_time = ''.join(new_time)
+    print(new_time)
+
+    # Sets date format and adds a day.
+    expires = (f'{date.year}-0{date.month}-0{date.day + 1}')
+
+    # Removes time from date.
     list_date = list(str(date))
     del list_date[10:26]
     new_date = ''.join(list_date)
+    print(new_date)
 
     with open('transfer.txt', 'r+') as file:
         current_data = file.read()
+    print(current_data)
 
-        if new_date in current_data:
-            current_data = current_data.replace(new_date, expires)
+    if current_data == ['\n'] or []:
+        with open('transfer.txt', 'w') as file:
+            file.write(f'Expires: {expires}\n{"XX"}\n{new_time}')
+        print('1')
+    else:
+    	pass
 
-            with open('transfer.txt', 'w') as file:
-                file.write(current_data)
+    if new_date == expires:
+        with open('transfer.txt', 'w') as file:
+            code_1 = random.choice(letters)
+            code_2 = random.choice(letters)
+            day_code = (f'{code_1}{code_2}')
+            file.write(f'''Expires: {day_code}\n{expires}\n{new_time}''')
+        print('2')
 
-        else:
-            if new_date in expires:
-                code_1 = random.choice(letters)
-                code_2 = random.choice(letters)
-                day_code = (f'{code_1}{code_2}')
-
-                with open('transfer.txt', 'w') as file:
-                    file.write(f'Expires: {expires}\n{day_code}')
-
-            else:
-                with open('transfer.txt', 'r') as file:
-                    current_data = file.readlines()
-
-                    if current_data == ['\n'] or []:
-                        with open('transfer.txt', 'w') as file:
-                            file.write(f'Expires: {new_date}')
-                    else:
-                        pass
-
+    else:
+        print('3')
+        raise SystemExit
 
 if __name__ == '__main__':
+    check_file()
     expiration()
