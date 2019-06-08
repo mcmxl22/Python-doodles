@@ -47,7 +47,7 @@ def expiration():
     new_date = ''.join(list_date)
 
     with open('transfer.txt', 'r+') as file:
-        current_data = file.read()
+        current_data = file.readlines()
 
     if current_data == ['\n'] or []:
         with open('transfer.txt', 'w') as file:
