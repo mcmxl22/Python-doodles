@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""age100 version 1.2
-   Python 3.7.2"""
+"""
+age100 version 1.2
+Python 3.7.3
+"""
 
 import datetime
-
 
 
 def age100():
@@ -15,6 +16,7 @@ def age100():
 
     if get_age >= 100:
         print('Congratulations! You already reached 100!')
+
     else:
         print(f'{get_name}, you will be 100 years old in {age_100}!')
 
