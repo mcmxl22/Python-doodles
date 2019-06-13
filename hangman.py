@@ -1,7 +1,8 @@
-#!/bin/python3
-"""Hangman version 1
-   Python 3.7.2"""
-
+#!/use/bin/env python3
+"""
+Hangman version 1
+Python 3.7.3
+"""
 
 import random
 
@@ -28,9 +29,10 @@ def hang_man():
             count += 1
             while count >= 1:
                 guess_word = input('Guess the word, y/n? ')
-                if guess_word == 'y':
+
+                if guess_word is 'y':
                     guess = input('What is the word? ')
-                elif guess_word == 'n':
+                elif guess_word is 'n':
                     break
                 elif guess in word:
                     print('You avoided death!')
@@ -38,12 +40,15 @@ def hang_man():
                 else:
                     print('Wrong!')
                     break
+
         else:
-           incorrect_letters.append(guess_letter)
-           if guess_letter in incorrect_letters:
-               if len(incorrect_letters) > 1:
-                   print('You already guessed that letter!')
-           print(f'There is no {guess_letter}.')
+            incorrect_letters.append(guess_letter)
+            if guess_letter in incorrect_letters:
+
+                if len(incorrect_letters) > 1:
+                    print('You already guessed that letter!')
+            print(f'There is no {guess_letter}.')
+
     else:
         print(f'You\'re hung! The word was {word}.')
 
