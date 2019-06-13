@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""first_letter version 1
-   Python 3.7.2"""
+"""
+first_letter version 1
+Python 3.7.3
+"""
 
 
 def letter_switch():
@@ -15,14 +17,16 @@ def letter_switch():
     space = word_list.index(' ')
 
     # Find first letter of first word.
-    first = word_list[0]
-
+    first = word_list[0:2]
+    if ''.join(first) in ['sh', 'st', 'sl', 'th']:
+        pass#print(str(first))
+    
     # Remove first letter of each word.
     del word_list[0]
     del word_list[space]
 
     # Re-insert switched letters.
-    word_list.insert(space, first)
+    word_list.insert(space, str(first))
     word_list.insert(0, get_words[space + 1])
 
     # Print result.
