@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 8ball version 1
-Python 3.7.3
+Python 3.7
 """
 
 
