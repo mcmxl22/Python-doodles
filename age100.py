@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 age100 version 1.2
-Python 3.7.3
+Python 3.7
 """
 
 import datetime
