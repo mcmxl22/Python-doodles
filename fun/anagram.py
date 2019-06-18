@@ -5,7 +5,7 @@ Python 3.7
 """
 
 
-def check_anagram():
+def is_anagram():
     """Check if two words contain all the same letters."""
     word1 = input('Enter first word. ')
     word2 = input('Enter second word ')
@@ -17,5 +17,5 @@ def check_anagram():
         print('No anagram!')
 
 if __name__ == "__main__":
-    check_anagram()
+    is_anagram()
 
