@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# By Micah M. 2018
-# Fibo version 1.2
-# Python 3.7
+"""
+Fibo version 1.2
+Python 3.7
+"""
 
 
 def F():
