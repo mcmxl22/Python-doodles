@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Pythagorean version 1.3
-   Python 3.7.2"""
+"""
+Pythagorean version 1.3
+Python 3.7
+"""
 
 
 def pythag():
