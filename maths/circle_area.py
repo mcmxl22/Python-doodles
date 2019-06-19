@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""circle_area version 1.3
-   Python 3.7.2"""
-
+"""
+circle_area version 1.3
+Python 3.7
+"""
 
 import math
 
