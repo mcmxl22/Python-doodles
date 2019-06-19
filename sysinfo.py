@@ -1,7 +1,8 @@
-#!/usr/bin/env python
-# By Micah M. 2018
-# sysinfo version 1
-# Python 3.7
+#!/usr/bin/env python3
+"""
+sysinfo version 1
+Python 3.7
+"""
 
 import platform
 import psutil
