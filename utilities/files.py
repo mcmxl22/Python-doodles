@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
 files Version 1.5
-Python 3.7.3
+requires: numli.py
+Python 3.7
 """
-
+import numli
 import os.path
 
 
@@ -34,8 +35,8 @@ def delete_file(file_name):
 def file_options(file_name):
     """Choose what to do with a file."""
     while True:
-        file_options = ['1. Create file', '2. Delete file', '3. Exit']
-        print('\n'.join(file_options))
+        file_options = ['Create file', 'Delete file', 'Exit']
+        numli.addnum(file_options)
         file_choice = input('Choose an option. ')
 
         if file_choice in '1':
