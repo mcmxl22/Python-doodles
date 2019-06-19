@@ -1,31 +1,26 @@
 #!/usr/bin/env python3
 """
 pip_up version 1
-Python 3.7.3
+requires: numli.py
+Python 3.7
 """
 
+import numli
 import os
-import subprocess
 
 
 def pkg_update():
     """Update pip packages."""
-    options = ['1. Yes', '2. Exit']
-    for option in options:
-        print(option)
+    options = ['Yes', 'Exit']
+    numli.addnum(options)
     choice = input('Check for updates? ')
 
     if choice in '1':
         print('Checking for updates.')
         results = os.system('pip list -o')
 
-        if results == None:
-            print('All packages are up to date.\n')
-            pkg_update()
-
-        else:
-            os.system('pip-review --local --interactive')
-            pkg_update()
+        os.system('pip-review --local --interactive')
+        pkg_update()
 
     elif choice in '2':
         raise SystemExit
