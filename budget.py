@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-'''By Micah M. 2018
-   budget version 1.2
-   Python 3.7'''
+"""
+budget version 1.2
+Python 3.7
+"""
 
 
 balance = 0.00
