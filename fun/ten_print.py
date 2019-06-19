@@ -1,9 +1,12 @@
-#!/bin/python3
-"""ten_print version 1.1
-   Python 3.7.2"""
+#!/usr/bin/env python3
+"""
+ten_print version 1.1
+Python 3.7
+"""
 
 import random
 import time
+
 
 def ten_print():
 
