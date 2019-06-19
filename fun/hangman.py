@@ -1,7 +1,7 @@
 #!/use/bin/env python3
 """
 Hangman version 1
-Python 3.7.3
+Python 3.7
 """
 
 import random
