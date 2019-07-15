@@ -25,11 +25,11 @@ if selection1 in '1': # Putting the 1 in quotes make it a string so you don't ne
             """)
             selection2 = int(input("Select your option: "))
             if selection2 not in range(1,5):
-                print("Please select (1) or (02) or (03) or (4) only")
+                print("Please select (1),(2),(3) or (4)")
 
             else:
                 if selection2 == 1:
-                    print(f"Your account balance is {Balance}") # this is an f-string. It's a simple way of inserting variables in string
+                    print(f"Your account balance is {Balance}") # This is an f-string. It's a simple way of inserting variables in string
                     
                 elif selection2 == 2:
                     depositamt = int(input("Please enter amount: "))
