@@ -14,8 +14,10 @@ def ten_print():
     elapsed = 0
 
     while elapsed < 2:
-        sticks = random.choice(['\\', '/', '|'])
-        print(' '.join(sticks), end='')
+        sticks = random.choice(["\\", "/", "|"])
+        print(" ".join(sticks), end="")
         elapsed = time.time() - start
 
-ten_print()
+
+if __name__ == "__main__":
+    ten_print()
