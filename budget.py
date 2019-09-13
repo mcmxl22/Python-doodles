@@ -1,17 +1,18 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
-budget version 1.2
+budget version 1.3
 Python 3.7
 """
+
+import numli
 
 
 balance = 0.00
 
-
 def budget():
     """budget"""
-    menu_options = ["1 Set Ballance", "2 Add Transaction", "3 Check Balance"]
-    print("\n".join(menu_options))
+    menu_options = ["Set Ballance", "Add Transaction", "Check Balance"]
+    numli.addnum(menu_options)
     menu_choice = input("What do you want to do? ")
 
     if menu_choice in "1":
@@ -25,8 +26,8 @@ def budget():
         budget()
 
     if menu_choice in "2":
-        transaction_options = ["1 Add", "2 Subtract"]
-        print("\n".join(transaction_options))
+        transaction_options = ["Add", "Subtract"]
+        numli.addnum(transaction_options)
         transaction_choice = input("Add or subtract amount?")
         if transaction_choice in "1":
             amount = float(input("Enter amount: "))
