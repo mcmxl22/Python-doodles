@@ -15,7 +15,7 @@ if selection1 in "1":
     Userid = input("Enter User ID: ")
     password = input("Enter Your Password: ")
     Userdata = [Userid, password]
-    print("Your Account has been created")
+    print("Your Account has been created.")
     chances = 3
     Balance = 0
 
