@@ -10,5 +10,6 @@ def addnum(num):
     for c, value in enumerate(num, 1):
         print(c, value)
 
+
 if __name__ == "__main__":
     addnum("num")
