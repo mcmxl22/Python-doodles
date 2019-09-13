@@ -11,4 +11,4 @@ def addnum(num):
         print(c, value)
 
 if __name__ == "__main__":
-    addnum(num)
+    addnum("num")
