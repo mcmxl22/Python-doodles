@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-age100 version 1.2
+age100 version 1.3
 Python 3.7
 """
 
@@ -15,10 +15,10 @@ def age100():
     age_100 = (current_year.year - get_age) + 100
 
     if get_age >= 100:
-        print('Congratulations! You already reached 100!')
+        print("Congratulations! You're already 100!")
 
     else:
-        print(f'{get_name}, you will be 100 years old in {age_100}!')
+        print(f"{get_name}, you will be 100 years old in {age_100}!")
 
 if __name__ == "__main__":
     age100()

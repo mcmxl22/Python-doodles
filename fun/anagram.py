@@ -7,15 +7,14 @@ Python 3.7
 
 def is_anagram():
     """Check if two words contain all the same letters."""
-    word1 = input('Enter first word. ')
-    word2 = input('Enter second word ')
+    word1 = input("Enter first word. ")
+    word2 = input("Enter second word. ")
 
     if sorted(word1) == sorted(word2):
-        print('Anagram!')
+        print("Anagram!")
 
     else:
-        print('No anagram!')
+        print("No anagram!")
 
 if __name__ == "__main__":
     is_anagram()
-
