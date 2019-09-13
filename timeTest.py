@@ -1,34 +1,35 @@
 #!/usr/bin/env python3
-'''By Micah M. 2018
-   timeTest version 1.2
-   Python 3.7'''
+"""
+timeTest version 1.2
+Python 3.7
+"""
 
 import time
 
-lst = ['rest']
+lst = ["rest"]
 
 t0 = time.time_ns()
-print(list[0] + 'ing')
+print(list[0] + "ing")
 t1 = time.time_ns()
 total = t1 - t0
-print(total, 'list')
+print(total, "list")
 
 t0 = time.time_ns()
-print('resting')
+print("resting")
 t1 = time.time_ns()
 total = t1 - t0
-print(total, 'string')
+print(total, "string")
 
 t0 = time.time_ns()
-suffix = 'ing'
-print(f'rest{suffix}')
+suffix = "ing"
+print(f"rest{suffix}")
 t1 = time.time_ns()
 total = t1 - t0
-print(total, 'fstring')
+print(total, "fstring")
 
 t0 = time.time_ns()
-suffix = 'ing'
-print('rest%s' % suffix)
+suffix = "ing"
+print("rest%s" % suffix)
 t1 = time.time_ns()
 total = t1 - t0
-print(total, '%string')
+print(total, "%string")

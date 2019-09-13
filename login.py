@@ -38,7 +38,7 @@ if selection1 in "1":
             elif selection2 in "3":
                 withdraw = int(input("Enter amount: "))
                 if withdraw > Balance:
-                    print(f"Insufficient Funds! Your balance is: {Balance}")
+                    print(f"Insufficient funds! Your balance is: {Balance}")
 
                 else:
                     Balance = Balance - withdraw
