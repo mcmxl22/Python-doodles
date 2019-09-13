@@ -9,8 +9,8 @@ import random
 
 def ball():
     """Shake the eight ball!"""
-    phrases = ['Yes', 'No', 'Try Again', 'You\'re Doomed',
-               'The Future is Bright']
+    phrases = ["Yes", "No", "Try Again", "You're Doomed",
+               "The Future is Bright"]
     answer = random.choice(phrases)
     return answer
 
