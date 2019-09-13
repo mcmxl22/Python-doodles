@@ -1,16 +1,21 @@
-print(
-    """Welcome, Please select (1) for registering new account
-         press (2) for cancel"""
-)
+#!/usr/bin/env python3
+"""
+login Version 1
+Python 3.7
+"""
 
-selection1 = input("Please select an option: ")
+import numli
+
+
+options = ["Register Account", "Cancel"]
+numli.addnum(options)
+selection1 = input("Select an option: ")
 
 if selection1 in "1":
     Userid = input("Enter User ID: ")
     password = input("Enter Your Password: ")
     Userdata = [Userid, password]
     print("Your Account has been created")
-    print("You will be logout automatically")
     chances = 3
     Balance = 0
 
@@ -18,54 +23,42 @@ if selection1 in "1":
         login = input("Login Id: ")
         password1 = input("Password: ")
         if login and password1 in Userdata:
-            print(
-                """Welcome, select an option.
-            (1) Account Balance
-            (2) Deposit
-            (3) Withdraw
-            (4) logout
-            """
-            )
-            selection2 = int(input("Select your option: "))
-            if selection2 not in range(1, 5):
-                print("Please select (1),(2),(3) or (4)")
+            account_options = ["Account Balance", "Deposit", "Withdraw", "logout"]
+            selection2 = input("Select your option: ")
+            numli.addnum(account_options)
 
-            else:
-                if selection2 == 1:
-                    print(
-                        f"Your account balance is {Balance}"
-                    )  # This is an f-string. It's a simple way of inserting variables in string
+            if selection2 in "1":
+                print(f"Your account balance is {Balance}")
 
-                elif selection2 == 2:
-                    depositamt = int(input("Please enter amount: "))
-                    Balance = depositamt + Balance
-                    print(f"Your account balance is: {Balance}.")
+            elif selection2 in "2":
+                depositamt = int(input("Please enter amount: "))
+                Balance = depositamt + Balance
+                print(f"Your account balance is: {Balance}.")
 
-                elif selection2 == 3:
-                    withdraw = int(input("Enter amount: "))
-                    if withdraw > Balance:
-                        print(f"Insufficient Funds! Your balance is: {Balance}")
-
-                    else:
-                        Balance = Balance - withdraw
-                        print(f"Your Account Balance is: {Balance}")
+            elif selection2 in "3":
+                withdraw = int(input("Enter amount: "))
+                if withdraw > Balance:
+                    print(f"Insufficient Funds! Your balance is: {Balance}")
 
                 else:
-                    print("Logging out...")
+                    Balance = Balance - withdraw
+                    print(f"Your Account Balance is: {Balance}")
+
+            else:
+                print("Logging out...")
 
         else:
             print("Wrong Credentials")
             chances -= 1
             if chances in 1:
-                print("You have only one chance left")
+                print("You have one chance left!")
 
     else:
-        print("Your Account has been blocked")
-        exit(99)
+        print("Your Account has been blocked!")
+        raise SystemExit
 
-if selection1 in "2":
-    print("Exiting...")
+elif selection1 in "2":
     raise SystemExit
 
 else:
-    print("Select (1) or (2) only")
+    print("Invalid Option!")
