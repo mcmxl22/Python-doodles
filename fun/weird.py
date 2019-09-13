@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
 """
-weird version 1
+weird version 1.1
 Python 3.7
 """
 
 
 def is_weird():
-    '''Is a number odd or even?'''
+    """Is a number odd or even?"""
     while True:
-        pick_number = int(input('Pick a number: '))
+        pick_number = int(input("Pick a number: "))
 
         if pick_number % 2 == 0:
-            print('Not Weird!')
+            print("Not Weird!")
 
         else:
-            print('Weird!')
+            print("Weird!")
 
-weird()
+
+if __name__ == "__main__":
+    is_weird()
