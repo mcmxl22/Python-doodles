@@ -21,8 +21,9 @@ def subfib(StartNumber, endNumber):
         if cur >= StartNumber:
             yield cur
 
+
 for i in subfib(2, 400):
     a = [int(x) for x in str(i)]
-    print (a)
+    print(a)
 
 quit()
