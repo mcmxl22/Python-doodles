@@ -7,7 +7,6 @@ Python 3.7
 
 def letter_switch():
     """Switch first letter of two words."""
-    # Get words.
     get_words = input("Enter two words. ")
 
     # Convert words to a list.
@@ -27,7 +26,6 @@ def letter_switch():
     word_list.insert(space, ''.join(first))
     word_list.insert(0, get_words[space + 1])
 
-    # Print result.
     result = ''.join(word_list)
     print(result)
 
