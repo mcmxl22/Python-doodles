@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 2
+Hangman version 2.1
 Python 3.7
 requires a txt file with a list of word.
 I used:
@@ -16,32 +16,34 @@ def hang_man():
 
     with open("words_alpha.txt", "r") as f:
         lines = f.readlines()
-        word = random.choice(lines)
+        raw_word = random.choice(lines)
 
-    letter_list = list(word)
-    del letter_list[-1]
-
+    letter_list = list(raw_word)
+    del letter_list[-1] # Deletes \n charater.
+    final_word = ''.join(letter_list)
+    
     count = 0
     incorrect_letters = []
-    spaces = ["-" for letter in word]
+    spaces = ["-" for letter in final_word]
 
     for count in range(len(letter_list * 2)):
         print(f"There are {len(letter_list)} letters in the word.")
-        #print(spaces)
         guess_letter = input("Guess a letter. ")
 
         if guess_letter in letter_list:
             locate = letter_list.index(guess_letter)
             spaces[locate] = guess_letter
+            print(spaces)
+
             print(f"There is a {guess_letter} at {locate}.")
             print("".join(spaces))
 
             count += 1
-            while count >= 2:
+            while count >= len(final_word) / 2:
                 guess_word = input("Guess the word, y/n? ")
                 if guess_word == "y":
                     guess = input("What is the word? ")
-                    if guess in word:
+                    if guess in final_word:
                         print("You avoided death!")
                         raise SystemExit
                     else:
@@ -59,7 +61,7 @@ def hang_man():
             print(f"There is no {guess_letter}.")
 
     else:
-        print(f"You're hung! The word was {word}.")
+        print(f"You're hung! The word was {final_word}.")
 
 
 if __name__ == "__main__":
