@@ -20,8 +20,9 @@ def hang_man():
 
     letter_list = list(raw_word)
     del letter_list[-1] # Deletes \n charater.
-    final_word = ''.join(letter_list)
-    
+    final_word = "".join(letter_list)
+
+    vowels = ["a", "e", "i", "o", "u"]
     count = 0
     incorrect_letters = []
     spaces = ["-" for letter in final_word]
@@ -33,13 +34,16 @@ def hang_man():
         if guess_letter in letter_list:
             locate = letter_list.index(guess_letter)
             spaces[locate] = guess_letter
-            print(spaces)
+            
+            if guess_letter in vowels:
+                print(f"There is an {guess_letter} at {locate}.")
+            else:
+                print(f"There is a {guess_letter} at {locate}.")
 
-            print(f"There is a {guess_letter} at {locate}.")
             print("".join(spaces))
 
             count += 1
-            while count >= len(final_word) / 2:
+            while count >= 2:
                 guess_word = input("Guess the word, y/n? ")
                 if guess_word == "y":
                     guess = input("What is the word? ")
