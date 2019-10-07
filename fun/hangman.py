@@ -1,62 +1,61 @@
-#!/use/bin/env python3
+#!/usr/bin/env python3
 """
-Hangman version 1.1
+Hangman version 2
 Python 3.7
+requires a txt file with a list of word.
+I used:
+https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-long.txt
 """
+
 
 import random
 
 
 def hang_man():
     """Hangman game"""
-    word_list = [
-        "it",
-        "crime",
-        "stone",
-        "member",
-        "reports",
-        "cry",
-        "badge",
-        "dude",
-        "hang",
-        "man",
-    ]
-    word = random.choice(word_list)
-    letter_list = list(word)
-    count = 0
-    guesses = []
-    incorrect_letters = []
 
-    for count in range(len(letter_list * 3)):
+    with open("words_alpha.txt", "r") as f:
+        lines = f.readlines()
+        word = random.choice(lines)
+
+    letter_list = list(word)
+    del letter_list[-1]
+
+    count = 0
+    incorrect_letters = []
+    spaces = ["-" for letter in word]
+
+    for count in range(len(letter_list * 2)):
+        print(f"There are {len(letter_list)} letters in the word.")
+        #print(spaces)
         guess_letter = input("Guess a letter. ")
 
         if guess_letter in letter_list:
-            guesses.append(guess_letter)
             locate = letter_list.index(guess_letter)
+            spaces[locate] = guess_letter
             print(f"There is a {guess_letter} at {locate}.")
-            print(guesses)
+            print("".join(spaces))
 
             count += 1
-            while count >= 1:
+            while count >= 2:
                 guess_word = input("Guess the word, y/n? ")
-
-                if guess_word is "y":
+                if guess_word == "y":
                     guess = input("What is the word? ")
-                elif guess_word is "n":
-                    break
-                elif guess in word:
-                    print("You avoided death!")
-                    raise SystemExit
+                    if guess in word:
+                        print("You avoided death!")
+                        raise SystemExit
+                    else:
+                        print("Wrong!")
+                        break
                 else:
-                    print("Wrong!")
                     break
 
         else:
-            incorrect_letters.append(guess_letter)
-            if guess_letter in incorrect_letters:
+            if guess_letter not in incorrect_letters:
+                incorrect_letters.append(guess_letter)
+            else:
+                print("You already guessed that letter!")
 
-                if len(incorrect_letters) > 1:
-                    print("You already guessed that letter!")
             print(f"There is no {guess_letter}.")
 
     else:
