@@ -22,7 +22,7 @@ def hang_man():
     del letter_list[-1] # Deletes \n charater.
     final_word = "".join(letter_list)
 
-    guesses = len(letter_list * 2)
+    guesses = len(letter_list) * 2
     vowels = ["a", "e", "i", "o", "u"]
     count = 0
     incorrect_letters = []
