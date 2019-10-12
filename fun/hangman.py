@@ -30,6 +30,7 @@ def hang_man():
 
     for count in range(guesses):
         print(f"There are {len(letter_list)} letters in the word.")
+        print(f"You have {} guesses left")
         guess_letter = input("Guess a letter. ")
 
         if guess_letter in letter_list:
