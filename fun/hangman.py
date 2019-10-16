@@ -45,7 +45,7 @@ def hang_man():
                 if guess_word == "y":
                     guess = input("What is the word? ")
                     if guess in final_word:
-                        print("You avoided death!")
+                        print("Correct! You avoided death!")
                         raise SystemExit
                     else:
                         print("Wrong!")
@@ -59,7 +59,7 @@ def hang_man():
             else:
                 print("You already guessed that letter!")
 
-            print(f"There is no {guess_letter}.")
+            print(f"There is no {guess_letter}.\n{remaining}")
 
     else:
         print(f"You're hung! The word was {final_word}.")
