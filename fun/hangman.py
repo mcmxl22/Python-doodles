@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Hangman version 2.3
-Python 3.7
+Python 3.8
 Requires a .txt file with a list of words.
 I used:
 https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-long.txt
