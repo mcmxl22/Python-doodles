@@ -22,11 +22,11 @@ def hang_man():
     del letter_list[-1]  # Deletes \n charater.
     final_word = "".join(letter_list)
 
-    guesses = len(letter_list) * 2
+    guesses = ((l := len(letter_list)) * 2)
     attempts = 0
     incorrect_letters = []
     spaces = ["-" for letter in final_word]
-    print(f"There are {len(letter_list)} letters in the word.")
+    print(f"There are {l} letters in the word.")
 
     while attempts < guesses:
         guess_letter = input("Guess a letter. ")
