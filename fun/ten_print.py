@@ -15,7 +15,7 @@ def ten_print():
 
     while elapsed < 2:
         sticks = random.choice(["\\", "/", "|"])
-        print(" ".join(sticks), end="")
+        print("".join(sticks), end="")
         elapsed = time.time() - start
 
 

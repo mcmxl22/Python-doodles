@@ -2,7 +2,7 @@
 """
 Hangman version 2.1
 Python 3.7
-requires a txt file with a list of word.
+Requires a .txt file with a list of words.
 I used:
 https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-long.txt
 """
@@ -23,29 +23,29 @@ def hang_man():
     final_word = "".join(letter_list)
 
     guesses = len(letter_list) * 2
+    attempts = 0
     vowels = ["a", "e", "i", "o", "u"]
-    count = 0
     incorrect_letters = []
     spaces = ["-" for letter in final_word]
+    print(f"There are {len(letter_list)} letters in the word.")
 
-    for count in range(guesses):
-        print(f"There are {len(letter_list)} letters in the word.")
-        print(f"You have {} guesses left")
+    while attempts < guesses:
         guess_letter = input("Guess a letter. ")
+        attempts += 1
+        remaining = f"You have {guesses - attempts} guesses left."
 
         if guess_letter in letter_list:
             locate = letter_list.index(guess_letter)
             spaces[locate] = guess_letter
             
             if guess_letter in vowels:
-                print(f"There is an {guess_letter} at {locate}.")
+                print(f"There is an {guess_letter} at {locate}.\n{remaining}")
             else:
-                print(f"There is a {guess_letter} at {locate}.")
+                print(f"There is a {guess_letter} at {locate}.\n{remaining}")
 
             print("".join(spaces))
 
-            count += 1
-            while count >= 2:
+            while attempts >= guesses / 2:
                 guess_word = input("Guess the word, y/n? ")
                 if guess_word == "y":
                     guess = input("What is the word? ")

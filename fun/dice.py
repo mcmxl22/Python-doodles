@@ -13,7 +13,7 @@ def dice():
         roll_dice = input('Roll? ')
 
         if roll_dice in ['y', '']:
-            print(random.randint(1, 6)
+            print(random.randint(1, 6))
 
         elif roll_dice == 'n':
             raise SystemExit
