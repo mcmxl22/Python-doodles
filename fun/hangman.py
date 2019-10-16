@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 2.2
+Hangman version 2.3
 Python 3.7
 Requires a .txt file with a list of words.
 I used:
@@ -19,12 +19,11 @@ def hang_man():
         raw_word = random.choice(lines)
 
     letter_list = list(raw_word)
-    del letter_list[-1] # Deletes \n charater.
+    del letter_list[-1]  # Deletes \n charater.
     final_word = "".join(letter_list)
 
     guesses = len(letter_list) * 2
     attempts = 0
-    vowels = ["a", "e", "i", "o", "u"]
     incorrect_letters = []
     spaces = ["-" for letter in final_word]
     print(f"There are {len(letter_list)} letters in the word.")
@@ -37,12 +36,8 @@ def hang_man():
         if guess_letter in letter_list:
             locate = letter_list.index(guess_letter)
             spaces[locate] = guess_letter
-            
-            if guess_letter in vowels:
-                print(f"There is an {guess_letter} at {locate}.\n{remaining}")
-            else:
-                print(f"There is a {guess_letter} at {locate}.\n{remaining}")
-
+            print(f"Letter {locate + 1} is: {guess_letter}")
+            print(remaining)
             print("".join(spaces))
 
             while attempts >= guesses / 2:
