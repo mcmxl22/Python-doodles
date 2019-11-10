@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-the_matrix version 1.1
+the_matrix version 1.2
 Python 3.7
 """
 
@@ -31,11 +31,10 @@ def the_matrix():
         "$",
     ]
 
-    while True:
-        matrix = random.choice(characters)
-        for i in matrix:
-            print(i, end="\t")
+    yield random.choice(characters)
 
 
 if __name__ == "__main__":
-    the_matrix()
+    while True:
+        for i in the_matrix():
+            print(i, end="\t")
