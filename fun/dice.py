@@ -12,7 +12,11 @@ def dice():
     while True:
         roll_dice = input("Roll? ")
 
+<<<<<<< HEAD
         if roll_dice in ["y", ""]:
+=======
+        if roll_dice in ['y', '']:
+>>>>>>> 79e836a62bc508e7179be3d138b87eade7614735
             print(random.randint(1, 6))
 
         elif roll_dice == "n":
