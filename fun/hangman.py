@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 2.3
+Hangman version 2.4
 Python 3.8
 Requires a .txt file with a list of words.
 I used:
@@ -16,16 +16,15 @@ def hang_man():
 
     with open("words_alpha.txt", "r") as f:
         lines = f.readlines()
-        raw_word = random.choice(lines)
+        word = random.choice(lines)
 
-    letter_list = list(raw_word)
-    del letter_list[-1]  # Deletes \n charater.
-    final_word = "".join(letter_list)
+    word.lstrip()
+    letter_list = list(word)
 
     guesses = ((l := len(letter_list)) * 2)
     attempts = 0
     incorrect_letters = []
-    spaces = ["-" for letter in final_word]
+    spaces = ["-" for letter in word]
     print(f"There are {l} letters in the word.")
 
     while attempts < guesses:
@@ -42,9 +41,9 @@ def hang_man():
 
             while attempts >= guesses / 2:
                 guess_word = input("Guess the word, y/n? ")
-                if guess_word == "y":
+                if guess_word in "y":
                     guess = input("What is the word? ")
-                    if guess in final_word:
+                    if guess == word:
                         print("Correct! You avoided death!")
                         raise SystemExit
                     else:
@@ -52,7 +51,6 @@ def hang_man():
                         break
                 else:
                     break
-
         else:
             if guess_letter not in incorrect_letters:
                 incorrect_letters.append(guess_letter)
@@ -62,7 +60,7 @@ def hang_man():
             print(f"There is no {guess_letter}.\n{remaining}")
 
     else:
-        print(f"You're hung! The word was {final_word}.")
+        print(f"You're hung! The word was {word}.")
 
 
 if __name__ == "__main__":
