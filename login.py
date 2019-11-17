@@ -24,8 +24,8 @@ if selection1 in "1":
         password1 = input("Password: ")
         if login and password1 in Userdata:
             account_options = ["Account Balance", "Deposit", "Withdraw", "logout"]
-            selection2 = input("Select your option: ")
             numli.addnum(account_options)
+            selection2 = input("Select your option: ")
 
             if selection2 in "1":
                 print(f"Your account balance is {Balance}")

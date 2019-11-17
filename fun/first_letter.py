@@ -17,32 +17,17 @@ def letter_switch():
 
     # Find first letter of the first word.
     first = word_list[0:1]
-    second = word_list[1:2]
-    combo = ''.join(first + second)
-    letter_list = ['sh', 'ch', 'st', 'wh']
 
-    if combo in letter_list:
-        del word_list[0:2]
-        print(''.join(word_list))
-        del word_list[space + 1]
-        print(''.join(word_list))
+    # Remove first letter of each word.
+    del word_list[0]
+    del word_list[space]
 
-        word_list.insert(space, ''.join(combo))
-        word_list.insert(0, get_words[space:1])
-        result = ''.join(word_list)
-        #print(result)
+    # Re-insert switched letters.
+    word_list.insert(space, ''.join(first))
+    word_list.insert(0, get_words[space + 1])
 
-    else:
-        # Remove first letter of each word.
-        del word_list[0]
-        del word_list[space]
-
-        # Re-insert switched letters.
-        word_list.insert(space, ''.join(first))
-        word_list.insert(0, get_words[space + 1])
-
-        result = ''.join(word_list)
-        print(result)
+    result = ''.join(word_list)
+    print(result)
 
 
 if __name__ == "__main__":

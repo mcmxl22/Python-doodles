@@ -10,16 +10,16 @@ import random
 def dice():
     """Roll the dice"""
     while True:
-        roll_dice = input('Roll? ')
+        roll_dice = input("Roll? ")
 
-        if roll_dice in ['y', '']:
-            print(random.randint(1, 6)
+        if roll_dice in ["y", ""]:
+            print(random.randint(1, 6))
 
-        elif roll_dice == 'n':
+        elif roll_dice == "n":
             raise SystemExit
 
         else:
-            print('Invalid Entry')
+            print("Invalid Entry")
 
 
 if __name__ == "__main__":
