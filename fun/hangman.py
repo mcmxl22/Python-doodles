@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 3.1
+Hangman version 3.2
 Python 3.8
 Requires a .txt file with a list of words.
 I used:
@@ -35,12 +35,12 @@ def main():
     attempts = 0
     incorrect_letters = []
     spaces = ["-" for letter in word_item]
-    print(f"There are {list_len} letters in the word.")
+    print(f"The word has {list_len} letters.")
 
     while attempts < guesses:
         guess_letter = input("Guess a letter. ")
         attempts += 1
-        remaining = f"You have {guesses - attempts} guesses left."
+        remaining = f"Guesses remaining: {guesses - attempts}"
 
         if guess_letter in letter_list:
             start = 0
@@ -48,15 +48,15 @@ def main():
                 locate = letter_list.index(guess_letter, start)
                 spaces[locate] = guess_letter
                 start = locate + 1
-                print(remaining)
-                print("".join(spaces))
+            print(remaining)
+            print("".join(spaces))
 
             while attempts >= guesses / 2:
                 guess_word = input("Guess the word, y/n? ")
                 if guess_word in "y":
                     guess = input("What is the word? ")
                     if guess == word_item:
-                        print("Correct! You avoided death!")
+                        print("Correct! You win!")
                         raise SystemExit
                     else:
                         print("Wrong!")
@@ -68,7 +68,7 @@ def main():
             if guess_letter not in incorrect_letters:
                 incorrect_letters.append(guess_letter)
             else:
-                print("You already guessed that letter!")
+                print(f"You already guessed {guess_letter}!")
 
             print(f"There is no {guess_letter}.\n{remaining}")
 
