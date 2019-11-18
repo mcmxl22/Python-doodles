@@ -33,10 +33,10 @@ def expiration():
 
     # Extracts time of day and adds 3 hours.
     future_time = date + datetime.timedelta(0, 10800)
-    new_time = list(str(future_time))
-    del new_time[0:11]
-    del new_time[4:14]
-    new_time = "".join(new_time)
+    time = list(str(future_time))
+    del time[0:11]
+    del time[4:14]
+    new_time = "".join(time)
 
     # Sets date format and adds a day.
     expires = f"{date.month}-{date.day + 1}-{date.year}"
