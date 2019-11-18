@@ -18,10 +18,11 @@ def hang_man():
         lines = f.readlines()
         word = random.choice(lines)
 
-    word.lstrip()
-    letter_list = list(word)
+    word.rstrip()
 
+    letter_list = list(word)
     guesses = ((l := len(letter_list)) * 2)
+
     attempts = 0
     incorrect_letters = []
     spaces = ["-" for letter in word]
@@ -33,11 +34,17 @@ def hang_man():
         remaining = f"You have {guesses - attempts} guesses left."
 
         if guess_letter in letter_list:
-            locate = letter_list.index(guess_letter)
-            spaces[locate] = guess_letter
-            print(f"Letter {locate + 1} is: {guess_letter}")
-            print(remaining)
-            print("".join(spaces))
+            start = 0
+            while True:
+                try:
+                    locate = letter_list.index(guess_letter, start)
+                    spaces[locate] = guess_letter
+                    start = locate + 1
+                    print(f"Letter {locate + 1} is: {guess_letter}")
+                    print(remaining)
+                    print("".join(spaces))
+                except:
+                    break
 
             while attempts >= guesses / 2:
                 guess_word = input("Guess the word, y/n? ")
