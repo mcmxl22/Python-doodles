@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 2.4
+Hangman version 3
 Python 3.8
 Requires a .txt file with a list of words.
 I used:
@@ -11,7 +11,14 @@ https://github.com/first20hours/google-10000-english/blob/master/google-10000-en
 import random
 
 
-def hang_man():
+def get_word():
+    with open("words_alpha.txt", "r") as f:
+        lines = f.readlines()
+        w = random.choice(lines)
+    word = w.rstrip()  # Removes \n character.
+    return word
+
+def main():
     """Hangman game"""
     print("""
             This is a hangman game. It tells you how many letters are in the word.
@@ -20,18 +27,12 @@ def hang_man():
             you of duplicates.
           """)
 
-    with open("words_alpha.txt", "r") as f:
-        lines = f.readlines()
-        w = random.choice(lines)
-
-    word = w.rstrip()  # Removes \n character.
-
-    letter_list = list(word)
+    word_item = get_word()
+    letter_list = list(word_item)
     guesses = ((l := len(letter_list)) * 2)
-
     attempts = 0
     incorrect_letters = []
-    spaces = ["-" for letter in word]
+    spaces = ["-" for letter in word_item]
     print(f"There are {l} letters in the word.")
 
     while attempts < guesses:
@@ -56,7 +57,7 @@ def hang_man():
                 guess_word = input("Guess the word, y/n? ")
                 if guess_word in "y":
                     guess = input("What is the word? ")
-                    if guess == word:
+                    if guess == word_item:
                         print("Correct! You avoided death!")
                         raise SystemExit
                     else:
@@ -73,8 +74,8 @@ def hang_man():
             print(f"There is no {guess_letter}.\n{remaining}")
 
     else:
-        print(f"You're hung! The word was {word}.")
+        print(f"You're hung! The word was {word_item}.")
 
 
 if __name__ == "__main__":
-    hang_man()
+    main()
