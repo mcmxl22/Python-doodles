@@ -49,8 +49,9 @@ def stairs():
             living_room()
 
 
-#def kitchen():
-    #"""kitchen"""
+def kitchen():
+    """kitchen"""
+    pass
 
 
 def basement():
@@ -91,7 +92,7 @@ def living_room():
         ]
         numli.addnum(room_select)
         room_choice = input(
-            """\nYou're in the living room.
+            """\nThis is the living room.
                                \rChoose a room or activity. """
         )
 

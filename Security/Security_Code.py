@@ -39,29 +39,28 @@ def expiration():
     new_time = "".join(new_time)
 
     # Sets date format and adds a day.
-    expires = f"{date.year}-0{date.month}-0{date.day + 1}"
+    expires = f"{date.month}-{date.day + 1}-{date.year}"
 
     # Removes time from date.
     list_date = list(str(date))
     del list_date[10:26]
     new_date = "".join(list_date)
+    print(new_date)
 
-    with open("transfer.txt", "r+") as file:
+    with open("transfer.txt", "r") as file:
         current_data = file.readlines()
+        print(str(current_data))
 
-    if current_data == ["\n"] or []:
+    if str(current_data) not in new_date:
         with open("transfer.txt", "w") as file:
-            file.write(f'Expires: {expires}\n{"XX"}\n{new_time}')
+            file.write(f"Expires: {expires} {'XX'} {new_time}")
 
-    else:
-        pass
-
-    if new_date == expires:
+    elif new_date in expires:
         with open("transfer.txt", "w") as file:
             code_1 = random.choice(letters)
             code_2 = random.choice(letters)
             day_code = f"{code_1}{code_2}"
-            file.write(f"""Expires: {day_code}\n{expires}\n{new_time}""")
+            file.write(f"Expires: {day_code} {expires} {new_time}")
 
     else:
         raise SystemExit
