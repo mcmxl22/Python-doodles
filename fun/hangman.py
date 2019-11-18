@@ -22,9 +22,9 @@ def hang_man():
 
     with open("words_alpha.txt", "r") as f:
         lines = f.readlines()
-        word = random.choice(lines)
+        w = random.choice(lines)
 
-    word.rstrip()
+    word = w.rstrip()  # Removes \n character.
 
     letter_list = list(word)
     guesses = ((l := len(letter_list)) * 2)
