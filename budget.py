@@ -11,7 +11,7 @@ balance = 0.00
 
 def budget():
     """budget"""
-    menu_options = ["Set Ballance", "Add Transaction", "Check Balance"]
+    menu_options = ["Set Balance", "Add Transaction", "Check Balance"]
     numli.addnum(menu_options)
     menu_choice = input("What do you want to do? ")
 
@@ -22,7 +22,6 @@ def budget():
         print(f"Current balance:{balance}")
         with open("budget.txt", "w") as f:
             f.write(f"Balance:{balance}\n")
-        f.close
         budget()
 
     if menu_choice in "2":
@@ -38,9 +37,8 @@ def budget():
             print(f"Your new ballance is:{balance - amount}\n")
 
     if menu_choice in "3":
-        file = open("budget.txt", "r")
-        print(file.read())
-        file.close
+        with open("budget.txt", "r") as f:
+            print(f.read())
         budget()
 
 

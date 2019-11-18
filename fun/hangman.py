@@ -13,6 +13,12 @@ import random
 
 def hang_man():
     """Hangman game"""
+    print("""
+            This is a hangman game. It tells you how many letters are in the word.
+            You have 2 guesses for each letter in the word. It will fill in the blanks
+            when you guess a correct letter. It keeps track of wrong guesses and warns
+            you of duplicates.
+          """)
 
     with open("words_alpha.txt", "r") as f:
         lines = f.readlines()
