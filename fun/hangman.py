@@ -24,7 +24,7 @@ def hang_man():
         lines = f.readlines()
         word = random.choice(lines)
 
-    word.lstrip()
+    word.rstrip()
     letter_list = list(word)
 
     guesses = ((l := len(letter_list)) * 2)
