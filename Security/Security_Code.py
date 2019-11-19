@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Security_Code Version 2
+Security_Code Version 3
 Python 3.7
 """
 
@@ -11,14 +11,20 @@ import string
 
 
 DATE = datetime.datetime.now()
-
+DAY = DATE.day
 
 def check_file():
     """Check if file exists."""
     if os.path.exists("transfer.txt"):
         return
     else:
-        with open("transfer.txt", "w+") as file:
+        with open("transfer.txt", "w") as file:
+            return
+
+    if os.path.exists("code.txt"):
+        return
+    else:
+        with open("code.txt", "w") as file:
             return
 
 
@@ -33,7 +39,7 @@ def format_time():
 
 def set_expiration():
     """Sets date format and adds a day."""
-    expires = f"{DATE.month}/{DATE.day + 1}/{DATE.year}"
+    expires = f"{DATE.month}/{DAY + 1}/{DATE.year}"
     return expires
 
 
@@ -43,7 +49,15 @@ def set_code():
     code_1 = random.choice(letters)
     code_2 = random.choice(letters)
     day_code = f"{code_1}{code_2}"
-    return day_code
+
+    with open("code.txt", "r") as file:
+        code = "".join(file.readlines())
+
+    if str(DAY) in set_expiration():
+        with open("code.txt", "w") as file:
+            file.write(day_code)
+    else:
+        return str(code)
 
 
 def main():
@@ -51,16 +65,14 @@ def main():
     Set next day expiration date and print a random, 2 letter
     security code that changes daily to indicate expiration.
     """
-
     with open("transfer.txt", "r") as file:
         current_data = file.readlines()
         data = str("".join(current_data))
-        print(data)
 
     with open("transfer.txt", "w") as file:
-        if data not in set_expiration():
-            file.write(f"Expires: {set_code()} {set_expiration()} {format_time()}")
-            raise SystemExit
+        expire_info = f"""Expires:  {set_expiration()} {format_time()}
+        \r{set_code()}"""
+        file.write(expire_info)
 
 
 if __name__ == "__main__":
