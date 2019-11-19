@@ -43,7 +43,7 @@ def format_time():
 
 def set_expiration():
     """Sets date format and adds a day."""
-    expires = f"{DATE.month}/{DAY + 1}/{DATE.year}"
+    expires = f"{str(DAY)}"
     return expires
 
 def set_code():
@@ -52,16 +52,22 @@ def set_code():
     code_1 = random.choice(letters)
     code_2 = random.choice(letters)
     day_code = f"{code_1}{code_2}"
+    return day_code
 
-    with open("code.txt", "r") as file:
+def write_code():
+    """Writes day_code to code.txt"""
+    with open("code.txt", "r+") as file:
         code = "".join(file.readlines())
-        print(code)
+        if not code:
+            file.write(set_code())
+        else:
+            return
 
-    if str(DAY) not in set_expiration():
+    if str(DAY + 1) == set_expiration():
         with open("code.txt", "w") as file:
-            file.write(day_code)
+            file.write(set_code())
     else:
-        return "".join(code)
+        return code
 
 
 def main():
@@ -70,9 +76,9 @@ def main():
     security code that changes daily to indicate expiration.
     """
     with open("transfer.txt", "w") as file:
-        expire_info = f"""Expires: {set_expiration()} {format_time()}
-        \r{set_code()}"""
-        file.write(expire_info)
+        file.write(f"""Expires: {DATE.month}/{set_expiration()}/{DATE.year}
+        \r{format_time()}
+        \r{write_code()}""")
 
 
 if __name__ == "__main__":
