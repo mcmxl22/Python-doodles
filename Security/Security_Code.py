@@ -68,6 +68,8 @@ def write_code():
         if str(DAY + 1) == set_expiration():
             with open("code.txt", "w") as file:
                 file.write(set_code())
+
+
         else:
             return code
 
