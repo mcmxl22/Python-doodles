@@ -24,7 +24,7 @@ def budget():
             f.write(f"Balance:{balance}\n")
         budget()
 
-    if menu_choice in "2":
+    elif menu_choice in "2":
         transaction_options = ["Add", "Subtract"]
         numli.addnum(transaction_options)
         transaction_choice = input("Add or subtract amount?")
@@ -36,7 +36,7 @@ def budget():
             amount = float(input("Enter amount: "))
             print(f"Your new ballance is:{balance - amount}\n")
 
-    if menu_choice in "3":
+    elif menu_choice in "3":
         with open("budget.txt", "r") as f:
             print(f.read())
         budget()
