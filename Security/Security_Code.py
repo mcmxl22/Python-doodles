@@ -33,7 +33,7 @@ def code_file():
 
 def format_time():
     """Extracts time of day and adds 3 hours."""
-    future_time = DATE + datetime.timedelta(0, 10800)
+    future_time = DATE + datetime.timedelta(0)
     time = list(str(future_time))
     del time[0:11], time[4:14]
     new_time = "".join(time)
@@ -65,7 +65,7 @@ def write_code():
         else:
             return code
 
-        if str(DAY + 1) == set_expiration():
+        if str(DAY + 1) in set_expiration():
             with open("code.txt", "w") as file:
                 file.write(set_code())
 
@@ -74,21 +74,17 @@ def write_code():
             return code
 
 
-def main(c):
+def main():
     """
     Set next day expiration date and print a random, 2 letter
     security code that changes daily to indicate expiration.
     """
     with open("transfer.txt", "w") as file:
-        c = write_code()
-        if c is None:
-            print(AssertionError)
-        file.write(f"""Expires: {DATE.month}/{set_expiration()}/{DATE.year}
-        \r{format_time()}
-        \r{write_code()}""")
+        day_format = f"{DATE.month}/{set_expiration()}/{DATE.year}"
+        file.write(f"Expires: {day_format}\n2:59am\n{write_code()}\r")
 
 
 if __name__ == "__main__":
     transfer_file()
     code_file()
-    main('c')
+    main()

@@ -12,4 +12,4 @@ def addnum(num):
 
 
 if __name__ == "__main__":
-    addnum(num)
+    addnum("num")
