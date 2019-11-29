@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 """
-Security_Code Version 3
+Security_Code Version 3.1
 Python 3.7
 """
 
 import datetime
 import os.path
+import time
 import random
 import string
 
 
 DATE = datetime.datetime.now()
 DAY = DATE.day
+
 
 def transfer_file():
     """Check if file exists."""
@@ -32,17 +34,17 @@ def code_file():
 
 
 def format_time():
-    """Extracts time of day."""
+    """Extracts time of day and adds 3 hours."""
     future_time = DATE + datetime.timedelta(0)
-    time = list(str(future_time))
+    raw_time = list(str(future_time))
     del time[0:11], time[4:14]
-    new_time = "".join(time)
+    new_time = "".join(raw_time)
     return new_time
 
 
 def set_expiration():
     """Sets date format and adds a day."""
-    expires = f"{str(DAY)}"
+    expires = f"{str(DAY + 1)}"
     return expires
 
 
@@ -59,17 +61,17 @@ def write_code():
     """Writes day_code to code.txt"""
     with open("code.txt", "r") as file:
         code = "".join(file.readlines())
-        
+
         if not code:
             file.write(set_code())
             print("1")
         else:
             return code
 
-        if str(DAY) == (DAY + 1):
+        if str(DAY) == str(DAY + 1):
             with open("code.txt", "w") as file:
                 file.write(set_code())
-                print("2")
+
         else:
             return code
 
@@ -81,7 +83,11 @@ def main():
     """
     with open("transfer.txt", "w") as file:
         day_format = f"{DATE.month}/{set_expiration()}/{DATE.year}"
-        file.write(f"Expires: {day_format}\n2:59am\n{write_code()}\r")
+
+        if write_code() == None:
+            file.write(f"Expires: {day_format}\n2:59am\nxx\r")
+        else:
+            file.write(f"Expires: {day_format}\n2:59am\n{write_code()}\r")
 
 
 if __name__ == "__main__":
