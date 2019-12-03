@@ -26,7 +26,7 @@ def main():
             This is a hangman game. It tells you how many letters are in the word.
             You have 2 guesses for each letter in the word. It will fill in the blanks
             when you guess a correct letter. It keeps track of wrong guesses and warns
-            you of duplicate guesses.
+            you of duplicate guesses. 
           """)
 
     word_item = get_word()
@@ -63,6 +63,9 @@ def main():
                         break
                 else:
                     break
+        
+        elif guess_letter in ["exit", "quit"]:
+            raise SystemExit 
 
         else:
             if guess_letter not in incorrect_letters:
