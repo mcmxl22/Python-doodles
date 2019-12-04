@@ -16,7 +16,9 @@ DAY = DATE.day
 
 
 def transfer_file():
-    """Check if file exists."""
+    """
+    Check if file exists.
+    """
     if os.path.exists("transfer.txt"):
         return
     else:
@@ -25,7 +27,9 @@ def transfer_file():
 
 
 def code_file():
-    """Check if file exists."""
+    """
+    Check if file exists.
+    """
     if os.path.exists("code.txt"):
         return
     else:
@@ -34,7 +38,9 @@ def code_file():
 
 
 def format_time():
-    """Extracts time of day and adds 3 hours."""
+    """
+    Extracts time of day and adds 3 hours.
+    """
     future_time = DATE + datetime.timedelta(0)
     raw_time = list(str(future_time))
     del time[0:11], time[4:14]
@@ -43,13 +49,18 @@ def format_time():
 
 
 def set_expiration():
-    """Sets date format and adds a day."""
-    expires = f"{str(DAY + 1)}"
+    """
+    Sets date format and adds a day.
+    """
+    expires = f"{DAY}"
+    #expires = f"{DAY + 1}"
     return expires
 
 
-def set_code():
-    """Sets random two letter code."""
+def set_letter_code():
+    """
+    Sets random two letter code.
+    """
     letters = string.ascii_uppercase
     code_1 = random.choice(letters)
     code_2 = random.choice(letters)
@@ -68,12 +79,15 @@ def write_code():
         else:
             return code
 
-        if str(DAY) == str(DAY + 1):
+        if today == tomorrow:
+            print("2")
             with open("code.txt", "w") as file:
-                file.write(set_code())
+                file.write(set_letter_code())
 
         else:
+            print("3")
             return code
+
 
 
 def main():
@@ -84,7 +98,7 @@ def main():
     with open("transfer.txt", "w") as file:
         day_format = f"{DATE.month}/{set_expiration()}/{DATE.year}"
 
-        if write_code() == None:
+        if not write_code():
             file.write(f"Expires: {day_format}\n2:59am\nxx\r")
         else:
             file.write(f"Expires: {day_format}\n2:59am\n{write_code()}\r")
