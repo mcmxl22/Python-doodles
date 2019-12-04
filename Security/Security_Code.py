@@ -69,17 +69,17 @@ def set_letter_code():
 
 
 def write_code():
-    tomorrow = set_expiration()
-    today = str(DAY)
-
-    with open("code.txt", "r+") as file:
+    """Writes day_code to code.txt"""
+    with open("code.txt", "r") as file:
         code = "".join(file.readlines())
 
         if not code:
+            file.write(set_code())
             print("1")
-            file.write(set_letter_code())
+        else:
+            return code
 
-        elif today == tomorrow:
+        if today == tomorrow:
             print("2")
             with open("code.txt", "w") as file:
                 file.write(set_letter_code())

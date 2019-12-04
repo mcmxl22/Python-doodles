@@ -3,6 +3,7 @@
 Hangman version 3.2
 Python 3.8
 Requires a .txt file with a list of words.
+Written for Windows
 I used:
 https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-long.txt
 """
@@ -23,18 +24,16 @@ def get_word():
 
 def main():
     """Hangman game"""
-    print(
-        """
+    print("""
             This is a hangman game. It tells you how many letters are in the word.
             You have 2 guesses for each letter in the word. It will fill in the blanks
             when you guess a correct letter. It keeps track of wrong guesses and warns
-            you of duplicate guesses.
-          """
-    )
+            you of duplicate guesses. 
+          """)
 
     word_item = get_word()
     letter_list = list(word_item)
-    guesses = (list_len := len(letter_list)) * 2
+    guesses = ((list_len := len(letter_list)) * 2)
     attempts = 0
     incorrect_letters = []
     spaces = ["-" for letter in word_item]
@@ -46,7 +45,7 @@ def main():
         remaining = f"Guesses remaining: {guesses - attempts}"
 
         if guess_letter in letter_list:
-            win = winsound.Beep(1000, 500)
+            win = winsound.Beep(1000, 400)
             start = 0
             for letter in range(letter_list.count(guess_letter)):
                 locate = letter_list.index(guess_letter, start)
@@ -64,22 +63,26 @@ def main():
                         print("Correct! You win!")
                         raise SystemExit
                     else:
+                        winsound.Beep(400, 400)
                         print("Wrong!")
-                        winsound.Beep(250, 500)
                         break
                 else:
                     break
+        
+        elif guess_letter in ["exit", "quit"]:
+            raise SystemExit 
 
         else:
-            winsound.Beep(250, 500)
+            winsound.Beep(400, 400)
             if guess_letter not in incorrect_letters:
                 incorrect_letters.append(guess_letter)
             else:
                 print(f"You already guessed {guess_letter}!")
 
-            print(f"There is no {guess_letter}.\n{remaining}")
+            print(f"There is no {guess_letter}.\n{remaining}!")
 
     else:
+        winsound.Beep(400, 400)
         print(f"You're hung! The word was {word_item}.")
         raise SystemExit
 
