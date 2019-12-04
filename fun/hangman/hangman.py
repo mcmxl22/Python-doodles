@@ -3,12 +3,14 @@
 Hangman version 3.2
 Python 3.8
 Requires a .txt file with a list of words.
+Written for Windows
 I used:
 https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-long.txt
 """
 
 
 import random
+import winsound
 
 
 def get_word():
@@ -43,6 +45,7 @@ def main():
         remaining = f"Guesses remaining: {guesses - attempts}"
 
         if guess_letter in letter_list:
+            win = winsound.Beep(1000, 400)
             start = 0
             for letter in range(letter_list.count(guess_letter)):
                 locate = letter_list.index(guess_letter, start)
@@ -56,9 +59,11 @@ def main():
                 if guess_word in "y":
                     guess = input("What is the word? ")
                     if guess == word_item:
+                        win
                         print("Correct! You win!")
                         raise SystemExit
                     else:
+                        winsound.Beep(400, 400)
                         print("Wrong!")
                         break
                 else:
@@ -68,14 +73,16 @@ def main():
             raise SystemExit 
 
         else:
+            winsound.Beep(400, 400)
             if guess_letter not in incorrect_letters:
                 incorrect_letters.append(guess_letter)
             else:
                 print(f"You already guessed {guess_letter}!")
 
-            print(f"There is no {guess_letter}.\n{remaining}")
+            print(f"There is no {guess_letter}.\n{remaining}!")
 
     else:
+        winsound.Beep(400, 400)
         print(f"You're hung! The word was {word_item}.")
         raise SystemExit
 
