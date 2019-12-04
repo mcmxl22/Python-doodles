@@ -3,13 +3,14 @@
 Hangman version 3.2
 Python 3.8
 Requires a .txt file with a list of words.
-Written for Windows
 I used:
 https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-long.txt
+Written for Windows.
 """
 
 
 import random
+import time
 import winsound
 
 
@@ -88,4 +89,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    start = time.time()
+    elapsed = 0
+
+    while elapsed < 300:
+        main()
+
+    else:
+        print("Your time is up!")
