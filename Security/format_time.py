@@ -5,9 +5,8 @@ Python 3.7
 """
 
 from datetime import datetime, timedelta
-
-
 DATE = datetime.now()
+
 
 def format_3hour(three_hour):
     """gets time of day and adds 3 hours."""
