@@ -26,10 +26,10 @@ def keep_score():
             
             total1 = score1
             total2 = score2
-            
+
             print(f"Team 1: {total1}")
             print(f"Team 2: {total2}")
 
 
 if __name__ == "__maint__":
-    keep_score() 
+    keep_score()
