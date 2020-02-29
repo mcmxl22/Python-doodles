@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
 """
-Hangman version 3.2
+Hangman version 3.3
 Python 3.8
 Requires a .txt file with a list of words.
+Written for Windows
 I used:
 https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-long.txt
-Written for Windows.
 """
 
 
-import random
-import time
-import winsound
+from random import choice
+from sys import exit
+from winsound import Beep
 
 
 def get_word():
     """Get a random word."""
     with open("words_alpha.txt", "r") as file:
         lines = file.readlines()
-        word_select = random.choice(lines)
+        word_select = choice(lines)
     word = word_select.rstrip()  # Removes \n character.
     return word
 
@@ -46,54 +46,50 @@ def main():
         remaining = f"Guesses remaining: {guesses - attempts}"
 
         if guess_letter in letter_list:
-            win = winsound.Beep(1000, 400)
+            win = Beep(1000, 400)
             start = 0
             for letter in range(letter_list.count(guess_letter)):
                 locate = letter_list.index(guess_letter, start)
                 spaces[locate] = guess_letter
                 start = locate + 1
-            print(remaining)
-            print("".join(spaces))
+            print(f"{remaining}\n{''.join(spaces)}")
 
             while attempts >= guesses / 2:
                 guess_word = input("Guess the word, y/n? ")
+
                 if guess_word in "y":
                     guess = input("What is the word? ")
+
                     if guess == word_item:
                         win
                         print("Correct! You win!")
-                        raise SystemExit
+                        exit(0)
+
                     else:
-                        winsound.Beep(400, 400)
+                        Beep(400, 400)
                         print("Wrong!")
                         break
                 else:
                     break
         
         elif guess_letter in ["exit", "quit"]:
-            raise SystemExit 
+            exit(0)
 
         else:
-            winsound.Beep(400, 400)
+            Beep(400, 400)
             if guess_letter not in incorrect_letters:
                 incorrect_letters.append(guess_letter)
+
             else:
                 print(f"You already guessed {guess_letter}!")
 
             print(f"There is no {guess_letter}.\n{remaining}!")
 
     else:
-        winsound.Beep(400, 400)
+        Beep(400, 400)
         print(f"You're hung! The word was {word_item}.")
-        raise SystemExit
+        exit(0)
 
 
 if __name__ == "__main__":
-    start = time.time()
-    elapsed = 0
-
-    while elapsed < 300:
-        main()
-
-    else:
-        print("Your time is up!")
+    main()
