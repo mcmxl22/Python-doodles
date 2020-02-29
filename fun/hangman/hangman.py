@@ -32,27 +32,28 @@ def main():
             you of duplicate guesses. 
           """)
 
+    win_beep = Beep(1000, 400)
+    lose_beep = Beep(400, 400)
     word_item = get_word()
     letter_list = list(word_item)
-    guesses = ((list_len := len(letter_list)) * 2)
+    guesses = ((list_length := len(letter_list)) * 2)
     attempts = 0
     incorrect_letters = []
     spaces = ["-" for letter in word_item]
-    print(f"The word has {list_len} letters.")
+    print(f"The word has {list_length} letters.")
 
     while attempts < guesses:
         guess_letter = input("Guess a letter. ")
         attempts += 1
-        remaining = f"Guesses remaining: {guesses - attempts}"
+        remaining_guesses = f"Guesses remaining: {guesses - attempts}"
 
         if guess_letter in letter_list:
-            win = Beep(1000, 400)
             start = 0
             for letter in range(letter_list.count(guess_letter)):
-                locate = letter_list.index(guess_letter, start)
-                spaces[locate] = guess_letter
-                start = locate + 1
-            print(f"{remaining}\n{''.join(spaces)}")
+                locate_letter = letter_list.index(guess_letter, start)
+                spaces[locate_letter] = guess_letter
+                start = locate_letter + 1
+            print(f"{remaining_guesses}\n{''.join(spaces)}")
 
             while attempts >= guesses / 2:
                 guess_word = input("Guess the word, y/n? ")
@@ -61,12 +62,12 @@ def main():
                     guess = input("What is the word? ")
 
                     if guess == word_item:
-                        win
+                        win_beep
                         print("Correct! You win!")
                         exit(0)
 
                     else:
-                        Beep(400, 400)
+                        lose_beep
                         print("Wrong!")
                         break
                 else:
@@ -76,17 +77,17 @@ def main():
             exit(0)
 
         else:
-            Beep(400, 400)
+            lose_beep
             if guess_letter not in incorrect_letters:
                 incorrect_letters.append(guess_letter)
 
             else:
                 print(f"You already guessed {guess_letter}!")
 
-            print(f"There is no {guess_letter}.\n{remaining}!")
+            print(f"There is no {guess_letter}.\n{remaining_guesses}!")
 
     else:
-        Beep(400, 400)
+        lose_beep
         print(f"You're hung! The word was {word_item}.")
         exit(0)
 
