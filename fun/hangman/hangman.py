@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 3.4
+Hangman version 3.9
 Python 3.8
 Requires a .txt file with a list of words.
 I used:
