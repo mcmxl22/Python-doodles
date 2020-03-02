@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 """
-clear_screen version 1
+clear_screen version 1.1
 python 3.8
 """
 
 from os import system
-from sys import exit, platform
+from sys import platform
 
 def clear_screen():
     """Clear the screen."""
