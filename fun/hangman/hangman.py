@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 3.3
+Hangman version 3.4
 Python 3.8
 Requires a .txt file with a list of words.
 Written for Windows
@@ -16,7 +16,7 @@ from winsound import Beep
 
 def get_word():
     """Get a random word."""
-    with open("words_alpha.txt", "r") as file:
+    with open("C:/Users/mcmxl/mystuff/hangman/resources/words_alpha.txt", "r") as file:
         lines = file.readlines()
         word_select = choice(lines)
     word = word_select.rstrip()  # Removes \n character.
@@ -32,8 +32,6 @@ def main():
             you of duplicate guesses. 
           """)
 
-    win_beep = Beep(1000, 400)
-    lose_beep = Beep(400, 400)
     word_item = get_word()
     letter_list = list(word_item)
     guesses = ((list_length := len(letter_list)) * 2)
@@ -44,6 +42,10 @@ def main():
 
     while attempts < guesses:
         guess_letter = input("Guess a letter. ")
+        
+        if len(guess_letter) > 1:
+           print("You can only guess a single letter.")
+        
         attempts += 1
         remaining_guesses = f"Guesses remaining: {guesses - attempts}"
 
@@ -53,7 +55,15 @@ def main():
                 locate_letter = letter_list.index(guess_letter, start)
                 spaces[locate_letter] = guess_letter
                 start = locate_letter + 1
-            print(f"{remaining_guesses}\n{''.join(spaces)}")
+            format_word = "".join(spaces)
+
+            if format_word in word_item:
+                print(f"{format_word}\nYou win!")
+                Beep(1000, 400)
+                exit(0)
+
+            else:
+                print(f"{remaining_guesses}\n{format_word}")
 
             while attempts >= guesses / 2:
                 guess_word = input("Guess the word, y/n? ")
@@ -62,12 +72,12 @@ def main():
                     guess = input("What is the word? ")
 
                     if guess == word_item:
-                        win_beep
+                        Beep(1000, 400)
                         print("Correct! You win!")
                         exit(0)
 
                     else:
-                        lose_beep
+                        Beep(400, 400)
                         print("Wrong!")
                         break
                 else:
@@ -77,7 +87,7 @@ def main():
             exit(0)
 
         else:
-            lose_beep
+            Beep(400, 400)
             if guess_letter not in incorrect_letters:
                 incorrect_letters.append(guess_letter)
 
@@ -87,7 +97,7 @@ def main():
             print(f"There is no {guess_letter}.\n{remaining_guesses}!")
 
     else:
-        lose_beep
+        Beep(400, 400)
         print(f"You're hung! The word was {word_item}.")
         exit(0)
 
