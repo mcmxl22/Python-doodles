@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Hangman version 3.6
+Hangman version 3.7
 Python 3.8
 Requires a .txt file with a list of words.
 I used:
 https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-long.txt
 """
 
-
+import config
 from random import choice
 from sys import exit
 
@@ -28,7 +28,7 @@ def main():
             This is a hangman game. It tells you how many letters are in the word.
             You have 2 guesses for each letter in the word. It will fill in the blanks
             when you guess a correct letter. It keeps track of wrong guesses and warns
-            you of duplicate guesses. 
+            you of duplicate guesses. You can type exit or quit to end the game at any time.
           """
     )
 
@@ -38,7 +38,7 @@ def main():
     guesses = (list_length := len(letter_list)) * 2
     attempts = 0
     incorrect_letters = []
-    spaces = ["-" for letter in word_item]  # Replaces letters with a dash.
+    spaces = ["-" for letter in word_item]  # Replaces letters with dashes.
     print(f"The word has {list_length} letters.")
 
     while attempts < guesses:
@@ -46,10 +46,12 @@ def main():
             guess_letter = input("Guess a letter. ")
 
         except KeyboardInterrupt:
-            exit(0)
+            config.clear_screen
+            config.quit_game
 
         if guess_letter in ["exit", "quit"]:
-            exit(0)
+            config.clear_screen
+            config.quit_game
 
         elif len(guess_letter) > 1:
             print("You can only guess a single letter!")
@@ -80,7 +82,7 @@ def main():
 
             if format_word in word_item:
                 print(f"{format_word}\nYou win!")
-                exit(0)
+                config.quit_game
 
             else:
                 print(f"{remaining_guesses}\n{format_word}")
@@ -93,7 +95,7 @@ def main():
 
                     if guess in word_item:
                         print("Correct! You win!")
-                        exit(0)
+                        config.quit_game
 
                     else:
                         print("Wrong!")
@@ -103,7 +105,7 @@ def main():
 
     else:
         print(f"You're hung! The word was {word_item}.")
-        exit(0)
+        config.quit_game
 
 
 if __name__ == "__main__":
