@@ -1,15 +1,24 @@
 #!/usr/bin/env python3
 """
-Hangman version 3.7
+Hangman version 3.8
 Python 3.8
 Requires a .txt file with a list of words.
 I used:
 https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-long.txt
 """
 
-import config
+from os import system
 from random import choice
-from sys import exit
+from sys import exit, platform
+
+
+def clear_screen():
+    """Clear the screen."""
+    if platform == "win32":
+        system("cls")
+
+    else:
+        system("clear")
 
 
 def get_word():
@@ -38,7 +47,7 @@ def main():
     guesses = (list_length := len(letter_list)) * 2
     attempts = 0
     incorrect_letters = []
-    spaces = ["-" for letter in word_item]  # Replaces letters with dashes.
+    dashes = ["-" for letter in word_item]  # Replaces letters with dashes.
     print(f"The word has {list_length} letters.")
 
     while attempts < guesses:
@@ -46,12 +55,12 @@ def main():
             guess_letter = input("Guess a letter. ")
 
         except KeyboardInterrupt:
-            config.clear_screen
-            config.quit_game
+            clear_screen()
+            exit(0)
 
         if guess_letter in ["exit", "quit"]:
-            config.clear_screen
-            config.quit_game
+            clear_screen()
+            exit(0)
 
         elif len(guess_letter) > 1:
             print("You can only guess a single letter!")
@@ -74,15 +83,16 @@ def main():
             start = 0
             remaining_guesses = f"Guesses remaining: {guesses - attempts}"
 
+            # Puts guessed letters back in the word.
             for letter in range(letter_list.count(guess_letter)):
                 locate_letter = letter_list.index(guess_letter, start)
-                spaces[locate_letter] = guess_letter
+                dashes[locate_letter] = guess_letter
                 start = locate_letter + 1
-            format_word = "".join(spaces)
+            format_word = "".join(dashes)
 
             if format_word in word_item:
                 print(f"{format_word}\nYou win!")
-                config.quit_game
+                exit(0)
 
             else:
                 print(f"{remaining_guesses}\n{format_word}")
@@ -95,7 +105,7 @@ def main():
 
                     if guess in word_item:
                         print("Correct! You win!")
-                        config.quit_game
+                        exit(0)
 
                     else:
                         print("Wrong!")
@@ -105,7 +115,7 @@ def main():
 
     else:
         print(f"You're hung! The word was {word_item}.")
-        config.quit_game
+        exit(0)
 
 
 if __name__ == "__main__":
