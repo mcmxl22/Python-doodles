@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 3.4
+Hangman version 3.5
 Python 3.8
 Requires a .txt file with a list of words.
 Written for Windows
@@ -25,27 +25,35 @@ def get_word():
 
 def main():
     """Hangman game"""
-    print("""
+    print(
+        """
             This is a hangman game. It tells you how many letters are in the word.
             You have 2 guesses for each letter in the word. It will fill in the blanks
             when you guess a correct letter. It keeps track of wrong guesses and warns
             you of duplicate guesses. 
-          """)
+          """
+    )
 
     word_item = get_word()
     letter_list = list(word_item)
-    guesses = ((list_length := len(letter_list)) * 2)
+    guesses = (list_length := len(letter_list)) * 2
     attempts = 0
     incorrect_letters = []
-    spaces = ["-" for letter in word_item]
+    spaces = ["-" for letter in word_item]  # Replaces letters with a dash.
     print(f"The word has {list_length} letters.")
 
     while attempts < guesses:
         guess_letter = input("Guess a letter. ")
-        
+
         if len(guess_letter) > 1:
-           print("You can only guess a single letter.")
-        
+            print("You can only guess a single letter!")
+
+        elif int(guess_letter):
+            print("You must guess a letter!")
+
+        else:
+            pass
+
         attempts += 1
         remaining_guesses = f"Guesses remaining: {guesses - attempts}"
 
@@ -82,7 +90,7 @@ def main():
                         break
                 else:
                     break
-        
+
         elif guess_letter in ["exit", "quit"]:
             exit(0)
 
