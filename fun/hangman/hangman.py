@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """
-Hangman version 3.5
+Hangman version 3.6
 Python 3.8
 Requires a .txt file with a list of words.
-Written for Windows
 I used:
 https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-long.txt
 """
@@ -11,7 +10,6 @@ https://github.com/first20hours/google-10000-english/blob/master/google-10000-en
 
 from random import choice
 from sys import exit
-from winsound import Beep
 
 
 def get_word():
@@ -50,20 +48,30 @@ def main():
         except KeyboardInterrupt:
             exit(0)
 
-        if len(guess_letter) > 1:
+        if guess_letter in ["exit", "quit"]:
+            exit(0)
+
+        elif len(guess_letter) > 1:
             print("You can only guess a single letter!")
 
         elif guess_letter in number_list:
             print("You must guess a letter!")
 
         else:
-            pass
+            if guess_letter not in incorrect_letters:
+                incorrect_letters.append(guess_letter)
 
+            else:
+                print(f"You already guessed {guess_letter}!")
+
+            print(f"There is no {guess_letter}!")
+        
         attempts += 1
-        remaining_guesses = f"Guesses remaining: {guesses - attempts}"
 
         if guess_letter in letter_list:
             start = 0
+            remaining_guesses = f"Guesses remaining: {guesses - attempts}"
+
             for letter in range(letter_list.count(guess_letter)):
                 locate_letter = letter_list.index(guess_letter, start)
                 spaces[locate_letter] = guess_letter
@@ -72,7 +80,6 @@ def main():
 
             if format_word in word_item:
                 print(f"{format_word}\nYou win!")
-                Beep(1000, 400)
                 exit(0)
 
             else:
@@ -84,33 +91,17 @@ def main():
                 if guess_word in "y":
                     guess = input("What is the word? ")
 
-                    if guess == word_item:
-                        Beep(1000, 400)
+                    if guess in word_item:
                         print("Correct! You win!")
                         exit(0)
 
                     else:
-                        Beep(400, 400)
                         print("Wrong!")
                         break
                 else:
                     break
 
-        elif guess_letter in ["exit", "quit"]:
-            exit(0)
-
-        else:
-            Beep(400, 400)
-            if guess_letter not in incorrect_letters:
-                incorrect_letters.append(guess_letter)
-
-            else:
-                print(f"You already guessed {guess_letter}!")
-
-            print(f"There is no {guess_letter}.\n{remaining_guesses}!")
-
     else:
-        Beep(400, 400)
         print(f"You're hung! The word was {word_item}.")
         exit(0)
 
