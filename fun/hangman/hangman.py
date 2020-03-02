@@ -9,7 +9,6 @@ https://github.com/first20hours/google-10000-english/blob/master/google-10000-en
 """
 
 
-from os import system
 from random import choice
 from sys import exit
 from winsound import Beep
