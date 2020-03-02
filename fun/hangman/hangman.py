@@ -9,6 +9,7 @@ https://github.com/first20hours/google-10000-english/blob/master/google-10000-en
 """
 
 
+from os import system
 from random import choice
 from sys import exit
 from winsound import Beep
@@ -35,6 +36,7 @@ def main():
     )
 
     word_item = get_word()
+    number_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
     letter_list = list(word_item)
     guesses = (list_length := len(letter_list)) * 2
     attempts = 0
@@ -43,12 +45,16 @@ def main():
     print(f"The word has {list_length} letters.")
 
     while attempts < guesses:
-        guess_letter = input("Guess a letter. ")
+        try:
+            guess_letter = input("Guess a letter. ")
+
+        except KeyboardInterrupt:
+            exit(0)
 
         if len(guess_letter) > 1:
             print("You can only guess a single letter!")
 
-        elif int(guess_letter):
+        elif guess_letter in number_list:
             print("You must guess a letter!")
 
         else:
