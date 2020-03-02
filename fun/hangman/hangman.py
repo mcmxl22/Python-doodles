@@ -1,34 +1,12 @@
 #!/usr/bin/env python3
 """
-Hangman version 3.9
+Hangman version 4
 Python 3.8
-Requires a .txt file with a list of words.
-I used:
-https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-long.txt
+Requires: get_word.py, clear_screen.py
 """
 
-from os import system
-from random import choice
-from sys import exit, platform
-
-
-def clear_screen():
-    """Clear the screen."""
-    if platform in "win32":
-        system("cls")
-
-    else:
-        system("clear")
-
-
-def get_word():
-    """Get a random word."""
-    word_list_url = "C:/Users/mcmxl/mystuff/hangman/resources/words_alpha.txt"
-    with open(word_list_url, "r") as file:
-        lines = file.readlines()
-        word_select = choice(lines)
-    word = word_select.rstrip()  # Removes \n character.
-    return word
+from clear_screen import clear_screen
+from get_word import get_word
 
 
 def main():
@@ -42,14 +20,14 @@ def main():
         you of duplicate guesses. You can type exit or quit to end the game at any time.
         """
     )
-
+    
     word_item = get_word()
     number_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
     letter_list = list(word_item)
     guesses = (list_length := len(letter_list)) * 2
     attempts = 0
-    incorrect_letters = []
     dashes = ["-" for letter in word_item]  # Replaces letters with dashes.
+    incorrect_letters = []
     print(f"The word has {list_length} letters.")
 
     while attempts < guesses:
@@ -117,7 +95,9 @@ def main():
                         exit(0)
 
                     else:
-                        print("Wrong!")
+                        clear_screen()
+                        print(f"{guess} is incorrect!")
+                        print(format_word)
                         break
                 else:
                     break
