@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 4
+Hangman version 4.1
 Python 3.8
 Requires: get_word.py, clear_screen.py
 """
@@ -44,7 +44,7 @@ def main():
 
         elif len(guess_letter) > 1:
             clear_screen
-            print("You can only guess a single letter!")
+            print("You must guess a single letter!")
 
         elif guess_letter in number_list:
             clear_screen()
@@ -55,9 +55,11 @@ def main():
                 incorrect_letters.append(guess_letter)
 
             else:
+                clear_screen()
                 print(f"You already guessed {guess_letter}!")
-            clear_screen()
+            
             print(f"There is no {guess_letter}!")
+
 
         attempts += 1
 
@@ -70,11 +72,12 @@ def main():
                 locate_letter = letter_list.index(guess_letter, start)
                 dashes[locate_letter] = guess_letter
                 start = locate_letter + 1
+            win = f"You won in {attempts} guesses!"
             format_word = "".join(dashes)
 
             if format_word in word_item:
                 clear_screen()
-                print(f"{format_word}\nYou win!")
+                print(win)
                 exit(0)
 
             else:
@@ -91,7 +94,7 @@ def main():
 
                     if guess in word_item:
                         clear_screen()
-                        print(f"{guess}\nYou win!")
+                        print(f"{guess}\n{win}")
                         exit(0)
 
                     else:
@@ -100,6 +103,8 @@ def main():
                         print(format_word)
                         break
                 else:
+                    clear_screen()
+                    print(format_word)
                     break
 
     else:
@@ -108,4 +113,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    exit(main())
