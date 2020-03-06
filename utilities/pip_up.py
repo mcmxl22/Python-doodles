@@ -1,33 +1,33 @@
 #!/usr/bin/env python3
 """
-pip_up version 1
+pip_up version 1.1
 requires: numli.py
 Python 3.7
 """
 
-import numli
-import os
+from numli import add_numbers
+from os import system
 
 
 def pkg_update():
     """Update pip packages."""
     options = ["Yes", "Exit"]
-    numli.addnum(options)
+    add_numbers(options)
     choice = input("Check for updates? ")
 
     if choice in "1":
         print("Checking for updates.")
-        results = os.system("pip list -o")
+        results = system("pip list -o")
 
-        os.system("pip-review --local --interactive")
+        system("pip-review --local --interactive")
         pkg_update()
 
     elif choice in "2":
-        raise SystemExit
+        exit(0)
 
     else:
         pkg_update()
 
 
 if __name__ == "__main__":
-    pkg_update()
+    exit(pkg_update())
