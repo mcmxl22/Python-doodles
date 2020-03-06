@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 4.1
+Hangman version 4.2
 Python 3.8
 Requires: get_word.py, clear_screen.py
 """
@@ -8,6 +8,8 @@ Requires: get_word.py, clear_screen.py
 from clear_screen import clear_screen
 from get_word import get_word
 
+def format_word():
+    pass
 
 def main():
     """Hangman game"""
@@ -53,14 +55,17 @@ def main():
         else:
             if guess_letter not in incorrect_letters:
                 incorrect_letters.append(guess_letter)
+                #clear_screen()
+                print(f"There is no {guess_letter}!")
 
-            else:
+            elif guess_letter in incorrect_letters:
                 clear_screen()
                 print(f"You already guessed {guess_letter}!")
+
+            else:
+                break
+
             
-            print(f"There is no {guess_letter}!")
-
-
         attempts += 1
 
         if guess_letter in letter_list:
@@ -72,11 +77,13 @@ def main():
                 locate_letter = letter_list.index(guess_letter, start)
                 dashes[locate_letter] = guess_letter
                 start = locate_letter + 1
-            win = f"You won in {attempts} guesses!"
+
             format_word = "".join(dashes)
+            win = f"You won in {attempts} guesses!"
 
             if format_word in word_item:
                 clear_screen()
+                print(format_word)
                 print(win)
                 exit(0)
 
@@ -85,7 +92,7 @@ def main():
                 print(f"{remaining_guesses}\n{format_word}")
 
             while attempts >= guesses / 2:
-                guess_word = input("Guess the word, y/n? ")
+                guess_word = input("Guess the word? y/n ")
 
                 if guess_word in "y":
                     clear_screen()
