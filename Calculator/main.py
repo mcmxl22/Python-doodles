@@ -16,14 +16,14 @@ text_in = StringVar()
 operator = ""
 
 def set_number(number):
-    """Puts numbers in entry box."""
+    """Enter the equation."""
     global operator
     operator=operator+str(number)
     text_in.set(operator)
 
 
 def equals():
-    """"""
+    """Adds"""
     global operator
     add = str(eval(operator))
     text_in.set(add)
@@ -31,21 +31,21 @@ def equals():
 
 
 def equals():
-    """"""
+    """Subtracts"""
     global operator
     sub = str(eval(operator))
     text_in.set(sub)
     operator = ""
 
 def equals():
-    """"""
+    """Multiplies"""
     global operator
     mult = str(eval(operator))
     text_in.set(mult)
     operator = ""
 
 def equals():
-    """"""
+    """Divides"""
     global operator
     div = str(eval(operator))
     text_in.set(div)
@@ -53,6 +53,7 @@ def equals():
 
 
 def clear():
+    """Clears the text box."""
     text_in.set("")
 
 
