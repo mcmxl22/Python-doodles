@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-calculator version 1
+calculator version 1.1
 Python 3.7
 """
 
@@ -25,31 +25,30 @@ def set_number(number):
 def equals():
     """Adds"""
     global operator
-    add = str(eval(operator))
-    text_in.set(add)
-    operator = ""
+    solve = str(eval(operator))
 
+    if "+" in operator:
+        add = solve
+        text_in.set(add)
+        operator = ""
 
-def equals():
-    """Subtracts"""
-    global operator
-    sub = str(eval(operator))
-    text_in.set(sub)
-    operator = ""
+    elif "-" in operator:
+        sub = solve
+        text_in.set(sub)
+        operator = ""
 
-def equals():
-    """Multiplies"""
-    global operator
-    mult = str(eval(operator))
-    text_in.set(mult)
-    operator = ""
+    elif "*" in operator:
+        mult = solve
+        text_in.set(mult)
+        operator = ""
 
-def equals():
-    """Divides"""
-    global operator
-    div = str(eval(operator))
-    text_in.set(div)
-    operator = ""
+    elif "/" in operator:
+        div = solve
+        text_in.set(div)
+        operator = ""
+    
+    else:
+        return
 
 
 def clear():
