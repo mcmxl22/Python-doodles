@@ -8,8 +8,6 @@ Requires: get_word.py, clear_screen.py
 from clear_screen import clear_screen
 from get_word import get_word
 
-def format_word():
-    pass
 
 def main():
     """Hangman game"""
@@ -22,7 +20,7 @@ def main():
         you of duplicate guesses. You can type exit or quit to end the game at any time.
         """
     )
-    
+
     word_item = get_word()
     number_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
     letter_list = list(word_item)
@@ -45,7 +43,7 @@ def main():
             exit(0)
 
         elif len(guess_letter) > 1:
-            clear_screen
+            clear_screen()
             print("You must guess a single letter!")
 
         elif guess_letter in number_list:
@@ -55,7 +53,7 @@ def main():
         else:
             if guess_letter not in incorrect_letters:
                 incorrect_letters.append(guess_letter)
-                #clear_screen()
+                # clear_screen()
                 print(f"There is no {guess_letter}!")
 
             elif guess_letter in incorrect_letters:
@@ -65,7 +63,6 @@ def main():
             else:
                 break
 
-            
         attempts += 1
 
         if guess_letter in letter_list:
