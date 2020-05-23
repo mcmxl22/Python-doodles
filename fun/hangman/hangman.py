@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 4.2
+Hangman version 4.3
 Python 3.8
 Requires: get_word.py, clear_screen.py
 """
@@ -13,16 +13,15 @@ def main():
     """Hangman game"""
     clear_screen()
     print(
-        """
-        This is a hangman game. It tells you how many letters are in the word.
-        You have 2 guesses for each letter. It will fill in the blanks when
-        you guess a correct letter. It keeps track of wrong guesses and warns
-        you of duplicate guesses. You can type exit or quit to end the game at any time.
-        """
+    """
+    This is a hangman game. It tells you how many letters are in the word.
+    You have 2 guesses for each letter. It will fill in the blanks when
+    you guess a correct letter. It keeps track of wrong guesses and warns
+    you of duplicate guesses. You can type exit or quit to end the game at any time.
+    """
     )
 
     word_item = get_word()
-    number_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
     letter_list = list(word_item)
     guesses = (list_length := len(letter_list)) * 2
     attempts = 0
@@ -38,22 +37,18 @@ def main():
             clear_screen()
             exit(0)
 
-        if guess_letter in ["exit", "quit"]:
+        if guess_letter.lower() in ["exit", "quit"]:
             clear_screen()
             exit(0)
 
-        elif len(guess_letter) > 1:
+        elif not guess_letter.isalpha() or len(guess_letter) > 1:
             clear_screen()
-            print("You must guess a single letter!")
-
-        elif guess_letter in number_list:
-            clear_screen()
-            print("You must guess a letter!")
+            print("Please enter a single letter!")
 
         else:
             if guess_letter not in incorrect_letters:
                 incorrect_letters.append(guess_letter)
-                # clear_screen()
+                clear_screen()
                 print(f"There is no {guess_letter}!")
 
             elif guess_letter in incorrect_letters:
@@ -80,8 +75,7 @@ def main():
 
             if format_word in word_item:
                 clear_screen()
-                print(format_word)
-                print(win)
+                print(f"{format_word}\n{win}")
                 exit(0)
 
             else:
@@ -91,21 +85,21 @@ def main():
             while attempts >= guesses / 2:
                 guess_word = input("Guess the word? y/n ")
 
-                if guess_word in "y":
+                if guess_word.lower() in "y":
                     clear_screen()
                     print(format_word)
                     guess = input("What is the word? ")
 
-                    if guess in word_item:
+                    if guess.lower() in word_item:
                         clear_screen()
                         print(f"{guess}\n{win}")
                         exit(0)
 
                     else:
                         clear_screen()
-                        print(f"{guess} is incorrect!")
-                        print(format_word)
+                        print(f"{guess} is incorrect!\n{format_word}")
                         break
+
                 else:
                     clear_screen()
                     print(format_word)
