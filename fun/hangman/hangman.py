@@ -31,13 +31,13 @@ def main():
 
     while attempts < guesses:
         try:
-            guess_letter = input("Guess a letter. ")
+            guess_letter = input("Guess a letter. ").lower()
 
         except KeyboardInterrupt:
             clear_screen()
             exit(0)
 
-        if guess_letter.lower() in ["exit", "quit"]:
+        if guess_letter in ["exit", "quit"]:
             clear_screen()
             exit(0)
 
@@ -83,9 +83,9 @@ def main():
                 print(f"{remaining_guesses}\n{format_word}")
 
             while attempts >= guesses / 2:
-                guess_word = input("Guess the word? y/n ")
+                guess_word = input("Guess the word? y/n ").lower()
 
-                if guess_word.lower() in "y":
+                if guess_word in "y":
                     clear_screen()
                     print(format_word)
                     guess = input("What is the word? ")
