@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-get_word version 1
+get_path version 1
 Python 3.8
 """
 
