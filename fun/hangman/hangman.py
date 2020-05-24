@@ -88,7 +88,7 @@ def main():
                 if guess_word in "y":
                     clear_screen()
                     print(format_word)
-                    guess = input("What is the word? ")
+                    guess = input("What is the word? ").lower()
 
                     if guess.lower() in word_item:
                         clear_screen()
