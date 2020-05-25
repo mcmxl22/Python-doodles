@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 4.5
+Hangman version 4.6
 Python 3.8
 Requires: get_word.py, clear_screen.py
 """
@@ -50,14 +50,15 @@ you of duplicate guesses. You can type exit or quit to end the game at any time.
             clear_and_print("Please enter a letter!")
         elif len(guess_letter) > 1:
             clear_and_print("Please enter a single letter!")
+        elif guess_letter in word_item:
+            clear_and_print(f"{guess_letter} is in the word!")
+        elif guess_letter not in incorrect_letters:
+            incorrect_letters.append(guess_letter)
+            clear_and_print(f"There is no {guess_letter}!")
+        elif guess_letter in incorrect_letters:
+            clear_and_print(f"You already guessed {guess_letter}!")
         else:
-            if guess_letter not in incorrect_letters:
-                incorrect_letters.append(guess_letter)
-                clear_and_print(f"There is no {guess_letter}!")
-            elif guess_letter in incorrect_letters:
-                clear_and_print(f"You already guessed {guess_letter}!")
-            else:
-                break
+            break
 
         attempts += 1
 
@@ -77,7 +78,7 @@ you of duplicate guesses. You can type exit or quit to end the game at any time.
             if format_word in word_item:
                 exit(clear_and_print(f"{format_word}\n{win}"))
             else:
-                clear_and_print((remaining := f"{remaining_guesses}\n{format_word}"))
+                print((remaining := f"{remaining_guesses}\n{format_word}"))
 
             while attempts >= guesses / 2:
                 guess_word = input("Guess the word? y/n ").lower()
