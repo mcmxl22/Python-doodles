@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 4.4
+Hangman version 4.5
 Python 3.8
 Requires: get_word.py, clear_screen.py
 """
@@ -77,22 +77,23 @@ you of duplicate guesses. You can type exit or quit to end the game at any time.
             if format_word in word_item:
                 exit(clear_and_print(f"{format_word}\n{win}"))
             else:
-                clear_and_print(f"{remaining_guesses}\n{format_word}")
+                clear_and_print((remaining := f"{remaining_guesses}\n{format_word}"))
 
             while attempts >= guesses / 2:
                 guess_word = input("Guess the word? y/n ").lower()
 
-                if guess_word.lower() in "y":
+                if guess_word in "y":
                     clear_and_print(format_word)
                     guess = input("What is the word? ").lower()
 
-                    if guess.lower() in word_item:
+                    if guess in word_item:
                         exit(clear_and_print(f"{guess}\n{win}"))
                     else:
                         clear_and_print(f"{guess} is incorrect!\n{format_word}")
                         break
+
                 else:
-                    clear_and_print(format_word)
+                    clear_and_print(remaining)
                     break
 
     else:
