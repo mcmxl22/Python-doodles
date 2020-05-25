@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 4.6
+Hangman version 4.7
 Python 3.8
 Requires: get_word.py, clear_screen.py
 """
@@ -61,6 +61,7 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
             break
 
         attempts += 1
+        score = guesses - attempts
 
         if guess_letter in letter_list:
             start = 0
@@ -73,7 +74,7 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
                 start = locate_letter + 1
 
             format_word = "".join(dashes)
-            win = f"You won in {attempts} guesses!"
+            win = f"You win! Score: {score}"
 
             if format_word in word_item:
                 exit(clear_and_print(f"{format_word}\n{win}"))
