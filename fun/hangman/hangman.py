@@ -24,9 +24,9 @@ def main():
     clear_and_print(
         """
 This is a hangman game. It tells you how many letters are in the word.
-You have 2 guesses for each letter. It will fill in the blanks when
-you guess a correct letter. It keeps track of wrong guesses and warns
-you of duplicate guesses. You can type exit or quit to end the game at any time.
+You have 2 guesses for each letter. It fills in the blanks when
+you guess a correct letter. It keeps track of guesses and warns
+you of duplicate guesses. Type exit or quit to end the game at any time.
 """
     )
 
@@ -90,7 +90,8 @@ you of duplicate guesses. You can type exit or quit to end the game at any time.
                     if guess in word_item:
                         exit(clear_and_print(f"{guess}\n{win}"))
                     else:
-                        clear_and_print(f"{guess} is incorrect!\n{format_word}")
+                        clear_and_print(f"{guess} is incorrect!")
+                        print(format_word)
                         break
 
                 else:
