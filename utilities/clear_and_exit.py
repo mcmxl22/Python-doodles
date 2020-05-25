@@ -9,8 +9,9 @@ from clear_screen import clear_screen
 
 
 def clear_and_exit():
+"""Clears the screen and exits"""
     exit(clear_screen())
 
 
 if __name__ == "__main__":
-    exit(clear_screen())
+    exit(clear_and_exit())
