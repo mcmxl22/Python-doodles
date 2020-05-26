@@ -5,7 +5,7 @@ requires: numli.py
 Python 3.7
 """
 
-from numli import addnum
+from numli import add_numbers
 from os import system
 
 
@@ -13,7 +13,7 @@ def pkg_update():
     """Update pip packages."""
     while True:
         options = ["Yes", "Exit"]
-        addnum(options)
+        add_numbers(options)
 
         choice = input("Check for updates? ")
 
@@ -21,7 +21,6 @@ def pkg_update():
             print("Checking for updates.")
             results = system("pip list -o")
             system("pip-review --local --interactive")
-            pkg_update()
         else:
             exit(0)
 
