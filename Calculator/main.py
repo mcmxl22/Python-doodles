@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 calculator version 1.2
 Python 3.7
@@ -28,7 +29,6 @@ def equals():
     global operator
     try:
         solve = str(eval(operator))
-
     except ZeroDivisionError:
         text_in.set("Can't divide by 0.")
         operator = ""
@@ -37,22 +37,18 @@ def equals():
         add = solve
         text_in.set(add)
         operator = ""
-
     elif "-" in operator:
         sub = solve
         text_in.set(sub)
         operator = ""
-
     elif "*" in operator:
         mult = solve
         text_in.set(mult)
         operator = ""
-
     elif "/" in operator:
         div = solve
         text_in.set(div)
         operator = ""
-
     else:
         return
 
