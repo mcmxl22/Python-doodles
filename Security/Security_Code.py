@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 Security_Code Version 3.2
 Python 3.7
@@ -6,7 +7,6 @@ Python 3.7
 
 from datetime import datetime
 from os import path
-import time
 from random import choice
 from string import ascii_uppercase
 
@@ -57,8 +57,9 @@ def set_letter_code():
 
 
 def write_code():
-    """Writes day_code to code.txt."""
-
+    """
+    Writes day_code to code.txt.
+    """
     tomorrow = set_expiration()
     today = str(DAY)
 
@@ -69,17 +70,13 @@ def write_code():
 
         if not code:
             file_code
-
         else:
             return code
-
         if today == tomorrow:
             with open("code.txt", "w") as file:
                 file_code
-
         else:
             return code
-
 
 
 def main():
@@ -92,7 +89,6 @@ def main():
 
         if not write_code():
             file.write(f"Expires: {day_format}\n2:59am\nxx")
-
         else:
             file.write(f"Expires: {day_format}\n2:59am\n{write_code()}")
 
