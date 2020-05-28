@@ -19,7 +19,6 @@ def pkg_update():
 
         if choice in "1":
             print("Checking for updates.")
-            results = system("pip list -o")
             system("pip-review --local --interactive")
         else:
             exit(0)
