@@ -7,7 +7,6 @@ Python 3.7
 
 def keep_score():
     """keep score."""
-
     score1 = 0
     score2 = 0
     
