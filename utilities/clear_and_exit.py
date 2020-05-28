@@ -10,7 +10,7 @@ from clear_screen import clear_screen
 
 
 def clear_and_exit():
-"""Clears the screen and exits"""
+    """Clears the screen and exits"""
     exit(clear_screen())
 
 
