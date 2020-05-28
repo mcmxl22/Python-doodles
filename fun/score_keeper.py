@@ -11,7 +11,7 @@ def keep_score():
     score2 = 0
     
     while True:
-        
+
         try:
             team1 = int(input("Enter team 1 score."))
             team2 = int(input("Enter team 2 score."))
