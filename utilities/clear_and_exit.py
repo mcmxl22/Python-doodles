@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 clear_and_exit version 1
 Python 3.8
