@@ -19,7 +19,6 @@ def pkg_update():
 
         if choice in "1":
             print("Checking for updates.")
-            results = subprocess.run("pip list -o")
             subprocess.run("pip-review --local --interactive")
         else:
             exit(0)
