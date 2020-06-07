@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
 """
-Hangman version 4.7
+Hangman version 4.8
 Python 3.8
-Requires: get_word.py, clear_screen.py
+Requires: get_word.py, clear_screen.py, clear_and_exit.py
 """
 
+import logging
+import sys
+from clear_and_exit import clear_and_exit
 from clear_screen import clear_screen
 from get_word import get_word
 
 
-def clear_and_exit():
-    exit(clear_screen())
+logging.basicConfig(filename="hangman.log", level=logging.DEBUG)
 
 
 def clear_and_print(text):
+    """clear screen and print something."""
     clear_screen()
     print(text)
 
@@ -31,8 +34,7 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
     )
 
     word_item = get_word()
-    letter_list = list(word_item)
-    guesses = (list_length := len(letter_list)) * 2
+    guesses = (list_length := len(word_item)) * 2
     attempts = 0
     dashes = ["-" for letter in word_item]  # Replaces letters with dashes.
     incorrect_letters = []
@@ -54,6 +56,7 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
             clear_and_print(f"{guess_letter} is in the word!")
         elif guess_letter not in incorrect_letters:
             incorrect_letters.append(guess_letter)
+            logging.debug(guess_letter)
             clear_and_print(f"There is no {guess_letter}!")
         elif guess_letter in incorrect_letters:
             clear_and_print(f"You already guessed {guess_letter}!")
@@ -61,23 +64,22 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
             break
 
         attempts += 1
-        score = guesses - attempts
 
-        if guess_letter in letter_list:
-            start = 0
+        if guess_letter in word_item:
             remaining_guesses = f"Guesses remaining: {guesses - attempts}"
 
             # Puts guessed letters back in the word.
-            for letter in range(letter_list.count(guess_letter)):
-                locate_letter = letter_list.index(guess_letter, start)
+            start = 0
+            for letter in range(list(word_item).count(guess_letter)):
+                locate_letter = list(word_item).index(guess_letter, start)
                 dashes[locate_letter] = guess_letter
                 start = locate_letter + 1
 
             format_word = "".join(dashes)
-            win = f"You win! Score: {score}"
+            win = f"You win! Score: {remaining_guesses}"
 
             if format_word in word_item:
-                exit(clear_and_print(f"{format_word}\n{win}"))
+                sys.exit(clear_and_print(f"{format_word}\n{win}"))
             else:
                 print((remaining := f"{remaining_guesses}\n{format_word}"))
 
@@ -89,7 +91,7 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
                     guess = input("What is the word? ").lower()
 
                     if guess in word_item:
-                        exit(clear_and_print(f"{guess}\n{win}"))
+                        sys.exit(clear_and_print(f"{guess}\n{win}"))
                     else:
                         clear_and_print(f"{guess} is incorrect!")
                         print(format_word)
@@ -100,8 +102,8 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
                     break
 
     else:
-        exit(f"You're hung! The word was {word_item}.")
+        sys.exit(f"You're hung! The word was {word_item}.")
 
 
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())
