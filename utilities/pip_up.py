@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 """
-pip_up version 1.3
+pip_up version 1.4
 requires: numli.py
 Python 3.7
 """
 
 from numli import add_numbers
-import subprocess
+from subprocess import run
 
 
 def pkg_update():
@@ -20,7 +20,7 @@ def pkg_update():
 
         if choice in "1":
             print("Checking for updates.")
-            subprocess.run("pip-review --local --interactive")
+            run("pip-review --local --interactive")
         else:
             exit(0)
 
