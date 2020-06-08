@@ -34,13 +34,13 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
     )
 
     word_item = get_word()
-    guesses = (list_length := len(word_item)) * 2
+    available_guesses = (list_length := len(word_item)) * 2
     attempts = 0
     dashes = ["-" for letter in word_item]  # Replaces letters with dashes.
     incorrect_letters = []
     print(f"The word has {list_length} letters.")
 
-    while attempts < guesses:
+    while attempts < available_guesses:
         try:
             guess_letter = input("Guess a letter. ")
         except KeyboardInterrupt:
@@ -48,12 +48,8 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
 
         if guess_letter.lower() in ["exit", "quit"]:
             clear_and_exit()
-        elif not guess_letter.isalpha():
-            clear_and_print("Please enter a letter!")
-        elif len(guess_letter) > 1:
+        elif not guess_letter.isalpha() or len(guess_letter) > 1:
             clear_and_print("Please enter a single letter!")
-        elif guess_letter in word_item:
-            clear_and_print(f"{guess_letter} is in the word!")
         elif guess_letter not in incorrect_letters:
             incorrect_letters.append(guess_letter)
             logging.debug(guess_letter)
@@ -66,7 +62,8 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
         attempts += 1
 
         if guess_letter in word_item:
-            remaining_guesses = f"Guesses remaining: {guesses - attempts}"
+            clear_and_print(f"{guess_letter} is in the word!")
+            remaining_guesses = f"Guesses remaining: {available_guesses - attempts}"
 
             # Puts guessed letters back in the word.
             start = 0
@@ -83,14 +80,14 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
             else:
                 print((remaining := f"{remaining_guesses}\n{format_word}"))
 
-            while attempts >= guesses / 2:
+            while attempts >= available_guesses / 2:
                 guess_word = input("Guess the word? y/n ").lower()
 
-                if guess_word in "y":
+                if guess_word.lower() in "y":
                     clear_and_print(format_word)
                     guess = input("What is the word? ").lower()
 
-                    if guess in word_item:
+                    if guess.lower() in word_item:
                         sys.exit(clear_and_print(f"{guess}\n{win}"))
                     else:
                         clear_and_print(f"{guess} is incorrect!")
