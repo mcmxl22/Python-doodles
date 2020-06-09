@@ -1,18 +1,14 @@
 #!/usr/bin/env python3
 """
-Hangman version 4.8
+Hangman version 4.9
 Python 3.8
 Requires: get_word.py, clear_screen.py, clear_and_exit.py
 """
 
-import logging
 import sys
 from clear_and_exit import clear_and_exit
 from clear_screen import clear_screen
 from get_word import get_word
-
-
-logging.basicConfig(filename="hangman.log", level=logging.DEBUG)
 
 
 def clear_and_print(text):
@@ -24,21 +20,21 @@ def clear_and_print(text):
 def main():
     """Hangman game"""
 
-    clear_and_print(
-        """
-This is a hangman game. It tells you how many letters are in the word.
-You have 2 guesses for each letter. It fills in the blanks when
-you guess a correct letter. It keeps track of guesses and warns
-you of duplicate guesses. Type exit or quit to end the game at any time.
-"""
-    )
-
     word_item = get_word()
     available_guesses = (list_length := len(word_item)) * 2
     attempts = 0
     dashes = ["-" for letter in word_item]  # Replaces letters with dashes.
     incorrect_letters = []
-    print(f"The word has {list_length} letters.")
+
+    clear_and_print(
+        f"""
+This is a hangman game. It tells you how many letters are in the word.
+You have 2 guesses for each letter. It fills in the blanks when
+you guess a correct letter. It keeps track of guesses and warns
+you of duplicate guesses. Type exit or quit to end the game at any time.
+The word has {list_length} letters.
+"""
+    )
 
     while attempts < available_guesses:
         try:
@@ -52,7 +48,6 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
             clear_and_print("Please enter a single letter!")
         elif guess_letter not in incorrect_letters:
             incorrect_letters.append(guess_letter)
-            logging.debug(guess_letter)
             clear_and_print(f"There is no {guess_letter}!")
         elif guess_letter in incorrect_letters:
             clear_and_print(f"You already guessed {guess_letter}!")
@@ -73,7 +68,7 @@ you of duplicate guesses. Type exit or quit to end the game at any time.
                 start = locate_letter + 1
 
             format_word = "".join(dashes)
-            win = f"You win! Score: {remaining_guesses}"
+            win = f"You win! Score: {available_guesses - attempts}"
 
             if format_word in word_item:
                 sys.exit(clear_and_print(f"{format_word}\n{win}"))
