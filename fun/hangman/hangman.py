@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hangman version 4.9
+Hangman version 5
 Python 3.8
 Requires: get_word.py, clear_screen.py, clear_and_exit.py
 """
@@ -9,6 +9,11 @@ import sys
 from clear_and_exit import clear_and_exit
 from clear_screen import clear_screen
 from get_word import get_word
+
+
+def prompt(word):
+    enter = input(f"{word} ")
+    return enter.lower()
 
 
 def clear_and_print(text):
@@ -38,11 +43,11 @@ The word has {list_length} letters.
 
     while attempts < available_guesses:
         try:
-            guess_letter = input("Guess a letter. ")
+            guess_letter = prompt("Guess a letter.")
         except KeyboardInterrupt:
             clear_and_exit()
 
-        if guess_letter.lower() in ["exit", "quit"]:
+        if guess_letter in ["exit", "quit"]:
             clear_and_exit()
         elif not guess_letter.isalpha() or len(guess_letter) > 1:
             clear_and_print("Please enter a single letter!")
@@ -76,13 +81,13 @@ The word has {list_length} letters.
                 print((remaining := f"{remaining_guesses}\n{format_word}"))
 
             while attempts >= available_guesses / 2:
-                guess_word = input("Guess the word? y/n ").lower()
+                guess_word = prompt("Guess the word? y/n")
 
-                if guess_word.lower() in "y":
+                if guess_word in "y":
                     clear_and_print(format_word)
-                    guess = input("What is the word? ").lower()
+                    guess = prompt("What is the word?")
 
-                    if guess.lower() in word_item:
+                    if guess in word_item:
                         sys.exit(clear_and_print(f"{guess}\n{win}"))
                     else:
                         clear_and_print(f"{guess} is incorrect!")
