@@ -12,12 +12,13 @@ from get_word import get_word
 
 
 def prompt(word):
+    """Prompt"""
     enter = input(f"{word} ")
     return enter.lower()
 
 
 def clear_and_print(text):
-    """clear screen and print something."""
+    """Clear screen and print something."""
     clear_screen()
     print(text)
 
