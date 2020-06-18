@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Inventory.py Version 1.6
+Inventory.py Version 1.7
 Requires: files.py, numli.py, clear_screen.py
 Python 3.7
 """
@@ -16,7 +16,7 @@ from numli import add_numbers
 def prompt(phrase):
     """Format user prompt."""
     enter = input(f"{phrase} ")
-    return enter.capitalize()
+    return enter
 
 
 def choices():
@@ -40,15 +40,15 @@ def get_data():
 
 
 def add_inventory():
-    """Add items to inventory"""
+    """Add items to inventory."""
     item = get_data()
     add_item = prompt("Enter item:")
-    quantity = prompt("Enter quantity: ")
+    quantity = int(prompt("Enter quantity: "))
 
     if add_item in item:
-        item[add_item] += int(quantity)
+        item[add_item] += quantity
     else:
-        item[add_item] = int(quantity)
+        item[add_item] = quantity
 
     return item
 
@@ -69,20 +69,20 @@ def take_items():
     """Take items from inventory."""
     item = get_data()
     take = prompt("What did you take?")
-    deduct = prompt(f"How many {take}? ")
+    deduct = int(prompt(f"How many {take}? "))
 
     if take in item:
-        item[take] -= int(deduct)
+        item[take] -= deduct
     else:
         print(f"{take} doesn't exist.")
 
     return item
 
 
-def view():
+def view_inventory():
     """View inventory."""
-    view_item = get_data()
-    return view_item
+    view_items = get_data()
+    return view_items
 
 
 def main():
@@ -116,7 +116,7 @@ def main():
         elif choice in "3":
             # View all inventory.
             clear_screen()
-            view_items = view()
+            view_items = view_inventory()
             for k, v in view_items.items():
                 print(k, "-", v)
         elif choice in "4":
