@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Inventory.py version 1.4
+Inventory.py version 1.5
 Requires: files.py, numli.py
 Python 3.7
 """
@@ -8,6 +8,7 @@ Python 3.7
 import json
 import sys
 from os import path
+from clear_screen import clear_screen
 from files import create_files
 from numli import add_numbers
 
@@ -98,29 +99,33 @@ def main():
         # Process user's choice.
         if choice in "1":
             # Add items to inventory.
+            clear_screen()
             with open("inventory.json", "r+") as file:
                 try:
                     add = add_inventory()
                     json.dump(add, file, indent=4)
                 except ValueError:
                     print("Enter a number.")
-
         elif choice in "2":
             # Take items from inventory.
+            clear_screen()
             taken_items = take_items()
             with open("inventory.json", "w+") as file:
                 json.dump(taken_items, file, indent=4)
         elif choice in "3":
             # View all inventory.
+            clear_screen()
             view_items = view()
             for k, v in view_items.items():
-                print(k, v)
+                print(k, "-", v)
         elif choice in "4":
             # Delete items from inventory
+            clear_screen()
             delete = delete_item()
             with open("inventory.json", "w+") as file:
                 json.dump(delete, file, indent=4)
         elif choice in "5":
+            clear_screen()
             sys.exit(0)
 
 
