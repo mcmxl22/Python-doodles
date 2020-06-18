@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Inventory.py version 1.5
-Requires: files.py, numli.py
+Requires: files.py, numli.py, clear_screen.py
 Python 3.7
 """
 
