@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Inventory.py version 1.5
+Inventory.py Version 1.6
 Requires: files.py, numli.py, clear_screen.py
 Python 3.7
 """
@@ -11,6 +11,7 @@ from os import path
 from clear_screen import clear_screen
 from files import create_files
 from numli import add_numbers
+
 
 def prompt(phrase):
     """Format user prompt."""
@@ -28,7 +29,7 @@ def choices():
 
 def get_data():
     """Get data from file."""
-    with open('inventory.json', 'r+') as file:
+    with open("inventory.json", "r+") as file:
         try:
             existing_items = json.load(file)
         except ValueError:
@@ -42,7 +43,7 @@ def add_inventory():
     """Add items to inventory"""
     item = get_data()
     add_item = prompt("Enter item:")
-    quantity = input("Enter quantity: ")
+    quantity = prompt("Enter quantity: ")
 
     if add_item in item:
         item[add_item] += int(quantity)
@@ -68,7 +69,7 @@ def take_items():
     """Take items from inventory."""
     item = get_data()
     take = prompt("What did you take?")
-    deduct = input("How many? ")
+    deduct = prompt(f"How many {take}? ")
 
     if take in item:
         item[take] -= int(deduct)
@@ -119,7 +120,7 @@ def main():
             for k, v in view_items.items():
                 print(k, "-", v)
         elif choice in "4":
-            # Delete items from inventory
+            # Delete items from inventory.
             clear_screen()
             delete = delete_item()
             with open("inventory.json", "w+") as file:
