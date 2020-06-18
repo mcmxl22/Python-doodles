@@ -1,7 +1,7 @@
 A complete inventory system.
 
 Features:
-- Add items
-- Remove certain amount of items
+- Add items with quantity
+- Remove a choosen quantity of items
 - Delete an item entry
 - View entire inevtory
