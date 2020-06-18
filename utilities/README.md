@@ -1,1 +1,1 @@
-Modules that are reusable and usefull.
+A complete inventory system.
