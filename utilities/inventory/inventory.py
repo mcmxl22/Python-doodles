@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Inventory.py version 1.2
+Inventory.py version 1.3
 Requires: files.py, numli.py
 Python 3.7
 """
@@ -32,7 +32,7 @@ def get_data():
             existing_items = json.load(file)
         except ValueError:
             existing_items = {}
-            json.dump(existing_items, file)
+            json.dump(existing_items, file, indent=4)
 
     return existing_items
 
@@ -58,7 +58,8 @@ def delete_item():
         delete = prompt("Enter item to delete:")
         item.pop(delete)
     except KeyError:
-        print(f"{delete} does not exist.")
+        print(f"{delete} doesn't exist.")
+
     return item
 
 
@@ -66,15 +67,18 @@ def take_items():
     """Take items from inventory."""
     item = get_data()
     take = prompt("What did you take?")
-    deduct = input("how many? ")
+    deduct = input("How many? ")
+
     if take in item:
         item[take] -= int(deduct)
     else:
-        pass
+        print(f"{take} doesn't exist.")
+
     return item
 
 
 def view():
+    """View inventory."""
     view_item = get_data()
     return view_item
 
@@ -100,7 +104,6 @@ def main():
                     json.dump(add, file, indent=4)
                 except ValueError:
                     print("Enter a number.")
-                    main()
 
         elif choice in "2":
             # Take items from inventory.
