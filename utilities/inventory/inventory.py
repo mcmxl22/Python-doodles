@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Inventory.py version 1.3
+Inventory.py version 1.4
 Requires: files.py, numli.py
 Python 3.7
 """
@@ -112,14 +112,15 @@ def main():
                 json.dump(taken_items, file, indent=4)
         elif choice in "3":
             # View all inventory.
-            print(view())
+            view_items = view()
+            for k, v in view_items.items():
+                print(k, v)
         elif choice in "4":
             # Delete items from inventory
             delete = delete_item()
             with open("inventory.json", "w+") as file:
                 json.dump(delete, file, indent=4)
         elif choice in "5":
-            # Exit
             sys.exit(0)
 
 
