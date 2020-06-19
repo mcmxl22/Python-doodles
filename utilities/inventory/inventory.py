@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Inventory.py Version 1.7
+Inventory.py Version 1.8
 Requires: files.py, numli.py, clear_screen.py
 Python 3.7
 """
@@ -42,13 +42,18 @@ def get_data():
 def add_inventory():
     """Add items to inventory."""
     item = get_data()
-    add_item = prompt("Enter item:")
-    quantity = int(prompt("Enter quantity: "))
 
-    if add_item in item:
-        item[add_item] += quantity
-    else:
-        item[add_item] = quantity
+    try:
+        add_item = prompt("Enter item:")
+        quantity = int(prompt("Enter quantity: "))
+
+        if add_item in item:
+            item[add_item] += quantity
+        else:
+            item[add_item] = quantity
+
+    except ValueError:
+        print("Please enter a valid item.")
 
     return item
 
@@ -68,13 +73,18 @@ def delete_item():
 def take_items():
     """Take items from inventory."""
     item = get_data()
-    take = prompt("What did you take?")
-    deduct = int(prompt(f"How many {take}? "))
 
-    if take in item:
-        item[take] -= deduct
-    else:
-        print(f"{take} doesn't exist.")
+    try:
+        take = prompt("What did you take?")
+        deduct = int(prompt(f"How many {take}?"))
+
+        if take in item:
+            item[take] -= deduct
+        else:
+            print(f"{take} doesn't exist.")
+
+    except ValueError:
+        print("Please enter a valid item.")
 
     return item
 
@@ -102,16 +112,13 @@ def main():
             # Add items to inventory.
             clear_screen()
             with open("inventory.json", "r+") as file:
-                try:
-                    add = add_inventory()
-                    json.dump(add, file, indent=4)
-                except ValueError:
-                    print("Enter a number.")
+                add = add_inventory()
+                json.dump(add, file, indent=4)
         elif choice in "2":
             # Take items from inventory.
             clear_screen()
             taken_items = take_items()
-            with open("inventory.json", "w+") as file:
+            with open("inventory.json", "w") as file:
                 json.dump(taken_items, file, indent=4)
         elif choice in "3":
             # View all inventory.
@@ -123,7 +130,7 @@ def main():
             # Delete items from inventory.
             clear_screen()
             delete = delete_item()
-            with open("inventory.json", "w+") as file:
+            with open("inventory.json", "w") as file:
                 json.dump(delete, file, indent=4)
         elif choice in "5":
             clear_screen()
