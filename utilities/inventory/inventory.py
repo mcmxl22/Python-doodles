@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Inventory.py Version 1.8
+Inventory.py Version 1.9
 Requires: files.py, numli.py, clear_screen.py
 Python 3.7
 """
@@ -89,12 +89,6 @@ def take_items():
     return item
 
 
-def view_inventory():
-    """View inventory."""
-    view_items = get_data()
-    return view_items
-
-
 def main():
     """main"""
     while True:
@@ -123,7 +117,7 @@ def main():
         elif choice in "3":
             # View all inventory.
             clear_screen()
-            view_items = view_inventory()
+            view_items = get_data()
             for k, v in view_items.items():
                 print(k, "-", v)
         elif choice in "4":
