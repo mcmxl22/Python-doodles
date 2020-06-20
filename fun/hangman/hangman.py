@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
 """
-Hangman version 5
+Hangman version 5.1
 Python 3.8
 Requires: get_word.py, clear_screen.py, clear_and_exit.py
 """
 
 import sys
+
+
+# Check Python version.
+if sys.version_info[0] != 3 or sys.version_info[1] < 8:
+    print("This script requires Python 3.8")
+else:
+    pass
+
+
 from clear_and_exit import clear_and_exit
 from clear_screen import clear_screen
 from get_word import get_word
@@ -25,7 +34,6 @@ def clear_and_print(text):
 
 def main():
     """Hangman game"""
-
     word_item = get_word()
     available_guesses = (list_length := len(word_item)) * 2
     attempts = 0
