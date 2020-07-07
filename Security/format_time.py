@@ -1,26 +1,27 @@
 #!/usr/bin/env python3
 """
-format_time Version 1.1
+format_time Version 1.2
 Python 3.7
 """
 
-from datetime import datetime, timedelta
-DATE = datetime.now()
+
+from datetime import datetime, timedelta, date
+
+NOW = datetime.now()
 
 
-def format_3hour(three_hour):
-    """gets time of day and adds 3 hours."""
-    three_hours = DATE + timedelta(hours=3)
-    new_time = format(three_hours, "%H:%M")
-    print(new_time)
+def add_three_hours():
+    """Add 3 hours to current time."""
+    future_time = NOW + timedelta(hours=3)
+    return future_time
 
 
-def format_time():
-    """Extracts time of day."""
-    time = DATE.strftime("%H:%M")
-    print(time)
+def add_day():
+    """Add a day."""
+    tomorrow = date.today() + timedelta(days=1)
+    return tomorrow
 
 
 if __name__ == "__main__":
-    format_3hour("three")
-    format_time()
+    add_three_hours()
+    add_day()
