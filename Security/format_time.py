@@ -7,12 +7,11 @@ Python 3.7
 
 from datetime import datetime, timedelta, date
 
-NOW = datetime.now()
-
 
 def add_three_hours():
     """Add 3 hours to current time."""
-    future_time = NOW + timedelta(hours=3)
+    time = datetime.now()
+    future_time = time + timedelta(hours=3)
     return future_time
 
 
