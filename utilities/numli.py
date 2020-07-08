@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
-numli Version 1.1
+numli Version 1.2
 Python 3.7
 """
+
+import sys
 
 
 def add_numbers(num):
@@ -12,4 +14,4 @@ def add_numbers(num):
 
 
 if __name__ == "__main__":
-    exit(add_numbers("num"))
+    sys.exit(add_numbers("num"))
