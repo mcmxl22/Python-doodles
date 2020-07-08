@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-8ball version 1
+8ball version 1.1
 Python 3.7
 """
 
 import random
+import sys
 
 
 def ball():
@@ -15,5 +16,4 @@ def ball():
     return answer
 
 if __name__ == "__main__":
-    magic = ball()
-    print(magic)
+    sys.exit(ball())
