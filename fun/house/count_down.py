@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
+
 """
-countDown version 1.2
+countDown version 1.3
 Python 3.7
 """
 
 import time
+import sys
 
 
 def count(seconds):
@@ -16,4 +18,4 @@ def count(seconds):
 
 
 if __name__ == "__main__":
-    count("seconds")
+    sys.exit(count("seconds"))
