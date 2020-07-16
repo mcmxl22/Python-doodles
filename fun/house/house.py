@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
+
 """
-House version 1.4
+House version 1.5
 requires: numli.py, count_down.py
 Python 3.7
 """
 
-import count_down
-import numli
+import sys
+from count_down import count
+from numli import add_numbers
 from time import sleep
-import web
+from web import get_web_site
 
 
 def porch():
     """porch"""
     while True:
         porch_options = ["Front", "Exit"]
-        numli.addnum(porch_options)
+        add_numbers(porch_options)
 
         porch_choice = input("Choose an option. ")
 
@@ -23,7 +25,7 @@ def porch():
             living_room()
 
         elif porch_choice in "2":
-            raise SystemExit
+            sys.exit(0)
 
         else:
             print("Invalid answer!")
@@ -58,7 +60,7 @@ def basement():
     """basement"""
     while True:
         laundry_option = ["Yes", "No"]
-        numli.addnum(laundry_option)
+        add_numbers(laundry_option)
         laundry = input("Do you want to do laundry? ")
 
         if laundry in "1":
@@ -90,7 +92,7 @@ def living_room():
             "Rest",
             "Weather",
         ]
-        numli.addnum(room_select)
+        add_numbers(room_select)
         room_choice = input(
             """\nThis is the living room.
                                \rChoose a room or activity. """
@@ -109,14 +111,14 @@ def living_room():
             basement()
 
         elif room_choice in "5":
-            web.web_site(room_choice)
+            get_web_site(room_choice)
 
         elif room_choice in "6":
-            count_down.count(room_choice)
+            count(room_choice)
 
         else:
             print("Invalid Answer.")
 
 
 if __name__ == "__main__":
-    porch()
+    sys.exit(porch())
