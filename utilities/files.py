@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
+
 """
 files Version 1.7
 requires: numli.py
 Python 3.7
 """
 
+import sys
 from os import path, remove
 from numli import add_numbers
 
@@ -34,7 +36,7 @@ def delete_file(file_name):
         remove(file_name)
         print(f"{file_name} deleted!")
     else:
-        exit(0)
+        sys.exit(0)
 
 
 def file_options(file_name):
@@ -53,4 +55,4 @@ def file_options(file_name):
 
 
 if __name__ == "__main__":
-    exit(file_options("file_name"))
+    sys.exit(file_options("file_name"))
