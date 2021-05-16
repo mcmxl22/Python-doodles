@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Inventory.py Version 1.9
+Inventory.py Version 2.0
 Requires: files.py, numli.py, clear_screen.py
 Python 3.7
 """
@@ -9,8 +9,9 @@ import json
 import sys
 from os import path
 from clear_screen import clear_screen
-from files import create_files
+import files
 from numli import add_numbers
+import check_py_version
 
 
 def prompt(phrase):
@@ -44,7 +45,7 @@ def add_inventory():
     item = get_data()
 
     try:
-        add_item = prompt("Enter item:")
+        add_item = prompt("Enter item: ")
         quantity = int(prompt("Enter quantity: "))
 
         if add_item in item:
@@ -62,7 +63,7 @@ def delete_item():
     """Delete items from inventory."""
     item = get_data()
     try:
-        delete = prompt("Enter item to delete:")
+        delete = prompt("Enter item to delete: ")
         item.pop(delete)
     except KeyError:
         print(f"{delete} doesn't exist.")
@@ -76,7 +77,7 @@ def take_items():
 
     try:
         take = prompt("What did you take?")
-        deduct = int(prompt(f"How many {take}?"))
+        deduct = int(prompt(f"How many {take}? "))
 
         if take in item:
             item[take] -= deduct
@@ -96,7 +97,7 @@ def main():
         if path.exists("inventory.json"):
             pass
         else:
-            create_files("inventory")
+            files("inventory.json")
 
         # Get user's choice from choices().
         choice = choices()
@@ -118,8 +119,8 @@ def main():
             # View all inventory.
             clear_screen()
             view_items = get_data()
-            for k, v in view_items.items():
-                print(k, "-", v)
+            for item, view in view_items.items():
+                print(item, "=", view)
         elif choice in "4":
             # Delete items from inventory.
             clear_screen()
@@ -132,4 +133,5 @@ def main():
 
 
 if __name__ == "__main__":
+    check_py_version.check_version
     sys.exit(main())
