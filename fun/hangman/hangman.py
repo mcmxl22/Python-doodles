@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Hangman version 5.3
+Hangman version 5.4
 Python 3.8
 Requires: get_word.py, clear_and_exit.py
 """
@@ -17,12 +17,6 @@ if sys.version_info[0] != 3 or sys.version_info[1] < 8:
     print("This script requires Python 3.8")
 else:
     pass
-
-
-def prompt(word):
-    """Creates custom prompt."""
-    enter = input(f"{word}")
-    return enter.lower()
 
 
 def clear_and_print(text):
@@ -55,7 +49,7 @@ The word has {list_length} letters."""
 
     while attempts < available_guesses:
         try:
-            guess_letter = prompt("Guess a letter: ")
+            guess_letter = input("Guess a letter: ")
             assert guess_letter.isalpha(), "Please enter a letter!"
             assert len(guess_letter) == 1, "Please enter a single letter!"
         except KeyboardInterrupt:
@@ -66,14 +60,14 @@ The word has {list_length} letters."""
 
         if guess_letter not in incorrect_letters:
             incorrect_letters.append(guess_letter)
-            clear_screen(f"There is no {guess_letter}!")
+            clear_screen(f"There is no: {guess_letter}!")
         else:
             clear_screen(f"You already guessed {guess_letter}!")
 
         attempts += 1
 
         if guess_letter in word_item:
-            clear_screen(f"{guess_letter} is in the word!")
+            clear_screen(f"There is a: {guess_letter}!")
 
             # Puts guessed letters back in the word.
             # pylint: disable=unused-variable
