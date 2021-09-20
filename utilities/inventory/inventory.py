@@ -1,30 +1,34 @@
 #!/usr/bin/env python3
+
 """
-Inventory.py Version 2.0
-Requires: files.py, numli.py, clear_screen.py
+Inventory.py Version 2.2
+Requires: numli.py, clear_screen.py
 Python 3.7
 """
 
+
 import json
-import sys
 from os import path
 from clear_screen import clear_screen
-import files
 from numli import add_numbers
-import check_py_version
 
 
-def prompt(phrase):
-    """Format user prompt."""
-    enter = input(f"{phrase} ")
-    return enter
+def create_inventory_file():
+    """Create file"""
+    name = "inventory.json"
+
+    with open(name, "w+"):
+        if path.exists(name):
+            print(f"{name} created!")
+        else:
+            return
 
 
-def choices():
+def choices() -> list:
     """Give user a choice of actions."""
     inventory_actions = ["Add", "Take", "View", "Delete", "Exit"]
     add_numbers(inventory_actions)
-    action_choice = prompt("What do you want to do?")
+    action_choice = input("What do you want to do? ")
     return action_choice
 
 
@@ -40,13 +44,13 @@ def get_data():
     return existing_items
 
 
-def add_inventory():
+def add_inventory() -> str:
     """Add items to inventory."""
     item = get_data()
 
     try:
-        add_item = prompt("Enter item: ")
-        quantity = int(prompt("Enter quantity: "))
+        add_item = input("Enter item: ")
+        quantity = int(input("Enter quantity: "))
 
         if add_item in item:
             item[add_item] += quantity
@@ -63,7 +67,7 @@ def delete_item():
     """Delete items from inventory."""
     item = get_data()
     try:
-        delete = prompt("Enter item to delete: ")
+        delete = input("Enter item to delete: ")
         item.pop(delete)
     except KeyError:
         print(f"{delete} doesn't exist.")
@@ -76,8 +80,8 @@ def take_items():
     item = get_data()
 
     try:
-        take = prompt("What did you take?")
-        deduct = int(prompt(f"How many {take}? "))
+        take = input("What did you take? ")
+        deduct = int(input(f"How many {take}? "))
 
         if take in item:
             item[take] -= deduct
@@ -97,7 +101,7 @@ def main():
         if path.exists("inventory.json"):
             pass
         else:
-            files("inventory.json")
+            create_inventory_file()
 
         # Get user's choice from choices().
         choice = choices()
@@ -109,29 +113,35 @@ def main():
             with open("inventory.json", "r+") as file:
                 add = add_inventory()
                 json.dump(add, file, indent=4)
+
         elif choice in "2":
             # Take items from inventory.
             clear_screen()
             taken_items = take_items()
             with open("inventory.json", "w") as file:
                 json.dump(taken_items, file, indent=4)
+
         elif choice in "3":
             # View all inventory.
             clear_screen()
             view_items = get_data()
-            for item, view in view_items.items():
-                print(item, "=", view)
+            if view_items == {}:
+                print("No inventory available")
+            else:
+                for item, view in view_items.items():
+                    print(item, "=", view)
+
         elif choice in "4":
             # Delete items from inventory.
             clear_screen()
             delete = delete_item()
             with open("inventory.json", "w") as file:
                 json.dump(delete, file, indent=4)
+
         elif choice in "5":
             clear_screen()
-            sys.exit(0)
+            exit(0)
 
 
 if __name__ == "__main__":
-    check_py_version.check_version
-    sys.exit(main())
+    exit(main())
