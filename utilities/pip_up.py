@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 
 """
-pip_up version 1.5
+pip_up version 1.6
 requires: numli.py
 Python 3.7
 """
 
 from subprocess import run
-import sys
 from numli import add_numbers
 
 
@@ -23,8 +22,8 @@ def pkg_update():
             print("Checking for updates.")
             run("pip-review --local --interactive", check=True)
         else:
-            sys.exit(0)
+            exit(0)
 
 
 if __name__ == "__main__":
-    sys.exit(pkg_update())
+    exit(pkg_update())
