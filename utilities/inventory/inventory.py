@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Inventory.py Version 2.2
+Inventory.py Version 2.3
 Requires: numli.py, clear_screen.py
 Python 3.7
 """
@@ -32,11 +32,12 @@ def choices() -> list:
     return action_choice
 
 
-def get_data():
+def get_data() -> dict:
     """Get data from file."""
     with open("inventory.json", "r+") as file:
         try:
             existing_items = json.load(file)
+
         except ValueError:
             existing_items = {}
             json.dump(existing_items, file, indent=4)
@@ -57,8 +58,8 @@ def add_inventory() -> str:
         else:
             item[add_item] = quantity
 
-    except ValueError:
-        print("Please enter a valid item.")
+    except ValueError as e:
+        print(e)
 
     return item
 
@@ -66,11 +67,18 @@ def add_inventory() -> str:
 def delete_item():
     """Delete items from inventory."""
     item = get_data()
+
     try:
-        delete = input("Enter item to delete: ")
-        item.pop(delete)
-    except KeyError:
-        print(f"{delete} doesn't exist.")
+        if item == {}:
+            print("Nothing to delete.")
+            pass
+        else:
+            delete = input("Enter item to delete: ")
+            item.pop(delete)
+            print(f"{delete} deleted!")
+
+    except KeyError as e:
+        print(e)
 
     return item
 
@@ -88,8 +96,8 @@ def take_items():
         else:
             print(f"{take} doesn't exist.")
 
-    except ValueError:
-        print("Please enter a valid item.")
+    except ValueError as e:
+        print(e)
 
     return item
 
@@ -138,7 +146,7 @@ def main():
             with open("inventory.json", "w") as file:
                 json.dump(delete, file, indent=4)
 
-        elif choice in "5":
+        else:
             clear_screen()
             exit(0)
 
