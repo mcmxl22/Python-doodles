@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Inventory.py Version 2.4
+Inventory.py Version 2.5
 Requires: numli.py, clear_screen.py
 Python 3.7
 """
@@ -13,16 +13,25 @@ from clear_screen import clear_screen
 from numli import add_numbers
 
 
+class Inventory_file:
 
-def create_inventory_file():
-    """Create file"""
-    name = "inventory.json"
+    def create_inventory_file():
+        """Create file"""
+        name = "inventory.json"
 
-    with open(name, "w+"):
-        if path.exists(name):
-            print(f"{name} created!")
+        with open(name, "w+"):
+            if path.exists(name):
+                print(f"{name} created!")
+            else:
+                return
+
+    def check_inventory_file():
+        """Check if file exists"""
+        if path.exists("inventory.json"):
+            pass
         else:
-            return
+            Inventory_file.create_inventory_file()
+        
 
 
 def get_data() -> dict:
@@ -36,6 +45,7 @@ def get_data() -> dict:
             json.dump(existing_items, file, indent=4)
 
     return existing_items
+    
 
 
 class Menu:
@@ -66,6 +76,7 @@ class Inventory:
         except ValueError as e:
             print(e)
 
+        clear_screen()
         return item
 
 
@@ -115,16 +126,26 @@ class Inventory:
         return item
 
 
+    def view_items():
+        """View items from inventory."""
+        clear_screen()
+        view_items = get_data()
+        if view_items == {}:
+            print("No inventory available!\n")
+
+        else:
+            for item, view in view_items.items():
+                if view < 1:
+                    print("No inventory available!\n")
+                else:
+                    print(item, "=", view)
+            print("\n")
+
+
 def main():
     """main"""
     while True:
-        # Check for and/or create file.
-        if path.exists("inventory.json"):
-            pass
-        else:
-            create_inventory_file()
-
-        # Get user's choice from choices().
+        Inventory_file.check_inventory_file()
         choice = Menu.list_choices()
 
         # Process user's choice.
@@ -143,16 +164,7 @@ def main():
                 json.dump(taken_items, file, indent=4)
 
         elif choice in "3":
-            clear_screen()
-            view_items = get_data()
-            if view_items == {}:
-                print("No inventory available!\n")
-            else:
-                for item, view in view_items.items():
-                    if view < 1:
-                        print("No inventory available!\n")
-                    else:
-                        print(item, "=", view)
+            Inventory.view_items()
 
         elif choice in "4":
             Inventory.delete_item()
