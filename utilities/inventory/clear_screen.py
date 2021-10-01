@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
+
 """
-clear_screen version 1.1
+clear_screen version 1.2
 python 3.8
 """
 
-import sys
 from os import system
 from sys import platform
 
@@ -19,4 +19,4 @@ def clear_screen():
 
 
 if __name__ == "__main__":
-    sys.exit(clear_screen())
+    exit(clear_screen())
