@@ -1,41 +1,27 @@
 #!/usr/bin/env python3
 
 """
-Inventory.py Version 2.5
-Requires: numli.py, clear_screen.py
+Inventory.py Version 2.6
 Python 3.7
 """
 
 
 import json
-from os import path
-from clear_screen import clear_screen
-from numli import add_numbers
+from os import path, system
+from sys import platform
 
 
-class Inventory_file:
+def clear_screen():
+    """Clear the screen."""
+    if platform in "win32":
+        system("cls")
 
-    def create_inventory_file():
-        """Create file"""
-        name = "inventory.json"
-
-        with open(name, "w+"):
-            if path.exists(name):
-                print(f"{name} created!")
-            else:
-                return
-
-    def check_inventory_file():
-        """Check if file exists"""
-        if path.exists("inventory.json"):
-            pass
-        else:
-            Inventory_file.create_inventory_file()
-        
+    else:
+        system("clear")
 
 
 def get_data() -> dict:
-    """Get data from file."""
+    """Get Json data from file."""
     with open("inventory.json", "r+") as file:
         try:
             existing_items = json.load(file)
@@ -45,21 +31,43 @@ def get_data() -> dict:
             json.dump(existing_items, file, indent=4)
 
     return existing_items
-    
+
+
+class Inventory_file:
+    """Check and/or create inventory file."""
+    def create_inventory_file():
+        """Create file"""
+        with open("inventory.json", "w+"):
+            if path.exists("inventory.json"):
+                print(f"inventory.json created!")
+            else:
+                return
+
+    def check_inventory_file():
+        """Check if file exists"""
+        if path.exists("inventory.json"):
+            pass
+        else:
+            Inventory_file.create_inventory_file()
 
 
 class Menu:
+    """Prepare a menu."""
+    def add_numbers(num):
+        """Add numbers to menu list."""
+        for c, value in enumerate(num, 1):
+            print(c, value)
 
     def list_choices() -> list:
         """Give user a choice of actions."""
         inventory_actions = ["Add", "Take", "View", "Delete", "Exit"]
-        add_numbers(inventory_actions)
+        Menu.add_numbers(inventory_actions)
         action_choice = input("What do you want to do? ")
         return action_choice
 
 
 class Inventory:
-
+    """Add, remove and view inventory."""
     def add_inventory() -> str:
         """Add items to inventory."""
         item = get_data()
