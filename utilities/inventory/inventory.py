@@ -122,14 +122,16 @@ class Inventory:
                 take = input("What did you take? ")
                 deduct = int(input(f"How many {take}? "))
 
-                if take in item:
+                if deduct > item[take]:
+                    print(f"Not enough {take} available!\n")
+                elif take in item:
                     item[take] -= deduct
                     print(f"{item[take]} {take} left!\n")
                 else:
                     print(f"{take} doesn't exist.\n")
 
-            except ValueError as e:
-                print(e)
+            except ValueError:
+                print("Invalid entry!\n")
 
         return item
 
@@ -184,4 +186,4 @@ def main():
 
 if __name__ == "__main__":
     clear_screen()
-    exit(main())
+    main()
