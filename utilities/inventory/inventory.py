@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Inventory.py Version 2.6
+Inventory.py Version 2.7
 Python 3.7
 """
 
@@ -43,6 +43,7 @@ class Inventory_file:
             else:
                 return
 
+
     def check_inventory_file():
         """Check if file exists"""
         if path.exists("inventory.json"):
@@ -57,6 +58,7 @@ class Menu:
         """Add numbers to menu list."""
         for c, value in enumerate(num, 1):
             print(c, value)
+
 
     def list_choices() -> list:
         """Give user a choice of actions."""
@@ -90,7 +92,6 @@ class Inventory:
 
     def delete_item():
         """Delete items from inventory."""
-        clear_screen()
         item = get_data()
 
         try:
@@ -117,6 +118,7 @@ class Inventory:
         if item == {}:
             print("No inventory available!\n")
 
+
         else:
             try:
                 take = input("What did you take? ")
@@ -138,7 +140,6 @@ class Inventory:
 
     def view_items():
         """View items from inventory."""
-        clear_screen()
         view_items = get_data()
         if view_items == {}:
             print("No inventory available!\n")
@@ -174,14 +175,22 @@ def main():
                 json.dump(taken_items, file, indent=4)
 
         elif choice in "3":
+            clear_screen()
             Inventory.view_items()
 
         elif choice in "4":
+            clear_screen()
             Inventory.delete_item()
+
+        elif choice in "5":
+            clear_screen()
+            exit(0)
 
         else:
             clear_screen()
-            exit(0)
+            print("Invalid entry.")
+            choice = Menu.list_choices()
+            
 
 
 if __name__ == "__main__":
