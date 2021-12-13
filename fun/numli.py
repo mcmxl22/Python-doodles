@@ -1,15 +1,24 @@
 #!/usr/bin/env python3
 """
-numli Version 1
+numli Version 1.3
 Python 3.7
 """
 
 
-def addnum(num):
-    """Add numbers to a list"""
-    for c, value in enumerate(num, 1):
-        print(c, value)
+class Menu:
+    """
+    Create a menu. 
+    Example: Menu.list_choices(['Cat','Dog'])
+    Output:
+    1 Cat
+    2 Dog
+    """
+    def add_numbers(num):
+        """Add numbers to the menu list."""
+        for c, value in enumerate(num, 1):
+            print(c, value)
 
 
-if __name__ == "__main__":
-    addnum("num")
+    def list_choices(options_list, **kwargs: list):
+        """Give user a choice of actions."""
+        return Menu.add_numbers(options_list)
