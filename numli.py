@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-numli Version 1.2
+numli Version 1.3
 Python 3.7
 """
 
 
 class Menu:
     """
-    Prepare a menu. 
+    Create a menu. 
     Example: Menu.list_choices(['Cat','Dog'])
     Output:
     1 Cat
@@ -19,6 +19,6 @@ class Menu:
             print(c, value)
 
 
-    def list_choices(choose_conversion, **kwargs: list):
+    def list_choices(options_list, **kwargs: list):
         """Give user a choice of actions."""
-        return Menu.add_numbers(choose_conversion)
+        return Menu.add_numbers(options_list)
