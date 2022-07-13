@@ -4,7 +4,7 @@
 Author: M. McConnaughey
 Hangman version 5.6
 Date: 07/13/2022
-Python 3.6+
+Python 3.8+
 """
 
 from sys import platform, version_info
@@ -14,7 +14,7 @@ import random
 
 def check_version() -> bool:
     """Checks version of Python."""
-    if version_info[0] != 3 or version_info[1] < 6:
+    if version_info[0] != 3 or version_info[1] < 8:
         print("This script requires Python 3.6+.")
     else:
         pass
