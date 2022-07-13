@@ -15,7 +15,7 @@ import random
 def check_version() -> bool:
     """Checks version of Python."""
     if version_info[0] != 3 or version_info[1] < 8:
-        print("This script requires Python 3.6+.")
+        print("This script requires Python 3.8+.")
     else:
         pass
 
