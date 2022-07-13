@@ -69,7 +69,7 @@ The word has {list_length} letters.\n"""
         attempts += 1
 
         if guess_letter in word_item:
-            clear_screen(f"There is a: {guess_letter}!")
+            clear_screen(f"There is a(n): {guess_letter}!")
 
             # Puts guessed letters back in the word.
             # pylint: disable=unused-variable
