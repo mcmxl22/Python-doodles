@@ -1,32 +1,34 @@
 #!/usr/bin/env python3
 
 """
-Hangman version 5.4
-Python 3.8
+Author: M. McConnaughey
+Hangman version 5.5
 Requires: get_word.py, clear_and_exit.py
+Date: 07/13/2022
+Python 3.8+
 """
 
-import sys
+from sys import platform, version_info
 from os import system
 from get_word import get_word
 from clear_and_exit import clear_and_exit
 
 
-# Check Python version.
-if sys.version_info[0] != 3 or sys.version_info[1] < 8:
-    print("This script requires Python 3.8")
-else:
-    pass
+def check_version() -> bool:
+    """Checks version of Python."""
+    if version_info[0] != 3 or version_info[1] < 8:
+        print("This script requires Python 3.8+.")
+    else:
+        pass
 
 
-def clear_and_print(text):
+def clear_and_print(text) -> str:
     """Clears screen and prints something."""
-    if sys.platform in "win32":
+    if platform in "win32":
         system("cls")
     else:
         system("clear")
-
-    print(text)
+    return print(text)
 
 
 def main():
@@ -44,7 +46,7 @@ This is a hangman game. It tells you how many letters are in the word.
 You have 2 guesses for each letter. It fills in the blanks when
 you guess a correct letter. It keeps track of guesses and warns
 you of duplicate guesses. Type exit or quit to end the game at any time.
-The word has {list_length} letters."""
+The word has {list_length} letters.\n"""
     )
 
     while attempts < available_guesses:
@@ -62,7 +64,7 @@ The word has {list_length} letters."""
             incorrect_letters.append(guess_letter)
             clear_screen(f"There is no: {guess_letter}!")
         else:
-            clear_screen(f"You already guessed {guess_letter}!")
+            clear_screen(f"You already guessed: {guess_letter}!")
 
         attempts += 1
 
@@ -79,7 +81,8 @@ The word has {list_length} letters."""
             # pylint: enable=unused-variable
 
             if (format_word := "".join(dashes)) in word_item:
-                sys.exit(clear_screen(f"{format_word}\nYou win!"))
+                exit(clear_screen(f"{format_word}\nYou win!"))
+
             else:
                 print(
                     (
@@ -92,8 +95,9 @@ The word has {list_length} letters."""
             continue
 
     else:
-        sys.exit(f"You're hung! The word was {word_item}.")
+        exit(f"You're hung! The word was {word_item}.")
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    check_version()
+    main()
