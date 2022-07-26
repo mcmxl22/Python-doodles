@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 """
-Inventory.py Version 2.7
+Author: M. McConnaughey
+Inventory Version 2.7
+Date: 07/13/2022
 Python 3.7
 """
 
@@ -11,7 +13,7 @@ from os import path, system
 from sys import platform
 
 
-def clear_screen():
+def clear_screen() -> None:
     """Clear the screen."""
     if platform in "win32":
         system("cls")
@@ -35,7 +37,8 @@ def get_data() -> dict:
 
 class Inventory_file:
     """Check and/or create inventory file."""
-    def create_inventory_file():
+
+    def create_inventory_file() -> None:
         """Create file"""
         with open("inventory.json", "w+"):
             if path.exists("inventory.json"):
@@ -43,8 +46,7 @@ class Inventory_file:
             else:
                 return
 
-
-    def check_inventory_file():
+    def check_inventory_file() -> None:
         """Check if file exists"""
         if path.exists("inventory.json"):
             pass
@@ -54,11 +56,11 @@ class Inventory_file:
 
 class Menu:
     """Prepare a menu."""
-    def add_numbers(num):
+
+    def add_numbers(num) -> None:
         """Add numbers to menu list."""
         for c, value in enumerate(num, 1):
             print(c, value)
-
 
     def list_choices() -> list:
         """Give user a choice of actions."""
@@ -70,8 +72,8 @@ class Menu:
 
 class Inventory:
     """Add, remove and view inventory."""
+
     def add_inventory() -> str:
-        """Add items to inventory."""
         item = get_data()
 
         try:
@@ -83,14 +85,13 @@ class Inventory:
             else:
                 item[add_item] = quantity
 
-        except ValueError as e:
-            print(e)
+        except ValueError:
+            print("Invalid Entry!")
 
         clear_screen()
         return item
 
-
-    def delete_item():
+    def delete_item() -> dict:
         """Delete items from inventory."""
         item = get_data()
 
@@ -111,13 +112,11 @@ class Inventory:
 
         return item
 
-
-    def take_items():
+    def take_items() -> dict:
         """Take items from inventory."""
         item = get_data()
         if item == {}:
             print("No inventory available!\n")
-
 
         else:
             try:
@@ -137,8 +136,7 @@ class Inventory:
 
         return item
 
-
-    def view_items():
+    def view_items() -> None:
         """View items from inventory."""
         view_items = get_data()
         if view_items == {}:
@@ -154,7 +152,7 @@ class Inventory:
 
 
 def main():
-    """main"""
+    """main function"""
     while True:
         Inventory_file.check_inventory_file()
         choice = Menu.list_choices()
@@ -190,7 +188,6 @@ def main():
             clear_screen()
             print("Invalid entry.")
             choice = Menu.list_choices()
-            
 
 
 if __name__ == "__main__":
