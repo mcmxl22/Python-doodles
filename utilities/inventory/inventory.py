@@ -2,8 +2,8 @@
 
 """
 Author: M. McConnaughey
-Inventory Version 2.7
-Date: 07/13/2022
+Inventory Version 2.8
+Date: 07/26/2022
 Python 3.7
 """
 
@@ -89,7 +89,8 @@ class Inventory:
             print("Invalid Entry!")
 
         clear_screen()
-        return item
+        with open("inventory.json", "r+") as file:
+                json.dump(item, file, indent=4)
 
     def delete_item() -> dict:
         """Delete items from inventory."""
@@ -148,7 +149,7 @@ class Inventory:
                     print("No inventory available!\n")
                 else:
                     print(item, "=", view)
-            print("\n")
+                    print("\n")
 
 
 def main():
@@ -157,37 +158,20 @@ def main():
         Inventory_file.check_inventory_file()
         choice = Menu.list_choices()
 
-        # Process user's choice.
-        if choice in "1":
-            # Add items to inventory.
-            clear_screen()
-            with open("inventory.json", "r+") as file:
-                add = Inventory.add_inventory()
-                json.dump(add, file, indent=4)
+        option_Dict = {
+            "1": Inventory.add_inventory,
+            "2": Inventory.take_items,
+            "3": Inventory.view_items,
+            "4": Inventory.delete_item,
+            "5": exit,
+        }
 
-        elif choice in "2":
-            # Take items from inventory.
+        try:
             clear_screen()
-            taken_items = Inventory.take_items()
-            with open("inventory.json", "w") as file:
-                json.dump(taken_items, file, indent=4)
+            option_Dict[choice]()
 
-        elif choice in "3":
-            clear_screen()
-            Inventory.view_items()
-
-        elif choice in "4":
-            clear_screen()
-            Inventory.delete_item()
-
-        elif choice in "5":
-            clear_screen()
-            exit(0)
-
-        else:
-            clear_screen()
-            print("Invalid entry.")
-            choice = Menu.list_choices()
+        except KeyError:
+            print("Invalid entry!\n")
 
 
 if __name__ == "__main__":
