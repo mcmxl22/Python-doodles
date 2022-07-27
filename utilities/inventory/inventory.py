@@ -73,6 +73,7 @@ class Inventory:
     """Add, remove and view inventory."""
 
     def add_inventory() -> dict:
+        """Add items to inventory."""
         item = get_data()
 
         try:
