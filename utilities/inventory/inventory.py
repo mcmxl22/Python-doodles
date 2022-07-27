@@ -147,8 +147,8 @@ class Inventory:
                 if view < 1:
                     print("No inventory available!\n")
                 else:
-                    print(item, "=", view)
-                    print("\n")
+                    print(f'{item} = {view}')
+            print('\n')
 
 
 def main():
