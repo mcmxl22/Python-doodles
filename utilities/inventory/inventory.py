@@ -168,7 +168,7 @@ def main():
 
         try:
             clear_screen()
-            option_Dict[choice]()
+            option_dict[choice]()
 
         except KeyError:
             print("Invalid entry!\n")
