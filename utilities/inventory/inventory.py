@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Author: M. McConnaughey
 Inventory Version 2.8
@@ -73,7 +72,7 @@ class Menu:
 class Inventory:
     """Add, remove and view inventory."""
 
-    def add_inventory() -> str:
+    def add_inventory() -> dict:
         item = get_data()
 
         try:
@@ -90,7 +89,7 @@ class Inventory:
 
         clear_screen()
         with open("inventory.json", "r+") as file:
-                json.dump(item, file, indent=4)
+            json.dump(item, file, indent=4)
 
     def delete_item() -> dict:
         """Delete items from inventory."""
@@ -108,8 +107,8 @@ class Inventory:
                 with open("inventory.json", "w") as file:
                     json.dump(item, file, indent=4)
 
-        except KeyError as e:
-            print(e)
+        except KeyError as error:
+            print(error)
 
         return item
 
@@ -128,7 +127,7 @@ class Inventory:
                     print(f"Not enough {take} available!\n")
                 elif take in item:
                     item[take] -= deduct
-                    print(f"{item[take]} {take} left!\n")
+                    print(f"{item[take]} {take} left.\n")
                 else:
                     print(f"{take} doesn't exist.\n")
 
