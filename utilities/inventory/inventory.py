@@ -158,7 +158,7 @@ def main():
         Inventory_file.check_inventory_file()
         choice = Menu.list_choices()
 
-        option_Dict = {
+        option_dict = {
             "1": Inventory.add_inventory,
             "2": Inventory.take_items,
             "3": Inventory.view_items,
