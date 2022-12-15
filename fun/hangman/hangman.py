@@ -2,8 +2,8 @@
 
 """
 Author: M. McConnaughey
-Hangman version 5.6
-Date: 07/13/2022
+Hangman version 5.7
+Date: 12/15/2022
 Python 3.8+
 """
 
@@ -60,7 +60,7 @@ class Word:
         attempts = 0
         incorrect_letters = []
         word = word_setup()
-        dashes = ['-' for letter in word]
+        dashes = ['-' for _ in word]
         screen = Screen()
         available_guesses = len(word) * 2
         while attempts < available_guesses:
@@ -83,16 +83,10 @@ class Word:
             attempts += 1
 
             if guess_letter in word:
-                screen.clear_and_print(f"There is a(n): {guess_letter}.")
-
-                # Puts guessed letters back in the word.
-                # pylint: disable=unused-variable
-                start = 0
-                for letter in range(list(word).count(guess_letter)):
-                    locate_letter = list(word).index(guess_letter, start)
-                    dashes[locate_letter] = guess_letter
-                    start = locate_letter + 1
-                # pylint: enable=unused-variable
+                screen.clear_and_print(f"There is a: {guess_letter}.")
+                for i in range(len(word)):
+                  if word[i] == guess_letter:
+                    dashes[i] = guess_letter
 
                 if (format_word := "".join(dashes)) in word:
                     exit(screen.clear_and_print(f"{format_word}\nYou win!"))
@@ -116,13 +110,13 @@ def word_setup() -> str:
     return word
 
 
-def dashes():
+def dashes() -> str:
     """Dashes for word."""
-    dashes = ['-' for letter in word_setup()]
+    dashes = ['-' for _ in word_setup()]
     return ''.join(dashes)
 
 
-def main():
+def main() -> None:
     """Hangman game."""
     screen = Screen()
     word = word_setup()
