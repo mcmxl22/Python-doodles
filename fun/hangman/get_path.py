@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-get_path version 1.1
+get_path version 1.2
 Python 3.8
 """
 
@@ -9,11 +9,11 @@ import os
 
 class Path:
 
-    def get_path(path) -> str:
+    @staticmethod
+    def get_path() -> str:
         os.chdir("resources")
         path = os.path.abspath("words_alpha.txt")
         return path
 
-
 if __name__ == "__main__":
-    exit(Path.get_path("path"))
+    Path.get_path()
