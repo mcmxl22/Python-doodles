@@ -8,34 +8,35 @@ Python 3.8+
 """
 
 from sys import platform, version_info
-from os import system, path
+import os
 import random
 
 
 def check_version() -> bool:
     """Checks version of Python."""
-    if version_info[0] != 3 or version_info[1] < 8:
+    if not (version_info[0] == 3 and version_info[1] >= 8):
         print("This script requires Python 3.8+.")
-    else:
-        pass
+        return False
+    return True
 
 
 class Screen:
     """Screen class."""
-    def clear_and_print(self, text) -> str:
+    def clear_and_print(self, text: str) -> None:
         """Clear screen and print something."""
         if platform in "win32":
-            system("cls")
+            os.system("cls")
         else:
-            system("clear")
-        return print(text)
+            os.system("clear")
+        print(text)
+
 
     def clear_and_exit(self) -> None:
         """Clear the screen and exit."""
         if platform in "win32":
-            system("cls")
+            os.system("cls")
         else:
-            system("clear")
+            os.system("clear")
         exit()
 
 
@@ -43,19 +44,16 @@ class Word:
     """Word class."""  
     def get_path(self) -> str:
         """Returns path to word list."""
-        file_path = path.abspath('words_alpha.txt')
+        file_path = os.path.abspath('words_alpha.txt')
         return file_path
 
-    def get_word(self, file_path) -> str:
+    def get_word(self, file_path: str) -> str:
         """Get a random word from file."""
-        with open(file_path, 'r') as file:
-            lines = file.readlines()
-            word_select = random.choice(lines)
-        random_word = word_select.rstrip()# Removes \n character.
-        return random_word
+        with open(file_path) as f:
+            words = f.read().splitlines()
+        return random.choice(words)
 
-
-    def guess_word(self):
+    def guess_word(self) -> None:
         """Guess the word."""
         attempts = 0
         incorrect_letters = []
@@ -85,8 +83,8 @@ class Word:
             if guess_letter in word:
                 screen.clear_and_print(f"There is a: {guess_letter}.")
                 for i in range(len(word)):
-                  if word[i] == guess_letter:
-                    dashes[i] = guess_letter
+                    if word[i] == guess_letter:
+                        dashes[i] = guess_letter
 
                 if (format_word := "".join(dashes)) in word:
                     exit(screen.clear_and_print(f"{format_word}\nYou win!"))
@@ -121,8 +119,7 @@ def main() -> None:
     screen = Screen()
     word = word_setup()
     screen.clear_and_print(
-f"""Welcome to Hangman!
-You have 2 guesses for each letter. 
+f"""Welcome to Hangman! You have 2 guesses for each letter. 
 The word has {len(word)} letters.\n""")
     
     print(dashes())
