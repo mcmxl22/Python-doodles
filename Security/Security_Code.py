@@ -1,96 +1,81 @@
 #!/usr/bin/env python3
 
 """
-Security_Code Version 3.2
+Security_Code Version 3.3
 Python 3.7
 """
 
-from datetime import datetime
-from os import path
-from random import choice
-from string import ascii_uppercase
+import datetime
+import os
+import random
+import string 
 
 
-DATE = datetime.now()
+DATE = datetime.datetime.now()
 DAY = DATE.day
 
 
-def transfer_file():
+def transfer_file() -> None:
     """
-    Check if file exists.
+    Check if file exists and create it if it doesn't.
     """
-    if path.exists("transfer.txt"):
-        return
-    else:
-        with open("transfer.txt", "w+") as file:
-            return
+    if not os.path.exists("transfer.txt"):
+        with open("transfer.txt", "w+") as f:
+            pass
 
 
-def code_file():
+def code_file() -> None:
     """
-    Check if file exists.
+    Check if file exists and create it if it doesn't.
     """
-    if path.exists("code.txt"):
-        return
-    else:
-        with open("code.txt", "w") as file:
-            return
+    if not os.path.exists("code.txt"):
+        with open("code.txt", "w") as f:
+            pass
 
 
-def set_expiration():
+def set_expiration() -> str:
     """
-    Sets date format and adds a day.
+    Get the expiration date as a string in the format "month/day/year".
     """
-    expires = f"{DAY + 1}"
-    return expires
+    return f"{DAY + 1}"
 
 
-def set_letter_code():
+def set_letter_code() -> str:
     """
-    Sets random, two letter code.
+    Generate and return a random two-letter code using uppercase letters.
     """
-    letters = ascii_uppercase
-    first_letter = choice(letters)
-    second_letter = choice(letters)
+    letters = string.ascii_uppercase
+    first_letter = random.choice(letters)
+    second_letter = random.choice(letters)
     day_code = f"{first_letter}{second_letter}"
     return day_code
 
 
-def write_code():
+def write_code() -> str:
     """
-    Writes day_code to code.txt.
+    Write code to code.txt. If file is empty or expired, generate and write a new code.
     """
-    tomorrow = set_expiration()
     today = str(DAY)
+    tomorrow = set_expiration()
 
     with open("code.txt", "r+") as file:
-        file.truncate()
-        code = "".join(file.readlines())
-        file_code = file.write(set_letter_code())
-
-        if not code:
-            file_code
-        else:
-            return code
-        if today == tomorrow:
-            with open("code.txt", "w") as file:
-                file_code
+        code = file.read()
+        if not code or today == tomorrow:
+            file.truncate(0)
+            file.write(set_letter_code())
         else:
             return code
 
 
-def main():
+def main() -> None:
     """
-    Set next day expiration date and print a random, 2 letter
-    security code that changes daily to indicate expiration.
+    Write the expiration date and security code to the transfer.txt file.
     """
+    expiration_date = f"{DATE.month}/{set_expiration()}/{DATE.year}"
+
     with open("transfer.txt", "w") as file:
-        day_format = f"{DATE.month}/{set_expiration()}/{DATE.year}"
-
-        if not write_code():
-            file.write(f"Expires: {day_format}\n2:59am\nxx")
-        else:
-            file.write(f"Expires: {day_format}\n2:59am\n{write_code()}")
+        code = write_code()
+        file.write(f"Expires: {expiration_date}\n2:59am\n{code}")
 
 
 if __name__ == "__main__":
