@@ -18,4 +18,4 @@ def count(seconds):
 
 
 if __name__ == "__main__":
-    sys.exit(count("seconds"))
+    count("seconds")
