@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-clear_and_exit version 1
+clear_and_exit version 1.1
 Python 3.8
 """
 
@@ -19,4 +19,4 @@ def clear_and_exit():
         exit(0)
 
 if __name__ == "__main__":
-    exit(clear_and_exit())
+    clear_and_exit()
