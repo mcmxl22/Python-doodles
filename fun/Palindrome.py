@@ -1,23 +1,17 @@
 #!/usr/bin/env python3
 """
-Palindrome version 1.2
+Palindrome checker
 Python 3.7
 """
 
+def get_word():
+    word = input("Enter a word: ")
+    return word
 
-def palindrome():
-    word = input("Enter a word or phrase. ")
-    letters = filter(str.strip, list(word))
-
-    test = list(reversed(word))
-    letter_test = filter(str.strip, test)
-
-    if list(letter_test) == list(letters):
-        print(f"{word} is a palindrome!")
-
-    else:
-        print(f"{word} is not a palindrome!")
-
+def is_palindrome():
+    word = get_word()
+    return f'Palindrome: {word == word[::-1]}'
 
 if __name__ == "__main__":
-    palindrome()
+    while True:
+        print(is_palindrome())
