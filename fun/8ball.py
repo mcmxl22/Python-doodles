@@ -16,4 +16,4 @@ def ball():
     return answer
 
 if __name__ == "__main__":
-    sys.exit(ball())
+    ball()
