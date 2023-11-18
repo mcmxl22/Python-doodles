@@ -1,24 +1,27 @@
 #!/usr/bin/env python3
+
 """
-numli Version 1.3
+pip_up version 1.7
 Python 3.7
 """
 
-
-class Menu:
-    """
-    Create a menu. 
-    Example: Menu.list_choices(['Cat','Dog'])
-    Output:
-    1 Cat
-    2 Dog
-    """
-    def add_numbers(num):
-        """Add numbers to the menu list."""
-        for c, value in enumerate(num, 1):
-            print(c, value)
+from subprocess import run
 
 
-    def list_choices(options_list, **kwargs: list):
-        """Give user a choice of actions."""
-        return Menu.add_numbers(options_list)
+def pkg_update():
+    """Update pip packages."""
+    while True:
+        print("1 Yes")
+        print("2 Exit")
+
+        choice = input("Check for updates? ")
+
+        if choice in "1":
+            print("Checking for updates...")
+            run("pip-review --local --interactive", check=True)
+        else:
+            exit()
+
+
+if __name__ == "__main__":
+    pkg_update()
