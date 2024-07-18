@@ -18,21 +18,23 @@ def check_version() -> bool:
     return True
 
 
-def clear_and_print(text: str) -> None:
-    """Clear screen and print something."""
+def clear_screen() -> None:
+    """Clears the screen."""
     if platform in "win32":
         os.system("cls")
     else:
         os.system("clear")
+
+
+def clear_and_print(text: str) -> None:
+    """Clear screen and print something."""
+    clear_screen()
     print(text)
 
 
 def clear_and_exit() -> None:
     """Clear the screen and exit."""
-    if platform in "win32":
-        os.system("cls")
-    else:
-        os.system("clear")
+    clear_screen()
     exit()
 
 
@@ -46,14 +48,14 @@ def get_word(file_path: str) -> str:
     """Get a random word from file."""
     with open(file_path) as f:
         words = f.read().splitlines()
-    return random.choice(words).strip().lower()
+    return random.choice(words)
 
 
 def word_setup() -> str:
     """Setup for hangman game."""
     path = get_path()
     word = get_word(path)
-    return word.strip().lower()
+    return word
 
 
 def dashes() -> str:
@@ -89,15 +91,9 @@ def guess_word() -> None:
 
         if guess_letter not in incorrect_letters:
             incorrect_letters.append(guess_letter)
-            clear_and_print(
-                f"""There is no: {guess_letter}.
-                            \rGuesses remaining: {available_guesses - attempts}"""
-            )
+            clear_and_print(f"""There is no: {guess_letter}""")
         else:
-            clear_and_print(
-                f"""You already guessed: {guess_letter}.
-                            \rGuesses remaining: {available_guesses - attempts}"""
-            )
+            clear_and_print(f"""You already guessed: {guess_letter}.""")
 
         attempts += 1
 
@@ -110,9 +106,7 @@ def guess_word() -> None:
             if (format_word := "".join(dashes)) in word:
                 exit(clear_and_print(f"{format_word}\nYou win!"))
             else:
-                print(
-                    f"Guesses remaining: {available_guesses - attempts}\n{format_word}"
-                )
+                print(f"{format_word}")
         else:
             continue
 
