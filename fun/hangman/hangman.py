@@ -46,14 +46,14 @@ def get_word(file_path: str) -> str:
     """Get a random word from file."""
     with open(file_path) as f:
         words = f.read().splitlines()
-    return random.choice(words)
+    return random.choice(words).strip().lower()
 
 
 def word_setup() -> str:
     """Setup for hangman game."""
     path = get_path()
     word = get_word(path)
-    return word
+    return word.strip().lower()
 
 
 def dashes() -> str:
