@@ -65,15 +65,9 @@ def dashes() -> str:
 
 def letter_input() -> str:
     """Get letter input."""
-    try:
-        letter = input("Guess a letter: ")
-        assert letter.isalpha(), "Please enter a letter."
-        assert len(letter) == 1, "Please enter a single letter."
-    except KeyboardInterrupt:
-        clear_and_exit()
-    except AssertionError as error:
-        print(error)
-        return letter_input()
+    letter = input("Guess a letter: ")
+    assert letter.isalpha(), "Please enter a letter."
+    assert len(letter) == 1, "Please enter a single letter."
     return letter
 
 
@@ -84,12 +78,9 @@ def guess_word() -> None:
     word = word_setup()
     dashes = ["-" for _ in word]
     available_guesses = len(word) * 2
-    remaining_guesses = available_guesses - attempts
     while attempts < available_guesses:
         try:
-            guess_letter = input("Guess a letter: ")
-            assert guess_letter.isalpha(), "Please enter a letter."
-            assert len(guess_letter) == 1, "Please enter a single letter."
+            guess_letter = letter_input()
         except KeyboardInterrupt:
             clear_and_exit()
         except AssertionError as error:
