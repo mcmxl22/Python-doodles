@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-
 """
 Author: M. McConnaughey
 Hangman version 5.7
-Date: 12/15/2022
+Date: 07/17/2024
 Python 3.8+
 """
 
@@ -22,6 +20,7 @@ def check_version() -> bool:
 
 class Screen:
     """Screen class."""
+
     def clear_and_print(self, text: str) -> None:
         """Clear screen and print something."""
         if platform in "win32":
@@ -29,7 +28,6 @@ class Screen:
         else:
             os.system("clear")
         print(text)
-
 
     def clear_and_exit(self) -> None:
         """Clear the screen and exit."""
@@ -41,10 +39,11 @@ class Screen:
 
 
 class Word:
-    """Word class."""  
+    """Word class."""
+
     def get_path(self) -> str:
         """Returns path to word list."""
-        file_path = os.path.abspath('words_alpha.txt')
+        file_path = os.path.abspath("words_alpha.txt")
         return file_path
 
     def get_word(self, file_path: str) -> str:
@@ -58,7 +57,7 @@ class Word:
         attempts = 0
         incorrect_letters = []
         word = word_setup()
-        dashes = ['-' for _ in word]
+        dashes = ["-" for _ in word]
         screen = Screen()
         available_guesses = len(word) * 2
         while attempts < available_guesses:
@@ -90,8 +89,11 @@ class Word:
                     exit(screen.clear_and_print(f"{format_word}\nYou win!"))
                 else:
                     print(
-                        (f"""Guesses remaining: {available_guesses - attempts}
-                            \r{format_word}"""))
+                        (
+                            f"""Guesses remaining: {available_guesses - attempts}
+                            \r{format_word}"""
+                        )
+                    )
             else:
                 continue
 
@@ -110,8 +112,8 @@ def word_setup() -> str:
 
 def dashes() -> str:
     """Dashes for word."""
-    dashes = ['-' for _ in word_setup()]
-    return ''.join(dashes)
+    dashes = ["-" for _ in word_setup()]
+    return "".join(dashes)
 
 
 def main() -> None:
@@ -119,12 +121,13 @@ def main() -> None:
     screen = Screen()
     word = word_setup()
     screen.clear_and_print(
-f"""Welcome to Hangman! You have 2 guesses for each letter. 
-The word has {len(word)} letters.\n""")
-    
+        f"""Welcome to Hangman! You have 2 guesses for each letter. 
+The word has {len(word)} letters.\n"""
+    )
+
     print(dashes())
     play_game = Word.guess_word
-    play_game('')
+    play_game("")
 
 
 if __name__ == "__main__":
