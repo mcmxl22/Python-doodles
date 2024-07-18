@@ -1,17 +1,18 @@
-import unittest
+# Test using pytest
+
 import hangman
 
+def test_hangman():
+    assert(hangman)
 
-class Test_Hangman(unittest.TestCase):
+def test_word_setup():
+    assert(hangman.word_setup())
 
-    def test_hangman(self):
-        self.assertTrue(hangman)
+def test_check_version():
+    assert(hangman.check_version())
+    assert(hangman.check_version() == True)
+    assert(type(hangman.check_version()) == bool)
 
-    def test_clr_exit(self):
-        self.assertTrue(hangman.clear_and_exit)
-
-    def test_clr_print(self):
-        self.assertTrue(hangman.clear_and_print)
-
-    def test_main(self):
-        self.assertTrue(hangman.main)
+def test_dashes():
+    assert(hangman.dashes())
+    assert(type(hangman.dashes()) == str)
