@@ -16,6 +16,7 @@ def test_check_version():
 def test_dashes():
     assert(hangman.dashes())
     assert(type(hangman.dashes()) == str)
+    assert(len(hangman.dashes()) == len(hangman.word_setup()))
 
 def test_get_path():
     assert(hangman.get_path())
@@ -27,5 +28,3 @@ def test_get_word():
 
 def test_clear_and_print():
     assert(hangman.clear_and_print("test")) is None
-
-
