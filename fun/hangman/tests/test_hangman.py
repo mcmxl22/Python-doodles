@@ -16,3 +16,16 @@ def test_check_version():
 def test_dashes():
     assert(hangman.dashes())
     assert(type(hangman.dashes()) == str)
+
+def test_get_path():
+    assert(hangman.get_path())
+    assert(type(hangman.get_path()) == str)
+
+def test_get_word():
+    assert(hangman.get_word(hangman.get_path()))
+    assert(type(hangman.get_word(hangman.get_path())) == str)
+
+def test_clear_and_print():
+    assert(hangman.clear_and_print("test")) is None
+
+
