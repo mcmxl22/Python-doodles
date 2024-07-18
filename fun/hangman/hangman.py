@@ -1,18 +1,18 @@
 """
 Author: M. McConnaughey
-Hangman version 5.7
-Date: 07/17/2024
+Hangman version 5.8
+Date: 07/18/2024
 Python 3.8+
 """
 
-from sys import platform, version_info
+import sys
 import os
 import random
 
 
 def check_version() -> bool:
     """Checks version of Python."""
-    if not (version_info[0] == 3 and version_info[1] >= 8):
+    if not (sys.version_info[0] == 3 and sys.version_info[1] >= 8):
         print("This script requires Python 3.8+.")
         return False
     return True
@@ -20,9 +20,9 @@ def check_version() -> bool:
 
 def clear_screen() -> None:
     """Clears the screen."""
-    if platform in "win32":
+    try:
         os.system("cls")
-    else:
+    except OSError:
         os.system("clear")
 
 
