@@ -1,10 +1,9 @@
 """
-pip_up version 1.8
+pip_up version 1.9
 Python 3.7
 """
 
-from subprocess import run
-import os
+from os import system
 
 
 def pkg_update():
@@ -15,14 +14,14 @@ def pkg_update():
 
         choice = input("Check for updates? ")
 
-        if choice in "1":
+        if choice == "1":
             print("Checking for updates...")
-            run("pip-review --local --interactive", check=True)
+            system("pip-review --local --interactive")
         else:
             try:
-                os.system("cls")
+                system("cls")
             except OSError:
-                os.system("clear")
+                system("clear")
 
             exit()
 
