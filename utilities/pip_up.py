@@ -1,11 +1,10 @@
-#!/usr/bin/env python3
-
 """
-pip_up version 1.7
+pip_up version 1.8
 Python 3.7
 """
 
 from subprocess import run
+import os
 
 
 def pkg_update():
@@ -20,6 +19,11 @@ def pkg_update():
             print("Checking for updates...")
             run("pip-review --local --interactive", check=True)
         else:
+            try:
+                os.system("cls")
+            except OSError:
+                os.system("clear")
+
             exit()
 
 
