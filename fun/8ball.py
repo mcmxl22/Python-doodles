@@ -5,8 +5,6 @@ Python 3.7
 """
 
 import random
-import sys
-
 
 def ball():
     """Shake the eight ball!"""
